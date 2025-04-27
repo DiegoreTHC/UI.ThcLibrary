@@ -1,7 +1,7 @@
 {
   "name": "@thcode-society/ui-thc-library",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "THC Code Component Library, Nuxt 3, SCSS, SCSS Variables, Typescript",
   "repository": {
     "type": "git",
@@ -28,14 +28,17 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "components",
+    "styles",
+    "module.ts"
   ],
   "scripts": {
     "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run prepack && changelogen --release && npm publish --access public",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
