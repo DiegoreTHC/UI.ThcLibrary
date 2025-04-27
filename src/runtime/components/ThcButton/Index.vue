@@ -8,12 +8,12 @@
 
 <style lang="scss" scoped>
 .ui-button {
-  background-color: $primary-color;
+  background-color: var(--primary-color);
   color: white;
-  font-size: $font-size-base;
+  font-size: var(--font-size-base);
   padding: 0.5em 1em;
   border: none;
-  border-radius: $border-radius;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 </style>

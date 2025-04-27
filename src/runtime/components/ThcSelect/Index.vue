@@ -21,8 +21,8 @@ const model = defineModel<string>();
 <style lang="scss" scoped>
 .ui-select {
   padding: 0.5em;
-  border-radius: $border-radius;
+  border-radius: var(--border-radius);
   border: 1px solid #ccc;
-  font-size: $font-size-base;
+  font-size: var(--font-size-base);
 }
 </style>

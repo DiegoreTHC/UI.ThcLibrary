@@ -10,7 +10,7 @@ export default defineNuxtModule({
   },
   setup(_, nuxt) {
     addComponentsDir({
-      path: resolve(__dirname, "components"),
+      path: resolve(__dirname, "runtime/components"),
       pathPrefix: false
     });
 

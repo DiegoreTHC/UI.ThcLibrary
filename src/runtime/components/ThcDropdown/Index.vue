@@ -38,10 +38,10 @@ function select(item: string) {
   position: relative;
 
   button {
-    background: $secondary-color;
+    background: var(--secondary-color);
     padding: 0.5em;
     border: 1px solid #ccc;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
   }
 
   ul {
@@ -58,7 +58,7 @@ function select(item: string) {
       cursor: pointer;
 
       &:hover {
-        background: $secondary-color;
+        background: var(--secondary-color);
       }
     }
   }

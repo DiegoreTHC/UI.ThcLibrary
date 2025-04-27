@@ -19,7 +19,7 @@ const model = defineModel<boolean>();
   gap: 0.5em;
 
   input {
-    accent-color: $primary-color;
+    accent-color: var(--primary-color);
   }
 }
 </style>
