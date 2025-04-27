@@ -1,6 +1,11 @@
 import { addComponentsDir, defineNuxtModule } from "@nuxt/kit";
+import { dirname } from "path";
 import { resolve } from "pathe";
+import { fileURLToPath } from "url";
 import { name, version } from "../package.json";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineNuxtModule({
   meta: {
