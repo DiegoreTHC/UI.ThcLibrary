@@ -1,9 +1,11 @@
 import { addComponentsDir, defineNuxtModule } from "@nuxt/kit";
 import { resolve } from "pathe";
+import { name, version } from "../package.json";
 
 export default defineNuxtModule({
   meta: {
-    name: "ui-thc-library",
+    name,
+    version,
     configKey: "UiThcLibrary"
   },
   setup(_, nuxt) {
