@@ -19,7 +19,8 @@ export default defineNuxtModule({
       pathPrefix: false
     });
 
+    console.log("DIR:", __filename);
     // Include global SCSS
-    if (_.css) nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.scss"));
+    nuxt.options.css.push(resolve(__dirname, "runtime/index.scss"));
   }
 });
