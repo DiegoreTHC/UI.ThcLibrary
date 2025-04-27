@@ -29,9 +29,7 @@
   },
   "files": [
     "dist",
-    "components",
-    "styles",
-    "module.ts"
+    "src/runtime/styles"
   ],
   "scripts": {
     "prepack": "nuxt-module-build build",

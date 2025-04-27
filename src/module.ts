@@ -20,6 +20,6 @@ export default defineNuxtModule({
     });
 
     // Include global SCSS
-    nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.scss"));
+    if (_.css) nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.scss"));
   }
 });
