@@ -1,6 +1,7 @@
 {
-  "name": "@thcode-society/Ui.ThcLibrary",
-  "version": "0.0.1",
+  "name": "@thcode-society/ui-thc-library",
+  "private": false,
+  "version": "1.0.0",
   "description": "THC Code Component Library, Nuxt 3, SCSS, SCSS Variables, Typescript",
   "repository": {
     "type": "git",
@@ -40,7 +41,8 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.16.2"
+    "@nuxt/kit": "^3.16.2",
+    "pathe": "^2.0.3"
   },
   "devDependencies": {
     "@nuxt/devtools": "^2.4.0",
@@ -57,8 +59,8 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-vue": "^10.0.0",
-    "prettier": "^3.5.3",
     "nuxt": "^3.16.2",
+    "prettier": "^3.5.3",
     "sass": "^1.87.0",
     "stylelint": "^16.18.0",
     "stylelint-config-standard-scss": "^14.0.0",
