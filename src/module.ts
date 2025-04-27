@@ -1,18 +1,20 @@
 import { addComponentsDir, defineNuxtModule } from "@nuxt/kit";
 import { resolve } from "pathe";
+import { name, version } from "../package.json";
 
 export default defineNuxtModule({
   meta: {
-    name: "ui-thc-library",
+    name,
+    version,
     configKey: "UiThcLibrary"
   },
   setup(_, nuxt) {
     addComponentsDir({
-      path: resolve(__dirname, "components"),
+      path: resolve(__dirname, "runtime/components"),
       pathPrefix: false
     });
 
     // Include global SCSS
-    nuxt.options.css.push(resolve(__dirname, "styles/index.scss"));
+    nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.scss"));
   }
 });
