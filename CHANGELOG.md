@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v1.0.11
+
+[compare changes](https://github.com/DiegoreTHC/UI.ThcLibrary/compare/v1.0.7...v1.0.11)
+
+### 🏡 Chore
+
+- **release:** V1.0.8 ([9992025](https://github.com/DiegoreTHC/UI.ThcLibrary/commit/9992025))
+- **release:** V1.0.9 ([fa8ab10](https://github.com/DiegoreTHC/UI.ThcLibrary/commit/fa8ab10))
+- **release:** V1.0.10 ([da5f114](https://github.com/DiegoreTHC/UI.ThcLibrary/commit/da5f114))
+
+### ❤️ Contributors
+
+- User <user@Admins-MacBook-Pro.local>
+
 ## v1.0.10
 
 [compare changes](https://github.com/DiegoreTHC/UI.ThcLibrary/compare/v1.0.7...v1.0.10)
