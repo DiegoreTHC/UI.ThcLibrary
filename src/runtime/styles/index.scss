@@ -1,5 +1,5 @@
-@use "./utils/ui-reset.scss";
-@use "./variables/index.scss";
+@use "./utils";
+@use "./variables";
 
 html {
   font-size: var(--font-size-units);

@@ -1,7 +1,7 @@
 <template>
   <div>
     Nuxt module playground!
-    <ThcButton>Button</ThcButton>
+    <ThcButton>Button <i class="fas fa-chevron-left"></i></ThcButton>
   </div>
 </template>
 
