@@ -1,6 +1,7 @@
 $color-primary: #05fe88; /* vibrant green (main brand color) */
 $color-secondary: #12824d; /* darker green (support/CTA) */
 $color-accent: #00b961; /* bright green (hover, focus, highlight) */
+$color-accent-secondary: #d24dcc; /* magenta (tags, badges, identity touch) */
 
 $color-warning: #ffe100; /* yellow (alerts, attention) */
 $color-info: #9747ff; /* purple (info messages or visual accents) */
@@ -8,7 +9,12 @@ $color-error: #e30613; /* red (errors, critical) */
 $color-success: #00bb62;
 $color-alert: #ff8e5f; /* orange (warnings or secondary alerts) */
 
-$color-magenta: #d24dcc; /* magenta (tags, badges, identity touch) */
+$font-color-primary: #11232f;
+$font-color-primary-light: #9aaab9;
+$font-color-light: #ffffff;
+$font-color-accent: #05fe88;
+
+$font-family: "Outfit", sans-serif;
 
 $font-size-xxs: 0.714rem;
 $font-size-xs: 0.857rem;
