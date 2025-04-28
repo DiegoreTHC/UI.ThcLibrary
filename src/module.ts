@@ -19,8 +19,13 @@ export default defineNuxtModule({
       pathPrefix: false
     });
 
-    console.log("DIR:", _, nuxt);
-    // Include global SCSS
+    // console.log("DIR", nuxt.options);
+    // if (nuxt.options.vite.mode === "development") {
+    //   nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.css"));
+    //   return;
+    // }
+    console.log("DIR:", process.env.NODE_ENV);
+    console.log("DIR", nuxt.options.css);
     nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.scss"));
   }
 });
