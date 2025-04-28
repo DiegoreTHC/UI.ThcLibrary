@@ -19,7 +19,7 @@ export default defineNuxtModule({
       pathPrefix: false
     });
 
-    console.log("DIR:", _);
+    console.log("DIR:", _, nuxt);
     // Include global SCSS
     nuxt.options.css.push(resolve(__dirname, "runtime/styles/index.scss"));
   }
