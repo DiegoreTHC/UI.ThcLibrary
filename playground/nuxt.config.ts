@@ -7,13 +7,7 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           quietDeps: true,
-          silenceDeprecations: ["import"],
-          additionalData: `
-            $primary-color: #4a90e2;
-            $secondary-color: #f5f5f5;
-            $font-size-base: 16px;
-            $border-radius: 6px;
-          `
+          silenceDeprecations: ["import"]
         }
       }
     }

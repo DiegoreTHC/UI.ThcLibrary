@@ -1,0 +1,11 @@
+@use "./utils/ui-reset.scss";
+@use "./variables/index.scss";
+
+html {
+  font-size: var(--unit-size-base);
+}
+
+body {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+}
