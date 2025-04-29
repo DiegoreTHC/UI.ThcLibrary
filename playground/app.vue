@@ -1,8 +1,17 @@
 <template>
   <div>
     Nuxt module playground!
-    <ThcButton>Button <i class="fas fam-bong"></i></ThcButton>
+    <ThcButton
+      variant="secondary"
+      @click="clickFunct"
+    >
+      Button <i class="fas fam-bong"></i>
+    </ThcButton>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const clickFunct = () => {
+  console.log("Nepe");
+};
+</script>
