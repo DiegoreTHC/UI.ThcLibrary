@@ -14,7 +14,7 @@
   &--link {
     background-color: transparent;
     display: inline-block;
-    color: var(--font-color-link);
+    color: var(--font-color-accent);
     text-decoration: none;
     cursor: pointer;
 
@@ -42,6 +42,7 @@
     &.thc-button {
       .thc-button {
         &-icon {
+          color: var(--font-color-light);
           font-size: 0.85em;
           margin: 0 0.15em;
 
