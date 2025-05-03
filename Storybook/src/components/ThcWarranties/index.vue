@@ -50,5 +50,5 @@ withDefaults(
 </template>
 
 <style lang="scss" scoped>
-@use "./ThcWarranties.scss";
+@import "./ThcWarranties.scss";
 </style>

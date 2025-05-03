@@ -1,0 +1,50 @@
+.thc {
+  &-ratings {
+    display: inline-flex;
+    align-items: center;
+
+    &-text {
+      // color: $color-brand-grey-200;
+      font-size: 0.75em;
+    }
+
+    &-stars {
+      display: flex;
+      gap: 0.25em;
+    }
+
+    &--with-data {
+      gap: 0.25em;
+    }
+  }
+
+  &-star {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &--full {
+      background-image: url("/assets/icons/weed-full.svg"); /* Full star icon */
+    }
+
+    &--partial {
+      background-image: url("/assets/icons/weed-full-half.svg");
+
+      &::before {
+        background-image: url("/assets/icons/weed-empty.svg"); /* Empty star icon */
+        content: "";
+        width: 1em;
+        height: 1em;
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &--empty {
+      background-image: url("/assets/icons/weed-empty.svg"); /* Empty star icon */
+    }
+  }
+}

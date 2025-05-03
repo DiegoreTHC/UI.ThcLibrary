@@ -5,11 +5,11 @@
     width: 16.6em;
     flex-wrap: wrap;
 
-    // @include respond-to(600px) {
-    //   width: 35.6em;
-    // }
+    @include respondTo(600px) {
+      width: 35.6em;
+    }
 
-    @include respond-to("tablet-landscape") {
+    @include respondTo("tablet-landscape") {
       justify-content: flex-start;
       width: auto;
       gap: 1em;
@@ -29,11 +29,11 @@
     height: 8.8em;
     position: relative;
 
-    // @include respond-to(600px) {
+    // @include respondTo(600px) {
     //   height: inherit;
     // }
 
-    // @include respond-to("tablet-landscape") {
+    // @include respondTo("tablet-landscape") {
     //   width: 7em;
     // }
 
@@ -44,7 +44,7 @@
       width: 100%;
       position: absolute;
 
-      // @include respond-to(600px) {
+      // @include respondTo(600px) {
       //   display: none;
       // }
     }

@@ -1,0 +1,57 @@
+.thc {
+  // Hamburger menu
+  &-hamburger {
+    width: 1em;
+    height: 1em;
+    position: relative;
+    // color: $color-brand-clear-100;
+    cursor: pointer;
+
+    > span {
+      display: block;
+      width: 1em;
+      height: 1em;
+    }
+
+    &-lines {
+      // background-color: $color-brand-clear-100;
+      display: block;
+      width: 0.6em;
+      height: 2px;
+      border-radius: 2em;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -1.4px;
+
+      &::after,
+      &::before {
+        // background-color: $color-brand-clear-100;
+        content: "";
+        border-radius: 2em;
+        position: absolute;
+        height: 2px;
+        width: 0.88em;
+        right: 0;
+      }
+
+      &::after {
+        bottom: -0.32em;
+      }
+
+      &::before {
+        top: -0.32em;
+      }
+    }
+
+    &--close {
+      text-align: center;
+
+      .fas {
+        font-size: 1.5em;
+        font-weight: 400;
+        line-height: 0;
+      }
+    }
+  }
+}

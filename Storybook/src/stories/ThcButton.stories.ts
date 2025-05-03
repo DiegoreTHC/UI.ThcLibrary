@@ -1,4 +1,4 @@
-import ThcButton from "../components/ThcButton/Index.vue";
+import ThcButton from "../components/ThcButton/index.vue";
 
 const meta = {
   title: "Smokers.mx/ThcButton",

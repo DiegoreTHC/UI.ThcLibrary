@@ -10,8 +10,8 @@ export default defineNuxtConfig({
           quietDeps: true,
           silenceDeprecations: ["import"],
           additionalData: `
-            @use "~/src/styles/utils";
-            @use "~/src/styles/variables";
+            @use "~/src/styles/variables" as *;
+            @use "~/src/styles/utils" as *;
           `
         }
       }

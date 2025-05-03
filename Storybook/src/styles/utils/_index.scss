@@ -1,4 +1,4 @@
-@use "./ui-icons.scss" as *;
-@use "./ui-fonticons.scss" as *;
-@use "./ui-reset.scss" as *;
-@use "./ui-mediaqueries.scss" as *;
+@forward "./reset";
+@forward "./icons";
+@forward "./fonticons";
+@forward "./media";
