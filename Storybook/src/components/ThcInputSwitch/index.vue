@@ -8,24 +8,24 @@
       }
     ]"
   >
-      <input
-        class="thc-switch-input"
-        :id="id"
-        :name="name"
-				type="checkbox"
-				v-model="model"
-      >
+    <input
+      class="thc-switch-input"
+      :id="id"
+      :name="name"
+      type="checkbox"
+      v-model="model"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
 defineProps<{
-  name: string
-  id: string
-}>()
+  name: string;
+  id: string;
+}>();
 const model = defineModel({ type: [Boolean, String] as PropType<boolean | string | string[]> });
 </script>
 
 <style lang="scss" scoped>
-@import './ThcInputSwitch.scss';
+@use "./ThcInputSwitch.scss" as *;
 </style>

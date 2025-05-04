@@ -70,5 +70,5 @@ const buttonClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@use "./ThcButton.scss";
+@use "./ThcButton.scss" as *;
 </style>

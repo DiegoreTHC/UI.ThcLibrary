@@ -5,7 +5,7 @@
   }
 
   &-box {
-    background-color: #2f9a68;
+    background-color: var(--color-secondary);
     width: 1em;
     height: 1em;
     border-radius: 10em;
@@ -20,7 +20,7 @@
 
     &::before {
       content: "";
-      // background-color: $color-brand-blue-100;
+      background-color: var(--color-primary);
       width: 0.63em;
       height: 0.63em;
       opacity: 0;
@@ -41,7 +41,7 @@
     }
 
     &--switch {
-      background-color: #fff;
+      background-color: var(--color-clear-100);
       width: 1.875em;
       height: 0.875em;
       border-radius: 1em;
@@ -50,7 +50,7 @@
       &:after {
         content: "";
         position: absolute;
-        // border: 1px solid rgba($color: $color-brand-grey-200, $alpha: .3);
+        border: 1px solid rgba($color: var(--color-gray-200), $alpha: 0.3);
         top: -2.5px;
         left: -2.5px;
         right: -2.5px;
@@ -66,7 +66,7 @@
       }
 
       &:checked {
-        // background-color: $color-brand-green-100;;
+        background-color: var(--color-green-100);
         &::before {
           right: 0.0625em;
         }

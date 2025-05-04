@@ -1,6 +1,6 @@
 .thc-pill {
-  // background-color: $color-brand-green-200;
-  // color: $color-brand-clear-100;
+  background-color: var(--color-green-200);
+  color: var(--font-color-light);
   text-align: center;
   display: inline-flex;
   justify-content: center;
@@ -15,17 +15,17 @@
   }
 
   &--new {
-    // background-color: $color-brand-magenta-100;
+    background-color: var(--color-magenta-100);
   }
   &--default {
-    // background-color: $color-brand-green-400;
-    // color: $color-brand-blue-100;
+    background-color: var(--color-green-400);
+    color: var(--color-blue-100);
   }
   &--discount {
-    // background-color: $color-core-red-100;
+    background-color: var(--color-red-100);
   }
   &--gradient {
-    // background-image: linear-gradient(to right, $color-core-orange-100 , $color-core-orange-200);;
+    background-image: linear-gradient(to right, var(--color-orange-100), var(--color-orange-200));
   }
 
   &--loading {
@@ -35,14 +35,14 @@
   }
 
   &--outline {
-    // border: 1px solid $color-brand-green-100;
+    border: 1px solid var(--color-green-100);
     background-color: transparent;
     cursor: pointer;
     padding: 0.6em;
 
     &.thc-pill--active {
-      // background-color: $color-brand-green-100;
-      // color: $color-brand-blue-100;
+      background-color: var(--color-green-100);
+      color: var(--color-blue-100);
     }
   }
 }

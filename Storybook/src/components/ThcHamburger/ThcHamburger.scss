@@ -1,10 +1,9 @@
 .thc {
-  // Hamburger menu
   &-hamburger {
     width: 1em;
     height: 1em;
     position: relative;
-    // color: $color-brand-clear-100;
+    color: var(--color-clear-100);
     cursor: pointer;
 
     > span {
@@ -14,7 +13,7 @@
     }
 
     &-lines {
-      // background-color: $color-brand-clear-100;
+      background-color: var(--color-clear-100);
       display: block;
       width: 0.6em;
       height: 2px;
@@ -26,7 +25,7 @@
 
       &::after,
       &::before {
-        // background-color: $color-brand-clear-100;
+        background-color: var(--color-clear-100);
         content: "";
         border-radius: 2em;
         position: absolute;

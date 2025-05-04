@@ -2,9 +2,8 @@ $border: 1px;
 
 .thc {
   &-card {
-    // background-color: $color-grey-500;
-    // border-radius: $radius-large;
-    // color: $color-brand-clear-100;
+    background-color: var(--color-gray-500);
+    color: var(--color-clear-100);
     position: relative;
     overflow: hidden;
 
@@ -21,17 +20,18 @@ $border: 1px;
         z-index: -1;
         margin: -$border;
         border-radius: inherit;
-        // background: linear-gradient(to right, $color-brand-magenta-100, #ab00ef);
+        background: linear-gradient(to right, var(--color-magenta-100), var(--color-purple-200));
       }
     }
 
     &--dark {
       border-radius: 0.5em;
-      background-color: rgba($color: #4f4f4f, $alpha: 0.3);
+      background-color: rgba($color: var(--color-gray-200), $alpha: 0.3);
       padding: 1em;
     }
+
     &--transparent {
-      // background-color: rgba($color: $color-brand-grey-500, $alpha: 0.3);
+      background-color: rgba($color: var(--color-gray-500), $alpha: 0.3);
     }
   }
 }
