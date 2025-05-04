@@ -3,13 +3,13 @@
     position: relative;
 
     &--primary {
-      // fill: $color-brand-green-100;
+      fill: var(--color-primary);
     }
     &--negative {
-      // fill: $color-brand-grey-300;
+      fill: var(--color-grey-300);
     }
     &--dark {
-      // fill: $color-brand-grey-700;
+      fill: var(--color-grey-700);
     }
 
     // Modes

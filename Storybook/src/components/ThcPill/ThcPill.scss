@@ -35,13 +35,13 @@
   }
 
   &--outline {
-    border: 1px solid var(--color-green-100);
+    border: 1px solid var(--color-primary);
     background-color: transparent;
     cursor: pointer;
     padding: 0.6em;
 
     &.thc-pill--active {
-      background-color: var(--color-green-100);
+      background-color: var(--color-primary);
       color: var(--color-blue-100);
     }
   }

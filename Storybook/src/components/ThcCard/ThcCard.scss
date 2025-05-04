@@ -26,12 +26,12 @@ $border: 1px;
 
     &--dark {
       border-radius: 0.5em;
-      background-color: rgba($color: var(--color-gray-200), $alpha: 0.3);
+      background-color: rgba(var(--color-gray-200-rgb), 0.3);
       padding: 1em;
     }
 
     &--transparent {
-      background-color: rgba($color: var(--color-gray-500), $alpha: 0.3);
+      background-color: rgba(var(--color-gray-500-rgb), 0.3);
     }
   }
 }

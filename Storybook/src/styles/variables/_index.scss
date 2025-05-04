@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@use "../utils/mixins" as *;
 
 :root {
   --color-primary: #{$color-primary};
@@ -90,4 +91,9 @@
   --color-red-100: #{$color-red-100};
   --color-orange-100: #{$color-orange-100};
   --color-orange-200: #{$color-orange-200};
+
+  --color-green-100-rgb: #{hexToRGB($color-green-100)};
+  --color-gray-200-rgb: #{hexToRGB($color-gray-200)};
+  --color-gray-500-rgb: #{hexToRGB($color-gray-500)};
+  --color-dark-100-rgb: #{hexToRGB($color-dark-100)};
 }

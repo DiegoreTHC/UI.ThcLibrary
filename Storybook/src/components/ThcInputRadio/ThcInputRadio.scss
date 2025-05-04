@@ -50,7 +50,7 @@
       &:after {
         content: "";
         position: absolute;
-        border: 1px solid rgba($color: var(--color-gray-200), $alpha: 0.3);
+        border: 1px solid rgba(var(--color-gray-200-rgb), 0.3);
         top: -2.5px;
         left: -2.5px;
         right: -2.5px;
@@ -66,7 +66,7 @@
       }
 
       &:checked {
-        background-color: var(--color-green-100);
+        background-color: var(--color-primary);
         &::before {
           right: 0.0625em;
         }
