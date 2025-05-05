@@ -4,6 +4,17 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/storybook"],
   css: ["@/src/styles/index.scss"],
+  components: [
+    {
+      path: "~/src/components",
+      pathPrefix: false
+    }
+  ],
+  imports: {
+    dirs: [
+      "src/utils" // auto-import utilities (e.g., helper functions)
+    ]
+  },
   vite: {
     css: {
       preprocessorOptions: {
