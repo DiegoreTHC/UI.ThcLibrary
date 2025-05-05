@@ -1,16 +1,16 @@
 .thc-navlink {
-  // color: $color-brand-clear-200
+  color: var(--color-clear-200);
 }
 
 .thc-link {
-  // color: $color-brand-clear-200;
+  color: var(--color-clear-200);
   text-decoration: none;
 
   @include respondTo("tablet-landscape") {
     position: relative;
     &::after {
       content: "";
-      // background-color: $color-brand-green-100;
+      background-color: var(--color-green-100);
       border-radius: 2em;
       position: absolute;
       bottom: 0;
@@ -29,7 +29,7 @@
   }
 
   &-icon {
-    // color: $color-brand-grey-200;
+    color: var(--color-grey-200);
     width: 1em;
     height: 1em;
     text-align: center;

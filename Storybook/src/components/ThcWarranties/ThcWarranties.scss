@@ -29,24 +29,24 @@
     height: 8.8em;
     position: relative;
 
-    // @include respondTo(600px) {
-    //   height: inherit;
-    // }
+    @include respondTo(600px) {
+      height: inherit;
+    }
 
-    // @include respondTo("tablet-landscape") {
-    //   width: 7em;
-    // }
+    @include respondTo("tablet-landscape") {
+      width: 7em;
+    }
 
     &::after {
       content: "";
-      // background-color: $color-brand-grey-200;
+      background-color: var(--color-gray-200);
       height: 1px;
       width: 100%;
       position: absolute;
 
-      // @include respondTo(600px) {
-      //   display: none;
-      // }
+      @include respondTo(600px) {
+        display: none;
+      }
     }
 
     &:first-child {
@@ -83,6 +83,7 @@
 
     &-text {
       font-size: 0.75em;
+      color: var(--color-clear-100);
       text-align: center;
     }
 
@@ -92,11 +93,6 @@
       height: 5em;
       display: flex;
       justify-content: center;
-    }
-
-    &--loading {
-      display: flex;
-      justify-content: space-between;
     }
   }
 }

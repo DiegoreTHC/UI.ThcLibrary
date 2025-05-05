@@ -4,13 +4,14 @@
     align-items: center;
 
     &-text {
-      // color: $color-brand-grey-200;
+      color: var(--color-gray-200);
       font-size: 0.75em;
     }
 
     &-stars {
       display: flex;
       gap: 0.25em;
+      color: var(--color-warning);
     }
 
     &--with-data {
@@ -24,27 +25,15 @@
     display: inline-block;
     background-size: contain;
     background-repeat: no-repeat;
-
-    &--full {
-      background-image: url("/assets/icons/weed-full.svg"); /* Full star icon */
-    }
+    position: relative;
 
     &--partial {
-      background-image: url("/assets/icons/weed-full-half.svg");
-
-      &::before {
-        background-image: url("/assets/icons/weed-empty.svg"); /* Empty star icon */
-        content: "";
-        width: 1em;
-        height: 1em;
+      &::after {
+        content: "\e900";
+        font-family: "icomoon";
         position: absolute;
-        background-size: contain;
-        background-repeat: no-repeat;
+        left: 0;
       }
-    }
-
-    &--empty {
-      background-image: url("/assets/icons/weed-empty.svg"); /* Empty star icon */
     }
   }
 }

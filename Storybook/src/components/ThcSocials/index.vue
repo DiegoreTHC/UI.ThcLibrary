@@ -1,20 +1,5 @@
 <template>
-  <ul
-    class="thc-socials"
-    v-if="loading"
-  >
-    <li
-      class="thc-socials-item thc-socials-item--loading"
-      v-for="n in 4"
-      :key="n"
-    >
-      <ThcSkeleton type="image" />
-    </li>
-  </ul>
-  <ul
-    class="thc-socials"
-    v-else
-  >
+  <ul class="thc-socials">
     <li
       class="thc-socials-item"
       v-for="social in socials"
@@ -37,3 +22,7 @@ defineProps<{
   loading?: boolean;
 }>();
 </script>
+
+<style lang="scss" scoped>
+@use "./ThcSocials.scss" as *;
+</style>

@@ -1,13 +1,11 @@
 .thc {
   &-title {
-    // font-family: $font-family-base;
-
     &-loader {
       margin: 0;
     }
 
     &-tag {
-      // color: $color-brand-clear-100;
+      color: var(--color-clear-100);
       letter-spacing: -0.01em;
 
       @include respondTo("tablet") {
@@ -25,7 +23,7 @@
       &--dual {
         text-align: right;
         line-height: 0.85em;
-        // font-weight: $font-weight-medium;
+        font-weight: var(--font-weight-medium);
 
         @include respondTo("tablet-landscape") {
           line-height: 0.9em;
@@ -45,7 +43,7 @@
       }
 
       &:before {
-        // background-color: $color-brand-green-100;
+        background-color: var(--color-primary);
         content: "";
         height: 100%;
         width: 2px;
@@ -56,7 +54,7 @@
     }
   }
   &-subtitle {
-    // font-weight: $font-weight-regular;
+    font-weight: var(--font-weight-normal);
     font-size: 0.5em;
     margin-top: 0.6em;
   }
@@ -70,7 +68,6 @@ h1.thc-title-tag {
 h2.thc-title-tag {
   font-size: 2em;
   // font-weight: $font-weight-medium;
-  line-height: 1em;
 }
 
 h3.thc-title-tag {
@@ -86,7 +83,7 @@ h4.thc-title-tag {
 
   &:before {
     content: "";
-    // background-color: $color-brand-green-100;
+    background-color: var(--color-primary);
     position: absolute;
     height: 0.09em;
     width: 2em;
@@ -101,4 +98,12 @@ h5.thc-title-tag {
 
 p.thc-title-tag {
   font-size: 0.8em;
+}
+
+:deep(.thc-title-highlight--primary) {
+  color: var(--color-primary);
+}
+
+:deep(.thc-title-highlight--dark) {
+  color: var(--color-blue-100);
 }

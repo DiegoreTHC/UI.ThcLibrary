@@ -3,17 +3,18 @@
     <span
       class="thc-ratings-text thr-ratings-eval"
       v-if="showData"
-      >{{ rating }}</span
     >
+      {{ rating }}
+    </span>
     <div class="thc-ratings-stars">
       <span
         v-for="n in fullStars"
         :key="'full-' + n"
-        class="thc-star thc-star--full"
+        class="thc-star fam-weed-full"
       />
       <span
         v-if="hasPartialStar"
-        class="thc-star thc-star--partial"
+        class="thc-star thc-star--partial fam-weed-half"
       />
       <div
         v-if="emptyStars > 0"
@@ -22,15 +23,16 @@
         <span
           v-for="n in emptyStars"
           :key="'empty-' + n"
-          class="thc-star thc-star--empty"
+          class="thc-star fam-weed-outline"
         />
       </div>
     </div>
     <span
       class="thc-ratings-text thr-ratings-count"
       v-if="showData"
-      >{{ totalRanksCount }}</span
     >
+      {{ totalRanksCount }}
+    </span>
   </div>
 </template>
 
@@ -71,5 +73,5 @@ const ratingsClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@use "./ThcRatings.scss" as *;
+@use "./ThcRatings.scss";
 </style>
