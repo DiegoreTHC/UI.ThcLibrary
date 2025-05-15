@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import ThcSkeleton from "../ThcSkeleton/index.vue";
-
 const props = withDefaults(
   defineProps<{
     variant?: "primary" | "dual" | "dark" | "quote";
@@ -138,5 +136,5 @@ const titleClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "./ThcTitle.scss";
+// @import "./ThcTitle.scss";
 </style>

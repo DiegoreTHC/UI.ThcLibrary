@@ -22,6 +22,8 @@
 </template>
 
 <script lang="ts" setup>
+import type { ButtonTypes, ButtonVariantsTypes, SizesTypes } from "~/src/utils/types";
+
 const props = withDefaults(
   defineProps<{
     variant?: ButtonVariantsTypes;

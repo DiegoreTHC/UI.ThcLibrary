@@ -1,0 +1,108 @@
+// .thc {
+//   &-footer {
+//     background-color: $color-brand-grey-700;
+//     border-top: 1px solid $color-brand-grey-100;
+//     display: flex;
+//     color: $color-brand-grey-300;
+//     flex-direction: column;
+//     align-items: center;
+//     text-align: center;
+
+//     &-logo {
+//         margin: 1em auto;
+
+//         @include respond-to($tabletPortrait) {
+//             margin: 0;
+//         }
+//     }
+
+//     &-wrapper {
+//         @include respond-to($tabletPortrait) {
+//             justify-content: space-between;
+//             display: flex;
+//             padding: 0.3em 1.4em;
+//             width: 100%;
+//         }
+//         @include respond-to('tablet-landscape') {
+//           align-items: flex-end;
+//           max-width: 80em;
+//           padding: 0.2em 1em 0 1em;
+//         }
+//     }
+
+//     &-socials {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: flex-end;
+
+//       &-list {
+//         max-width: 6em;
+//         margin: 0 auto;
+//         width: 100%;
+
+//         @include respond-to($tabletPortrait) {
+//           margin: 0;
+//         }
+//       }
+//     }
+
+//     &-brand {
+//       background-color: $color-brand-green-100;
+//       color: $color-brand-blue-100;
+//       width: 100%;
+//       padding: 0.9em 0;
+//       font-size: 0.78em;
+
+//       @include respond-to($tabletPortrait) {
+//         padding: 0.4em 0;
+//         font-size: 0.78em;
+//       }
+
+//       strong {
+//         font-weight: 600;
+//       }
+
+//       .fas {
+//         color: $color-brand-green-500;
+//       }
+
+//       &--loading {
+//         margin: 0 auto;
+//       }
+//     }
+//   }
+
+//   &-disclaimer {
+//       font-size: .75em;
+//       margin-top: 1em;
+
+//       @include respond-to($tabletPortrait) {
+//           font-size: 0.76em;
+//           margin-top: 0.2em;
+//       }
+
+//       @include respond-to('tablet-landscape') {
+//         font-size: 1em;
+//         margin-top: 0.2em;
+//       }
+//   }
+//   &-legals {
+//     font-size: 0.74em;
+//     margin: 0.4em 0 1em;
+
+//     @include respond-to($tabletPortrait) {
+//       font-size: 0.624em;
+//       margin-top: 0.7em;
+//     }
+
+//     @include respond-to('tablet-landscape') {
+//       font-size: 0.88em;
+//       margin-top: 0;
+//       padding: 2em 0 0.9em;
+//     }
+
+//     &--loading {
+//       margin: 1.5em 0;
+//     }
+//   }
+// }

@@ -34,20 +34,19 @@
       background-color: var(--color-blue-100);
       border-radius: 50%;
       content: "";
-      height: 0.75em;
-      left: 0.15em;
-      margin-top: -0.33em;
       position: absolute;
-      top: 50%;
       transition: transform 0.3s ease;
-      width: 0.75em;
+      left: 0.0625em;
+      top: 0.0625em;
+      bottom: 0.0625em;
+      right: 1.0625em;
     }
 
     &:checked {
       background-color: var(--color-primary);
 
       &::before {
-        transform: translateX(0.85em);
+        transform: translateX(1em);
       }
     }
   }

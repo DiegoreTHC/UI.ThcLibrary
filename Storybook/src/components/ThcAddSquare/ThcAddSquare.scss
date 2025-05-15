@@ -1,0 +1,32 @@
+// .thc-add {
+//   &-square {
+//     background-image: url('/assets/images/weed-pattern.png');
+//     border-radius: $radius-large $radius-large;
+//     overflow: hidden;
+//     position: relative;
+//     width: 22em;
+//     height: 20.6em;
+//     margin: 0 auto;
+
+//     @include respond-to('tablet') {
+//       max-width: 22em;
+//       height: 20.6em;
+//       width: 100%;
+//     }
+
+//     @include respond-to('tablet-landscape') {
+//       max-width: 31em;
+//       height: 21em;
+//     }
+
+//     &::before {
+//       background-color: rgba($color: $color-brand-green-100, $alpha: .8);
+//       content: "";
+//       position: absolute;
+//       left: 0;
+//       right: 0;
+//       top: 0;
+//       bottom: 0;
+//     }
+//   }
+// }

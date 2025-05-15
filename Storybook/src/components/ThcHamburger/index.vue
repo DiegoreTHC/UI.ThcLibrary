@@ -1,27 +1,26 @@
 <template>
-  <div :class="[
-      'thc-hamburger',
-      { 'thc-hamburger--close': openMenu }
-    ]"
-    @click="openMenu = !openMenu"
+  <div
+    :class="['thc-hamburger', { 'thc-hamburger--close': open }]"
+    @click="$emit('click')"
   >
-    <ThcSkeleton width="16px" height="16px" v-if="props.loading"/>
-    <span v-if="!props.loading">
-      <span class="fas fa-xmark" v-if="openMenu"></span>
-      <span class="thc-hamburger-lines" v-else></span>
+    <span v-if="!loading">
+      <span
+        class="fas fa-xmark"
+        v-if="open"
+      ></span>
+      <span
+        class="thc-hamburger-lines"
+        v-else
+      ></span>
     </span>
   </div>
 </template>
 
 <script lang="ts" setup>
 const props = defineProps<{
-  loading?: boolean
+  loading?: boolean;
+  open: boolean;
 }>();
-const uiStore = useUiStore();
-
-const {
-  openMenu
-} = storeToRefs(uiStore);
 </script>
 
 <style lang="scss" scoped>
