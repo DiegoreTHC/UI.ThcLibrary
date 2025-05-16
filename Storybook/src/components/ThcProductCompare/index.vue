@@ -92,7 +92,7 @@ defineEmits<{
       </nav>
       <div
         v-motion
-        v-if="toggleDetails"
+        v-if="toggleDetails && isMobile"
         :initial="{
           height: 0
         }"
@@ -109,6 +109,20 @@ defineEmits<{
           height: 1
         }"
         class="thc-compare-mobile-toggle thc-compare-similarities"
+      >
+        <div
+          class="thc-compare-similarities-list"
+          v-for="item in product?.similarities"
+          :key="item.similarity"
+        >
+          <p class="thc-compare-similarity thc-compare-similarity-name">{{ item.similarity }}</p>
+          <p class="thc-compare-similarity">{{ item["similarity-value"] }}</p>
+        </div>
+      </div>
+
+      <div
+        class="thc-compare-similarities"
+        v-if="!isMobile"
       >
         <div
           class="thc-compare-similarities-list"

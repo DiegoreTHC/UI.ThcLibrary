@@ -29,7 +29,7 @@
       <input
         v-model="searchQuery"
         type="text"
-        @focus="isFocused = true"
+        @focus="((isFocused = true), (isDropdownVisible = false))"
         @blur="isFocused = false"
         class="thc-searchbar-input"
       />
@@ -94,7 +94,7 @@
 
     <div
       class="thc-searchbar-dropdown thc-searchbar-dropdown-category"
-      v-if="isDropdownVisible"
+      v-if="isDropdownVisible && !searchQuery.length"
     >
       <ThcPill
         v-if="selectedCategory.length"

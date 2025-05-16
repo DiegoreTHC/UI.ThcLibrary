@@ -136,5 +136,5 @@ const titleClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-// @import "./ThcTitle.scss";
+@import "./ThcTitle.scss";
 </style>

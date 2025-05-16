@@ -13,6 +13,7 @@
       flex-direction: column;
       align-items: center;
       padding: 0.7em;
+      border-radius: 1em;
     }
 
     &--default,
@@ -220,7 +221,7 @@
           &-card {
             height: 4.75em;
             width: 6.8em;
-            border-radius: var(--radius-small);
+            border-radius: var(--radius-4);
           }
 
           &-title {

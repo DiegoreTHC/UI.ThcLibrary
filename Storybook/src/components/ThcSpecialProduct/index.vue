@@ -73,5 +73,5 @@ const customClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-// @import "./ThcSpecialProduct.scss";
+@import "./ThcSpecialProduct.scss";
 </style>
