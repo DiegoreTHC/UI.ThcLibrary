@@ -4,3 +4,5 @@ export type ButtonVariantsTypes =
   | "icon"
   | "icon-transparent"
   | "outline-icon";
+
+export type ButtonTypes = "button" | "submit" | "reset";

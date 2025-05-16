@@ -1,3 +1,9 @@
-@use "./ui-icons.scss" as *;
-@use "./ui-fonticons.scss" as *;
-@use "./ui-reset.scss" as *;
+// @use "./icons" as *;
+// @use "./fonticons" as *;
+// @use "./reset" as *;
+
+@forward "./icons";
+@forward "./fonticons";
+@forward "./reset";
+@forward "./media";
+@forward "./mixins";
