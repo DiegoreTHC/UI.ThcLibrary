@@ -1,7 +1,7 @@
 <template>
   <div
     :class="['thc-hamburger', { 'thc-hamburger--close': open }]"
-    @click="$emit('click')"
+    @click="emit('click')"
   >
     <span v-if="!loading">
       <span
@@ -21,6 +21,8 @@ const props = defineProps<{
   loading?: boolean;
   open: boolean;
 }>();
+
+const emit = defineEmits(["click"]);
 </script>
 
 <style lang="scss" scoped>

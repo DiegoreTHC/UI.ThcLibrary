@@ -161,5 +161,5 @@ defineEmits<{
 </script>
 
 <style lang="scss" scoped>
-// @import "./ThcProduct.scss";
+@import "./ThcProduct.scss";
 </style>

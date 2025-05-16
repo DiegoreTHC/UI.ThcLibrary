@@ -6,15 +6,15 @@
     min-width: 17.7em;
     width: calc(100% - 2em);
     align-items: center;
-    // color: $color-brand-clear-100;
-    border: 2px solid #4f4f4f;
+    color: var(--color-clear-100);
+    border: 2px solid var(--color-gray-200);
     border-radius: 10em;
-    background-color: #4f4f4f;
+    background-color: var(--color-gray-200);
 
     &-input {
-      // color: $color-brand-clear-100;
+      color: var(--color-clear-100);
       border: 0 none;
-      background-color: #4f4f4f;
+      background-color: var(--color-gray-200);
       border-radius: 10em;
       padding: 0.49em 2.5em 0.49em 1em;
       font-size: 0.75em;
@@ -24,7 +24,7 @@
       width: 100%;
     }
     &-icon {
-      // color: $color-brand-grey-200;
+      color: var(--color-gray-200);
       font-size: 0.85em;
       font-weight: 400;
       position: absolute;
@@ -34,15 +34,15 @@
       margin-top: -0.4em;
     }
     &-subtitle {
-      // color: $color-brand-clear-100;
+      color: var(--color-clear-100);
       font-weight: 500;
       position: relative;
-      // border-bottom: 1px solid $color-brand-grey-600;
+      border-bottom: 1px solid var(--color-gray-600);
       padding-left: 1em;
       line-height: 1.8em;
 
       &::after {
-        // background-color: $color-brand-green-100;
+        background-color: var(--color-green-100);
         content: "";
         height: 100%;
         width: 4px;
@@ -54,8 +54,8 @@
       padding: 0 1.5em;
 
       &-item {
-        // border-bottom: 1px solid $color-brand-grey-200;
-        // color: $color-brand-clear-100;
+        border-bottom: 1px solid var(--color-gray-200);
+        color: var(--color-clear-100);
         padding: 0.5em 0;
 
         &:last-child {
@@ -69,8 +69,8 @@
       max-height: 200px;
       min-width: 260px;
       overflow-y: auto;
-      background-color: #4f4f4f;
-      // border-radius: $radius-large;
+      background-color: var(--color-gray-200);
+      border-radius: var(--radius-large);
       top: 42px;
       padding: 1em 1.5em;
       right: 0;
@@ -94,7 +94,7 @@
         align-items: center;
         padding: 0 0.45em 0 0.8em;
         position: relative;
-        // color: $color-brand-grey-200;
+        color: var(--color-gray-200);
 
         &::after,
         &::before {
@@ -109,7 +109,7 @@
           right: 0;
         }
         &::before {
-          // background-color: $color-brand-grey-600;
+          background-color: var(--color-gray-600);
           right: -1px;
         }
 
@@ -127,7 +127,7 @@
     }
 
     &--active {
-      // border: 2px solid $color-brand-grey-200;
+      border: 2px solid var(--color-gray-200);
     }
 
     &--loading {
@@ -151,15 +151,15 @@
     align-items: center;
     margin: 1em 0;
     &-caption {
-      // font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
       font-size: 2.4em;
     }
     &-text {
-      // color: $color-brand-grey-200;
+      color: var(--color-grey-200);
       text-align: center;
 
       &--highlight {
-        // color: $color-brand-green-100;
+        color: var(--color-green-100);
       }
     }
   }

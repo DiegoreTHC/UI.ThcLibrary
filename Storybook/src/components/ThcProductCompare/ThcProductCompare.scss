@@ -1,6 +1,6 @@
 .thc {
   &-compare {
-    @include respond-to("tablet-landscape") {
+    @include respondTo("tablet-landscape") {
       padding-top: 4.9em;
     }
     &-data {
@@ -11,18 +11,19 @@
       gap: 0.75em;
       justify-content: space-between;
       overflow: visible;
+      border-radius: var(--radius-8);
 
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         padding-top: 4.65em;
       }
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         max-width: 12.5em;
         width: 100%;
       }
     }
 
     &-image {
-      background-color: rgba($color: #000, $alpha: 0.3);
+      background-color: rgba(var(--color-dark-rgb), 0.3);
       border-radius: 1em;
       min-width: 7.25em;
       width: 7.25em;
@@ -31,7 +32,7 @@
       justify-content: center;
       align-items: center;
 
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         position: absolute;
         top: -4.8em;
         left: 50%;
@@ -71,10 +72,10 @@
 
     &-mobile {
       &-nav {
-        // border-left: 1px solid $color-brand-grey-200;
+        border-left: 1px solid var(--color-gray-200);
         padding-left: 0.5em;
 
-        @include respond-to("tablet-landscape") {
+        @include respondTo("tablet-landscape") {
           display: none;
         }
       }
@@ -100,9 +101,9 @@
         justify-content: space-between;
         width: 100%;
         padding: 0.75em 0;
-        // border-bottom: .5px solid rgba($color: $color-brand-grey-200, $alpha: .3);
+        border-bottom: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
 
-        @include respond-to("tablet-landscape") {
+        @include respondTo("tablet-landscape") {
           justify-content: center;
         }
       }
@@ -111,7 +112,7 @@
         .thc-compare-similarity {
           display: block;
           padding: 1em 0;
-          // border-bottom: .5px solid rgba($color: $color-brand-grey-200, $alpha: .3);
+          border-bottom: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
         }
       }
     }
@@ -119,15 +120,15 @@
       font-size: 0.75em;
 
       &-name {
-        // font-weight: $font-weight-medium;
-        @include respond-to("tablet-landscape") {
+        font-weight: var(--font-weight-medium);
+        @include respondTo("tablet-landscape") {
           display: none;
         }
       }
     }
   }
   &-sku {
-    // color: $color-brand-grey-200;
+    color: var(--color-gray-500);
     font-size: 0.75em;
   }
 }

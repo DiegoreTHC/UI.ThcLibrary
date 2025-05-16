@@ -6,9 +6,8 @@
       variant="primary"
       mode="full"
     />
-    <nav class="">
+    <nav class="thc-header-nav">
       <slot />
-      <div class="thc-header-hamburger"></div>
     </nav>
   </header>
 </template>

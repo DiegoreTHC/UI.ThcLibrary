@@ -25,7 +25,7 @@
           &-item {
             padding: 1.8em 0 1em;
 
-            @include respond-to("tablet-landscape") {
+            @include respondTo("tablet-landscape") {
               padding: 2em 0 1em;
             }
           }
@@ -69,7 +69,7 @@
       max-width: 12.64em;
       width: 100%;
 
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         max-width: 16.6em;
         padding: 1em 0;
       }
@@ -81,10 +81,10 @@
           height: 6.05em;
           position: relative;
           overflow: hidden;
-          // border-radius: $radius-large;
+          border-radius: var(--radius-large);
           width: 100%;
 
-          @include respond-to("tablet-landscape") {
+          @include respondTo("tablet-landscape") {
             height: 7.3em;
           }
 
@@ -92,13 +92,13 @@
             padding: 0;
             height: 6.05em;
 
-            @include respond-to("tablet-landscape") {
+            @include respondTo("tablet-landscape") {
               height: 7.3em;
             }
           }
 
           &::before {
-            // background-color: $color-brand-magenta-100;
+            background-color: var(--color-magenta-100);
             content: "";
             position: absolute;
             height: 11em;
@@ -108,7 +108,7 @@
             top: 50%;
             margin-top: -8em;
 
-            @include respond-to("tablet-landscape") {
+            @include respondTo("tablet-landscape") {
               height: 14em;
               width: 14em;
               transform: rotate(-73deg);
@@ -124,7 +124,7 @@
             padding: 1em;
             align-items: flex-end;
 
-            @include respond-to("tablet-landscape") {
+            @include respondTo("tablet-landscape") {
               padding: 1em 1.4em 0.8em;
               min-width: 9.5em;
             }
@@ -143,7 +143,7 @@
           top: 0em;
           left: 0;
 
-          @include respond-to("tablet-landscape") {
+          @include respondTo("tablet-landscape") {
             top: -0.2em;
             width: 8.4em;
           }
@@ -151,7 +151,7 @@
           &--error {
             height: 8em;
 
-            @include respond-to("tablet-landscape") {
+            @include respondTo("tablet-landscape") {
               top: 0.6em;
             }
 
@@ -169,7 +169,7 @@
       &::after {
         content: "";
         height: 0.03125em;
-        // background-color: $color-brand-grey-500;
+        background-color: var(--color-gray-500);
         width: 100%;
         position: absolute;
         bottom: -0.5em;
@@ -187,7 +187,7 @@
           &-action {
             margin-left: auto;
 
-            @include respond-to("tablet-landscape") {
+            @include respondTo("tablet-landscape") {
               margin-left: 0;
             }
           }
@@ -207,7 +207,7 @@
             }
 
             &:before {
-              // background-color: $color-brand-green-100;
+              background-color: var(--color-green-100);
               content: "";
               position: absolute;
               width: 1px;
@@ -220,7 +220,7 @@
           &-card {
             height: 4.75em;
             width: 6.8em;
-            // border-radius: $radius-small;
+            border-radius: var(--radius-small);
           }
 
           &-title {
@@ -264,7 +264,7 @@
             width: 100%;
 
             &:before {
-              // background-color: $color-brand-clear-100;
+              background-color: var(--color-clear-100);
               border-radius: 10em;
               position: absolute;
               margin-left: -0.6em;
@@ -295,12 +295,12 @@
     }
 
     &-category {
-      // color: $color-brand-grey-300;
+      color: var(--color-gray-300);
       font-size: 0.72em;
 
       &-name {
-        // color: $color-brand-grey-200;
-        // font-weight: $font-weight-medium;
+        color: var(--color-gray-200);
+        font-weight: var(--font-weight-medium);
         font-size: 0.75em;
       }
     }
@@ -312,7 +312,7 @@
     }
 
     &-title {
-      // font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
       font-size: 1em;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -320,8 +320,8 @@
     }
 
     &-subtitle {
-      // font-weight: $font-weight-light;
-      // color: $color-brand-grey-300;
+      font-weight: var(--font-weight-light);
+      color: var(--color-gray-300);
       font-size: 0.75em;
     }
 

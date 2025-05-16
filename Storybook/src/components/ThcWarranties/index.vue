@@ -5,39 +5,17 @@ withDefaults(
     warranties: any;
   }>(),
   {
-    loading: true,
     warranties: []
   }
 );
 </script>
 
 <template>
-  <div :class="['thc-warranties', { 'thc-warranties--loading': loading }]">
-    <div
-      class="thc-warranty--loading"
-      v-if="loading"
-    >
-      <div
-        class="thc-warranty"
-        v-for="n in 4"
-        :key="`loading--${n}`"
-      >
-        <!-- <ThcSkeleton
-          width="40px"
-          height="40px"
-        />
-        <ThcSkeleton
-          width="60px"
-          height="10px"
-          class="spacer"
-        /> -->
-      </div>
-    </div>
+  <div :class="['thc-warranties']">
     <div
       class="thc-warranty"
       v-for="item in warranties"
       :key="item"
-      v-else
     >
       <ThcImage
         class="thc-warranty-media"

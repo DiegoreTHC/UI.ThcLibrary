@@ -1,6 +1,5 @@
 .thc {
   &-banner {
-    // font-family: $font-family-base;
     position: relative;
     display: flex;
     max-width: 22em;
@@ -34,18 +33,18 @@
       }
     }
 
-    @include respond-to("tablet") {
+    @include respondTo("tablet") {
       max-width: 42em;
     }
 
-    @include respond-to("tablet-landscape") {
+    @include respondTo("tablet-landscape") {
       max-width: 44.8em;
       margin: inherit;
     }
 
     &-card {
       background-size: 3.5em auto;
-      // border-radius: $radius-large;
+      border-radius: var(--radius-large);
       display: block;
       width: 100%;
       position: relative;
@@ -60,7 +59,7 @@
         top: 50%;
         margin: -10em 0 0 -19.5em;
 
-        @include respond-to("tablet") {
+        @include respondTo("tablet") {
           height: 40em;
           width: 26em;
           transform: rotate(-73.5deg);
@@ -75,13 +74,13 @@
       height: 11em;
       width: 60%;
 
-      @include respond-to("tablet") {
+      @include respondTo("tablet") {
         padding: 2em 0.8em;
         height: 14em;
         width: 66%;
       }
 
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         padding: 1.5em 1.3em;
         display: flex;
         flex-direction: column;
@@ -93,12 +92,12 @@
         line-height: 1.9em;
         margin-bottom: 1.8em;
 
-        @include respond-to("tablet") {
+        @include respondTo("tablet") {
           font-size: 1.5em;
           margin-bottom: 0.7em;
         }
 
-        @include respond-to("tablet-landscape") {
+        @include respondTo("tablet-landscape") {
           margin-bottom: 0.5em;
         }
       }
@@ -106,7 +105,7 @@
       .thc-button {
         min-width: 8.8em;
 
-        @include respond-to("tablet-landscape") {
+        @include respondTo("tablet-landscape") {
           min-width: 9em;
           margin-top: auto;
         }
@@ -116,17 +115,17 @@
     &-copy {
       display: none;
 
-      @include respond-to("tablet") {
+      @include respondTo("tablet") {
         display: block;
         margin-bottom: 1.2em;
       }
 
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         display: none;
         margin: 0;
       }
 
-      @include respond-to("large-screens-13") {
+      @include respondTo("large-screens-13") {
         display: block;
       }
     }
@@ -139,14 +138,14 @@
       top: -2.8em;
       z-index: 1;
 
-      @include respond-to("tablet") {
+      @include respondTo("tablet") {
         width: 14em;
         height: 17.8em;
         right: 1.4em;
         top: -2.1em;
       }
 
-      @include respond-to("tablet-landscape") {
+      @include respondTo("tablet-landscape") {
         width: 14.6em;
         right: 0.6em;
         top: -2.3em;

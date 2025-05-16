@@ -30,21 +30,25 @@
 </template>
 
 <script lang="ts" setup>
+import type { PropType } from "vue";
 import VueSlider from "vue-3-slider-component";
 
-const props = withDefaults(defineProps<{
-  step?: number,
-  minPrice: number,
-  maxPrice: number,
-}>(), {
-  step: 10
-});
+const props = withDefaults(
+  defineProps<{
+    step?: number;
+    minPrice: number;
+    maxPrice: number;
+  }>(),
+  {
+    step: 10
+  }
+);
 
-const emit = defineEmits(["update"])
+const emit = defineEmits(["update"]);
 
 const model = defineModel({ type: [Array] as PropType<any[]> });
 </script>
 
 <style lang="scss" scoped>
-@import './ThcRangeSlider.scss';
+@import "./ThcRangeSlider.scss";
 </style>
