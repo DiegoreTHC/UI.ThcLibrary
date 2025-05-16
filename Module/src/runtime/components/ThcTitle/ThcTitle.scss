@@ -1,0 +1,114 @@
+.thc {
+  &-title {
+    &-loader {
+      margin: 0;
+    }
+
+    &-tag {
+      color: var(--color-clear-100);
+      letter-spacing: -0.01em;
+
+      @include respondTo("tablet") {
+        letter-spacing: 0;
+      }
+
+      span {
+        display: block;
+
+        @include respondTo("tablet-landscape") {
+          line-height: 1em;
+        }
+      }
+
+      &--dual {
+        text-align: right;
+        line-height: 0.85em;
+        font-weight: var(--font-weight-medium);
+
+        @include respondTo("tablet-landscape") {
+          line-height: 0.9em;
+        }
+      }
+    }
+
+    &--quote {
+      position: relative;
+
+      .thc-title-tag {
+        padding: 0.6em 0 0.6em 1em;
+      }
+
+      p.thc-title-tag {
+        padding: 0 0 0 0.6em;
+      }
+
+      &:before {
+        background-color: var(--color-primary);
+        content: "";
+        height: 100%;
+        width: 2px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+  &-subtitle {
+    font-weight: var(--font-weight-normal);
+    font-size: 0.5em;
+    margin-top: 0.6em;
+  }
+}
+
+h1.thc-title-tag {
+  font-size: 3em;
+  font-weight: var(--font-weight-medium);
+}
+
+h2.thc-title-tag {
+  font-size: 2.5em;
+  font-weight: var(--font-weight-medium);
+}
+
+h3.thc-title-tag {
+  font-size: 2em;
+  font-weight: var(--font-weight-medium);
+}
+
+h4.thc-title-tag {
+  font-size: 1.5em;
+  font-weight: var(--font-weight-medium);
+  padding-bottom: 0.3em;
+  position: relative;
+
+  &:before {
+    content: "";
+    background-color: var(--color-primary);
+    position: absolute;
+    height: 0.09em;
+    width: 2em;
+    bottom: 0;
+    border-radius: 10em;
+    right: 0;
+  }
+}
+
+h5.thc-title-tag {
+  font-size: 1.25em;
+}
+
+h6.thc-title-tag {
+  font-size: 1.125em;
+}
+
+p.thc-title-tag {
+  font-size: 0.8em;
+}
+
+:deep(.thc-title-highlight--primary) {
+  color: var(--color-primary);
+}
+
+:deep(.thc-title-highlight--dark) {
+  color: var(--color-blue-100);
+}
