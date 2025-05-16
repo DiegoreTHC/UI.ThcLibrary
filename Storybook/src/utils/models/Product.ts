@@ -23,4 +23,5 @@ export interface Product {
   media?: Media;
   slideshow?: string[];
   descriptions?: any;
+  similarities?: any[];
 }
