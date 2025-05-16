@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import ThcSkeleton from "../ThcSkeleton";
-
 const props = withDefaults(
   defineProps<{
     variant?: "new" | "default" | "discount" | "gradient" | "outline" | undefined;

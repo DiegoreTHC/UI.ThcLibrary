@@ -1,13 +1,17 @@
 <template>
-  <div class="thc-overlay" v-if="openMenu" @click="openMenu = !openMenu"/>
+  <div
+    class="thc-overlay"
+    v-if="open"
+    @click="emit('click')"
+  />
 </template>
 
 <script lang="ts" setup>
-const uiStore = useUiStore();
+defineProps<{
+  open: boolean;
+}>();
 
-const {
-  openMenu
-} = storeToRefs(uiStore);
+const emit = defineEmits(["click"]);
 </script>
 
 <style lang="scss" scoped>

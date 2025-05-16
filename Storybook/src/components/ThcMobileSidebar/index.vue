@@ -11,7 +11,7 @@
         type="h4"
       />
       <div class="thc-mobile-socials">
-        <ThcSocials :socials="ui.socialMedia" />
+        <ThcSocials :socials="socialMedia" />
       </div>
     </nav>
     <nav class="thc-mobile-nav">
@@ -23,7 +23,7 @@
       />
       <div class="thc-mobile-categories">
         <ThcButton
-          v-for="link in categorySearch.categories"
+          v-for="link in categories"
           :key="link"
           variant="outline"
           :text="link?.name"
@@ -41,7 +41,7 @@
       />
       <div class="thc-mobile-brands">
         <NuxtLink
-          v-for="brand in ui?.navigation[1]?.subLinks"
+          v-for="brand in navigation[1]?.subLinks"
           class="thc-brands-link"
           :to="brand?.link"
           target="_blank"
@@ -72,19 +72,19 @@
 </template>
 
 <script lang="ts" setup>
-const uiStore = useUiStore();
 const props = withDefaults(
   defineProps<{
     open: boolean;
+    navigation: any;
+    categories: any;
+    socialMedia: any;
   }>(),
   {
     open: false
   }
 );
 
-const { ui, categorySearch } = storeToRefs(uiStore);
-
-const navigationLinks = computed(() => ui.value?.navigation.slice(-3));
+const navigationLinks = computed(() => props.navigation.slice(-3));
 </script>
 
 <style lang="scss" scoped>

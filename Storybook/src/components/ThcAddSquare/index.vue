@@ -3,15 +3,11 @@
     class="thc-add thc-add-square"
     @click="emit('click')"
   >
-    {{ add }}
+    <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-defineProps<{
-  add?: any;
-}>();
-
 const emit = defineEmits(["click"]);
 </script>
 

@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <header class="thc-header">
     <ThcLogo
@@ -11,5 +9,3 @@
     </nav>
   </header>
 </template>
-
-<style lang="scss" scoped></style>
