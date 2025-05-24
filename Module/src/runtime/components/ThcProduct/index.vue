@@ -1,3 +1,31 @@
+<script lang="ts" setup>
+import { ProductVariants } from "../../utils/enums";
+
+const props = withDefaults(
+  defineProps<{
+    variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
+    loading?: boolean;
+    product?: any;
+  }>(),
+  {
+    loading: false,
+    variant: "default"
+  }
+);
+
+const cardVariant = computed(() => {
+  if (props.variant === ProductVariants.Outline) {
+    return "gradient";
+  }
+  return "primary";
+});
+
+defineEmits<{
+  (event: "click"): void;
+  (event: "clickBtn"): void;
+}>();
+</script>
+
 <template>
   <div
     :class="['thc-product', `thc-product--${props.variant}`]"
@@ -132,34 +160,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ProductVariants } from "~/src/utils/enums";
-
-const props = withDefaults(
-  defineProps<{
-    variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
-    loading?: boolean;
-    product?: any;
-  }>(),
-  {
-    loading: false,
-    variant: "default"
-  }
-);
-
-const cardVariant = computed(() => {
-  if (props.variant === ProductVariants.Outline) {
-    return "gradient";
-  }
-  return "primary";
-});
-
-defineEmits<{
-  (event: "click"): void;
-  (event: "clickBtn"): void;
-}>();
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcProduct.scss";
+@use "./ThcProduct.scss" as *;
 </style>

@@ -1,11 +1,3 @@
-<template>
-  <div
-    class="thc-overlay"
-    v-if="open"
-    @click="emit('click')"
-  />
-</template>
-
 <script lang="ts" setup>
 defineProps<{
   open: boolean;
@@ -14,6 +6,14 @@ defineProps<{
 const emit = defineEmits(["click"]);
 </script>
 
+<template>
+  <div
+    class="thc-overlay"
+    v-if="open"
+    @click="emit('click')"
+  />
+</template>
+
 <style lang="scss" scoped>
-@import "./ThcOverlay.scss";
+@use "./ThcOverlay.scss" as *;
 </style>

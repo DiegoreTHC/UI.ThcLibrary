@@ -2,7 +2,7 @@
   &-button {
     &-next,
     &-prev {
-      background-color: $(--color-primary);
+      background-color: var(--color-primary);
       border-radius: 10em;
       margin-top: -0.9em;
       width: 2em;

@@ -25,7 +25,11 @@
     background-color: var(--color-red-100);
   }
   &--gradient {
-    background-image: linear-gradient(to right, var(--color-orange-100), var(--color-orange-200));
+    background-image: linear-gradient(
+      to right,
+      var(--color-orange-100),
+      var(--color-orange-200)
+    );
   }
 
   &--loading {

@@ -73,5 +73,5 @@ const ratingsClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@use "./ThcRatings.scss";
+@use "./ThcRatings.scss" as *;
 </style>

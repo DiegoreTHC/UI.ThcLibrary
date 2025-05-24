@@ -1,4 +1,4 @@
-export * from "./productVariants.js";
+export * from "./productVariants";
 export * from "./searchBar.js";
 export * from "./sliderTypes.js";
-export * from "./Sorting.js";
+export * from "./Sorting";

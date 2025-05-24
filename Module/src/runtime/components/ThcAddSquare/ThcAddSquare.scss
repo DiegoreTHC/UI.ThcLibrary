@@ -1,3 +1,5 @@
+@use "../../styles/utils/media" as *;
+
 .thc-add {
   &-square {
     border-radius: var(--radius-6);

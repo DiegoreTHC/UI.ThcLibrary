@@ -1,3 +1,5 @@
+@use "../../styles/utils/media" as *;
+
 .thc {
   &-banner {
     background-color: rgba(var(--color-primary), 0.1);

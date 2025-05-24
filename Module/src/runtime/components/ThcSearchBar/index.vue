@@ -1,3 +1,75 @@
+<script setup lang="ts">
+import { SearchBar } from "../../utils/enums";
+
+const props = withDefaults(
+  defineProps<{
+    categories: any;
+    filterText?: string;
+    searchByCategory?: boolean;
+    loading?: boolean;
+  }>(),
+  {
+    categories: [],
+    searchByCategory: false,
+    loading: true
+  }
+);
+
+const searchQuery = ref("");
+const selectedCategory = ref("");
+const isFocused = ref(false);
+const isDropdownVisible = ref(false);
+
+const searchFilterText = computed(() => {
+  if (selectedCategory.value.length) {
+    if (selectedCategory.value === SearchBar.AllStore) {
+      selectedCategory.value = "";
+      return props.filterText;
+    }
+    return `${SearchBar.SearchIn} ${selectedCategory.value}`;
+  }
+  return props.filterText;
+});
+
+// Filter products by category and name
+const filteredCategories = computed(() => {
+  return props.categories
+    .filter((category: { name: any }) => {
+      return selectedCategory.value === "" || category.name === selectedCategory.value;
+    })
+    .map((category: { products: any[] }) => {
+      return {
+        ...category,
+        products: category.products.filter((product) =>
+          product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+        )
+      };
+    })
+    .filter((category: { products: any[] }) => category.products.length > 0); // Only include categories with products matching the search
+});
+
+// Highlight matching text in the product names
+const highlightMatch = (text: string) => {
+  if (!searchQuery.value) return text;
+  const regex = new RegExp(`(${searchQuery.value})`, "gi");
+  return text.replace(regex, '<span class="thc-highlight">$1</span>');
+};
+
+const selectOption = (item: { name: string }) => {
+  selectedCategory.value = item.name;
+  isDropdownVisible.value = false;
+};
+
+const emit = defineEmits<{
+  (e: "click", item: any): void;
+}>();
+
+const clickOnOption = (item: any) => {
+  emit("click", item);
+  isFocused.value = false;
+};
+</script>
+
 <template>
   <div
     :class="[
@@ -115,78 +187,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { SearchBar } from "~/src/utils/enums";
-
-const props = withDefaults(
-  defineProps<{
-    categories: any;
-    filterText?: string;
-    searchByCategory?: boolean;
-    loading?: boolean;
-  }>(),
-  {
-    categories: [],
-    searchByCategory: false,
-    loading: true
-  }
-);
-
-const searchQuery = ref("");
-const selectedCategory = ref("");
-const isFocused = ref(false);
-const isDropdownVisible = ref(false);
-
-const searchFilterText = computed(() => {
-  if (selectedCategory.value.length) {
-    if (selectedCategory.value === SearchBar.AllStore) {
-      selectedCategory.value = "";
-      return props.filterText;
-    }
-    return `${SearchBar.SearchIn} ${selectedCategory.value}`;
-  }
-  return props.filterText;
-});
-
-// Filter products by category and name
-const filteredCategories = computed(() => {
-  return props.categories
-    .filter((category: { name: any }) => {
-      return selectedCategory.value === "" || category.name === selectedCategory.value;
-    })
-    .map((category: { products: any[] }) => {
-      return {
-        ...category,
-        products: category.products.filter((product) =>
-          product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-        )
-      };
-    })
-    .filter((category: { products: any[] }) => category.products.length > 0); // Only include categories with products matching the search
-});
-
-// Highlight matching text in the product names
-const highlightMatch = (text: string) => {
-  if (!searchQuery.value) return text;
-  const regex = new RegExp(`(${searchQuery.value})`, "gi");
-  return text.replace(regex, '<span class="thc-highlight">$1</span>');
-};
-
-const selectOption = (item: { name: string }) => {
-  selectedCategory.value = item.name;
-  isDropdownVisible.value = false;
-};
-
-const emit = defineEmits<{
-  (e: "click", item: any): void;
-}>();
-
-const clickOnOption = (item: any) => {
-  emit("click", item);
-  isFocused.value = false;
-};
-</script>
-
 <style lang="scss" scoped>
-@import "./SearchBar.scss";
+@use "./SearchBar.scss" as *;
 </style>

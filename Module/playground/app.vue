@@ -1,17 +1,13 @@
 <template>
   <div>
     Nuxt module playground!
+
     <ThcButton
-      variant="secondary"
-      @click="clickFunct"
-    >
-      Button <i class="fas fam-bong"></i>
-    </ThcButton>
+      variant="icon"
+      types=""
+      icon="fam-weed-full"
+    />
   </div>
 </template>
 
-<script setup>
-const clickFunct = () => {
-  console.log("Nepe");
-};
-</script>
+<script setup></script>

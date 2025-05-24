@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+const props = defineProps<{
+  id: string;
+  disabled?: boolean;
+  value?: string | boolean | undefined;
+  label?: string;
+  name?: string;
+  theme?: "default" | "switch";
+}>();
+
+const model = defineModel({
+  type: [Boolean, String, Array] as PropType<boolean | undefined | string | string[]>
+});
+</script>
+
 <template>
   <div :class="['thc-radio', { 'thc-radio--switch': theme === 'switch' }]">
     <div class="thc-radio-item">
@@ -5,7 +20,7 @@
         :class="[
           'thc-radio-box',
           { 'thc-radio-box--disabled': disabled },
-          { 'thc-radio-box--switch': theme === 'switch' },
+          { 'thc-radio-box--switch': theme === 'switch' }
         ]"
         type="radio"
         v-model="model"
@@ -22,23 +37,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-const props = defineProps<{
-  id: string;
-  disabled?: boolean;
-  value?: string | boolean | undefined;
-  label?: string;
-  name?: string;
-  theme?: "default" | "switch";
-}>();
-
-const model = defineModel({
-  type: [Boolean, String, Array] as PropType<
-    boolean | undefined | string | string[]
-  >,
-});
-</script>
 
 <style lang="scss" scoped>
 @use "./ThcInputRadio.scss" as *;

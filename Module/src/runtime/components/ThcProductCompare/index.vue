@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Product } from "~/src/utils/models";
+import { Product } from "../../utils/models";
 
 const props = withDefaults(
   defineProps<{
@@ -138,5 +138,5 @@ defineEmits<{
 </template>
 
 <style lang="scss" scoped>
-@import "./ThcProductCompare.scss";
+@use "./ThcProductCompare.scss" as *;
 </style>

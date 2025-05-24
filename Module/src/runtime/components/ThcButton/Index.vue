@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ButtonVariantsTypes } from "../../utils";
+import { ButtonVariantsTypes } from "../../utils/types";
 
 const props = withDefaults(
   defineProps<{
@@ -70,5 +70,5 @@ const buttonClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "./ThcButton.scss";
+@use "./ThcButton.scss" as *;
 </style>

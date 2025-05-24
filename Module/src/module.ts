@@ -1,47 +1,31 @@
 import { addComponentsDir, createResolver, defineNuxtModule } from "@nuxt/kit";
 import { name, version } from "../package.json";
 
-export default defineNuxtModule<{
-  useCompiledCss?: boolean;
-}>({
+export default defineNuxtModule({
   meta: {
     name,
     version,
-    configKey: "UiThcLibrary"
-  },
-  defaults: {
-    useCompiledCss: false
+    configKey: "UiThcLibrary",
   },
   setup(_, nuxt) {
     const resolver = createResolver(import.meta.url);
 
-    const componentsPath = resolver.resolve("runtime/components");
-    const stylesPath = resolver.resolve("runtime/styles");
-
-    // ✅ Register components
+    // Register components
     addComponentsDir({
-      path: componentsPath,
-      pathPrefix: false
+      path: resolver.resolve("runtime/components"),
+      pathPrefix: false,
     });
 
-    // ✅ Log registered component dirs
-    nuxt.hook("components:dirs", (dirs) => {
-      console.log("\n📦 Components registered from ui-thc-library:");
-      dirs.forEach((dir) => {
-        if (dir.path.includes("thc") || dir.path === componentsPath) {
-          console.log(`- ${dir.path}`);
-        }
-      });
-      console.log("");
-    });
+    // Inject global SCSS
+    nuxt.options.css ||= [];
+    nuxt.options.css.push(resolver.resolve("runtime/styles/index.scss"));
 
-    // ✅ Inject global SCSS for all Vue SFCs
+    // SCSS preprocessor config
     nuxt.options.vite ||= {};
     nuxt.options.vite.css ||= {};
     nuxt.options.vite.css.preprocessorOptions ||= {};
     nuxt.options.vite.css.preprocessorOptions.scss = {
-      additionalData: `@use "index.scss" as *;`,
-      includePaths: [stylesPath]
+      includePaths: [resolver.resolve("runtime/styles")],
     };
-  }
+  },
 });
