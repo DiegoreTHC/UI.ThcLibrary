@@ -1,9 +1,11 @@
 import { addComponentsDir, createResolver, defineNuxtModule } from "@nuxt/kit";
+import { name, version } from "../package.json";
 
 export default defineNuxtModule({
   meta: {
-    name: "my-ui-library",
-    configKey: "myUiLibrary"
+    name,
+    version,
+    configKey: "UiThcLibrary",
   },
   setup(_, nuxt) {
     const resolver = createResolver(import.meta.url);
@@ -11,7 +13,7 @@ export default defineNuxtModule({
     // Register components
     addComponentsDir({
       path: resolver.resolve("runtime/components"),
-      pathPrefix: false
+      pathPrefix: false,
     });
 
     // Inject global SCSS
@@ -23,7 +25,7 @@ export default defineNuxtModule({
     nuxt.options.vite.css ||= {};
     nuxt.options.vite.css.preprocessorOptions ||= {};
     nuxt.options.vite.css.preprocessorOptions.scss = {
-      includePaths: [resolver.resolve("runtime/styles")]
+      includePaths: [resolver.resolve("runtime/styles")],
     };
-  }
+  },
 });

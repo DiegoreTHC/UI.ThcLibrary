@@ -1,10 +1,3 @@
-<template>
-  <div
-    :class="['thc-skeleton', `thc-skeleton--${props.type}`]"
-    :style="localStyles"
-  ></div>
-</template>
-
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
@@ -30,6 +23,13 @@ const localStyles = computed(() => {
   return styles;
 });
 </script>
+
+<template>
+  <div
+    :class="['thc-skeleton', `thc-skeleton--${props.type}`]"
+    :style="localStyles"
+  ></div>
+</template>
 
 <style lang="scss" scoped>
 @use "./ThcSkeleton.scss" as *;

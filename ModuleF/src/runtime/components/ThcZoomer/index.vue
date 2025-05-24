@@ -22,5 +22,5 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
-@import "./ThcZoomer.scss";<template><divclass=<ZoomImgclass=
+@use "./ThcZoomer.scss" as *;
 </style>

@@ -1,3 +1,23 @@
+<script setup lang="ts">
+const props = defineProps<{
+  name?: string;
+  responsive?: boolean;
+  variant?: "primary" | "negative" | "dark"; // Only affect colors;
+  mode?: "full" | "inline" | "responsive";
+  loading?: boolean;
+}>();
+
+defineEmits<{
+  (event: "click"): void;
+}>();
+
+const isMobile = ref(false);
+
+const onResize = ({ isMobileSize }: any) => {
+  isMobile.value = isMobileSize;
+};
+</script>
+
 <template>
   <h1
     :class="['thc-logo', `thc-logo--${variant}`, `thc-logo--${loading}`, `thc-logo--${mode}`]"
@@ -145,27 +165,6 @@
   </h1>
 </template>
 
-<script setup lang="ts">
-
-defineProps<{
-  name?: string,;
-  responsive?: boolean,;
-  variant?: 'primary' | 'negative' | 'dark', // Only affect colors;
-  mode?: 'full' | 'inline' | 'responsive',;
-  loading?: boolean
-}>();
-
-defineEmits<{
-  (event: 'click'): void;
-}>();
-
-const isMobile = ref(false);
-
-const onResize = ({ isMobileSize }: any) => {
-  isMobile.value = isMobileSize;
-}
-</script>
-
 <style lang="scss" scoped>
-@import "./Logo.scss";
+@use "./Logo.scss" as *;
 </style>

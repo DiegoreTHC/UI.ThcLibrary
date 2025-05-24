@@ -1,7 +1,13 @@
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
-    variant?: "new" | "default" | "discount" | "gradient" | "outline" | undefined;
+    variant?:
+      | "new"
+      | "default"
+      | "discount"
+      | "gradient"
+      | "outline"
+      | undefined;
     text?: string | number | undefined;
     active?: boolean;
     loading?: boolean;
@@ -9,8 +15,8 @@ const props = withDefaults(
   {
     variant: "new",
     text: "Nuevo",
-    loading: false
-  }
+    loading: false,
+  },
 );
 const emit = defineEmits<{
   (e: "click"): void;
@@ -27,7 +33,7 @@ const onClick = () => {
       'thc-pill',
       `thc-pill--${props.variant}`,
       { 'thc-pill--loading': loading },
-      { 'thc-pill--active': active }
+      { 'thc-pill--active': active },
     ]"
     @click="onClick"
   >
@@ -37,5 +43,5 @@ const onClick = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./ThcPill.scss";
+@use "./ThcPill.scss" as *;
 </style>

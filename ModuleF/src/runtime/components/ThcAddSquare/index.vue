@@ -3,7 +3,10 @@ const emit = defineEmits(["click"]);
 </script>
 
 <template>
-  <div class="thc-add thc-add-square" @click="emit('click')">
+  <div
+    class="thc-add thc-add-square"
+    @click="emit('click')"
+  >
     <slot />
   </div>
 </template>

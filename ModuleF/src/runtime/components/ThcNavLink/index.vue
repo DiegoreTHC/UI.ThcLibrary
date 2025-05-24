@@ -1,3 +1,31 @@
+<script lang="ts" setup>
+const props = withDefaults(
+  defineProps<{
+    text: string;
+    to: string;
+    icon?: string;
+    arrow?: boolean;
+    arrowDirection?: "right" | "down" | "up";
+    disabled?: boolean;
+  }>(),
+  {
+    icon: "",
+    arrow: false,
+    disabled: false,
+    arrowDirection: "right"
+  }
+);
+
+const linkClass = computed(() => {
+  const classes = ["thc-link"];
+  if (props.arrow) classes.push("thc-link--arrow");
+  if (props.icon) classes.push("thc-link--icon");
+  if (props.disabled) classes.push("thc-link--disabled");
+
+  return classes.join(" ");
+});
+</script>
+
 <template>
   <span
     :class="linkClass"
@@ -30,34 +58,6 @@
   </NuxtLink>
 </template>
 
-<script lang="ts" setup>
-const props = withDefaults(
-  defineProps<{
-    text: string;
-    to: string;
-    icon?: string;
-    arrow?: boolean;
-    arrowDirection?: "right" | "down" | "up";
-    disabled?: boolean;
-  }>(),
-  {
-    icon: "",
-    arrow: false,
-    disabled: false,
-    arrowDirection: "right"
-  }
-);
-
-const linkClass = computed(() => {
-  const classes = ["thc-link"];
-  if (props.arrow) classes.push("thc-link--arrow");
-  if (props.icon) classes.push("thc-link--icon");
-  if (props.disabled) classes.push("thc-link--disabled");
-
-  return classes.join(" ");
-});
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcNavLink.scss";
+@use "./ThcNavLink.scss" as *;
 </style>

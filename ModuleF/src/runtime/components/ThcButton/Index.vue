@@ -9,13 +9,12 @@
   >
     <i
       :class="['thc-button-icon', icon]"
-      v-if="
-        variant === 'icon' ||
-        variant === 'icon-transparent' ||
-        ('outline' && prependIcon)
-      "
+      v-if="variant === 'icon' || variant === 'icon-transparent' || ('outline' && prependIcon)"
     />
-    <span class="thc-button-text" v-if="!iconButton && !isLink">
+    <span
+      class="thc-button-text"
+      v-if="!iconButton && !isLink"
+    >
       {{ text }}
     </span>
     <template v-if="isLink">{{ text }}</template>
@@ -42,8 +41,8 @@ const props = withDefaults(
     text: "Nuevo",
     href: "",
     type: "button",
-    disabled: false,
-  },
+    disabled: false
+  }
 );
 
 const emit = defineEmits(["click"]);
