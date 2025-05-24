@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed, ref } from "vue";
 const props = withDefaults(
   defineProps<{
     imgSrc?: {
@@ -33,7 +34,7 @@ const imgClass = computed(() => {
 
 <template>
   <div :class="imgClass">
-    <img;
+    <img
       class="thc-image-tag"
       :srcset="`${imgSrc.medium} 480w, ${imgSrc.large} 1280w`"
       :src="imgSrc.small"

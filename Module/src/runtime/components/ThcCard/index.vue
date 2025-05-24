@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { defineProps, onBeforeUnmount, onMounted, ref } from "vue";
+
 const props = defineProps<{
   variant?: "primary" | "gradient" | "dark" | "transparent"; // Only affect colors,
 }>();

@@ -1,5 +1,13 @@
 <script lang="ts" setup>
-import { ProductVariants } from "../../utils/enums";
+import { computed } from "vue";
+
+export enum ProductVariants {
+  Default = "default",
+  Outline = "outline",
+  Inline = "inline",
+  Vertical = "vertical",
+  Category = "category"
+}
 
 const props = withDefaults(
   defineProps<{

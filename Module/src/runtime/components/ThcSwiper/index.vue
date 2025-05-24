@@ -6,6 +6,7 @@ import { SliderDirections } from "../../utils/enums";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { ref, watch } from "vue";
 
 const props = withDefaults(
   defineProps<{

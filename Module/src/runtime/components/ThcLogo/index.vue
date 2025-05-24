@@ -1,17 +1,20 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 const props = defineProps<{
   name?: string;
   responsive?: boolean;
   variant?: "primary" | "negative" | "dark"; // Only affect colors;
   mode?: "full" | "inline" | "responsive";
   loading?: boolean;
+  mobile?: boolean;
 }>();
 
 defineEmits<{
   (event: "click"): void;
 }>();
 
-const isMobile = ref(false);
+const isMobile = ref(props.mobile);
 
 const onResize = ({ isMobileSize }: any) => {
   isMobile.value = isMobileSize;

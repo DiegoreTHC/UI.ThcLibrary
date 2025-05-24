@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed } from "vue";
 import { Campaign } from "../../utils/models";
 
 const props = withDefaults(

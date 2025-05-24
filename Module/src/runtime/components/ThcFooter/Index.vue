@@ -69,5 +69,5 @@ const props = withDefaults(
 </template>
 
 <style lang="scss" scoped>
-@use "./Footer.scss" as *;
+@use "./ThcFooter.scss" as *;
 </style>

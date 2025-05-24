@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { PropType } from "vue";
+
 defineProps<{
   name: string;
   id: string;

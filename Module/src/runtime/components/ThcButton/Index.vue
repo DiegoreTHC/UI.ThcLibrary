@@ -22,17 +22,28 @@
 </template>
 
 <script lang="ts" setup>
-import { ButtonVariantsTypes } from "../../utils/types";
+import { computed } from "vue";
+
+export type ButtonVariantsTypes =
+  | "primary"
+  | "outline"
+  | "icon"
+  | "icon-transparent"
+  | "outline-icon";
+
+export type ButtonTypes = "button" | "submit" | "reset";
+
+export type ButtonSizes = "small" | "medium" | "large";
 
 const props = withDefaults(
   defineProps<{
     variant?: ButtonVariantsTypes;
-    size?: "small" | "medium" | "large";
+    size?: ButtonSizes;
     href?: string | null;
     disabled?: boolean;
     iconButton?: boolean;
     prependIcon?: boolean;
-    type?: "button" | "submit" | "reset";
+    type?: ButtonTypes;
     icon?: string | null;
     text?: string;
   }>(),

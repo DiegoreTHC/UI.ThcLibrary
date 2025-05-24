@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed, ref } from "vue";
 import { Product } from "../../utils/models";
 
 const props = withDefaults(
