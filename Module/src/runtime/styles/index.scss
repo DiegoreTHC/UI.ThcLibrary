@@ -1,5 +1,5 @@
-@use "./utils";
-@use "./variables";
+@use "./utils" as *;
+@use "./variables" as *;
 
 html {
   font-size: var(--font-size-base);
