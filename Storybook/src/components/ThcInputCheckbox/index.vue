@@ -1,24 +1,24 @@
 <template>
-	<div class="thc-checkbox">
-		<div class="thc-checkbox-item">
+  <div class="thc-checkbox">
+    <div class="thc-checkbox-item">
       <input
-				:class="[
-					'thc-checkbox-box',
-					{ 'thc-checkbox-box--disabled': disabled }
-				]"
-				type="checkbox"
+        :class="[
+          'thc-checkbox-box',
+          { 'thc-checkbox-box--disabled': disabled },
+        ]"
+        type="checkbox"
         v-model="model"
-				:id="id"
+        :id="id"
         :value="value"
-			/>
-			<Thc-Label
-				:for="id"
-				class="thc-checkbox-label"
-				v-if="label"
+      />
+      <Thc-Label
+        :for="id"
+        class="thc-checkbox-label"
+        v-if="label"
         :label="label"
-			/>
-		</div>
-	</div>
+      />
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -29,9 +29,13 @@ const props = defineProps<{
   label?: string;
 }>();
 
-const model = defineModel({ type: [Boolean, String, Array] as PropType<boolean | undefined | string | string[]> });
+const model = defineModel({
+  type: [Boolean, String, Array] as PropType<
+    boolean | undefined | string | string[]
+  >,
+});
 </script>
 
 <style lang="scss" scoped>
-@import './ThcInputCheckbox.scss';
+@use "./ThcInputCheckbox.scss" as *;
 </style>

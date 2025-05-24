@@ -1,29 +1,26 @@
 <template>
-	<div :class="[
-		'thc-radio',
-		{ 'thc-radio--switch': theme === 'switch' }
-	]">
-		<div class="thc-radio-item">
+  <div :class="['thc-radio', { 'thc-radio--switch': theme === 'switch' }]">
+    <div class="thc-radio-item">
       <input
-				:class="[
-					'thc-radio-box',
-					{ 'thc-radio-box--disabled': disabled },
-					{ 'thc-radio-box--switch': theme === 'switch' }
-				]"
-				type="radio"
+        :class="[
+          'thc-radio-box',
+          { 'thc-radio-box--disabled': disabled },
+          { 'thc-radio-box--switch': theme === 'switch' },
+        ]"
+        type="radio"
         v-model="model"
-				:id="id"
+        :id="id"
         :value="value"
-			/>
-			<Thc-Label
-				:for="id"
-				class="thc-radio-label"
-				v-if="label"
+      />
+      <Thc-Label
+        :for="id"
+        class="thc-radio-label"
+        v-if="label"
         :label="label"
         :name="name"
-			/>
-		</div>
-	</div>
+      />
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -33,12 +30,16 @@ const props = defineProps<{
   value?: string | boolean | undefined;
   label?: string;
   name?: string;
-	theme?: 'default' | 'switch'
+  theme?: "default" | "switch";
 }>();
 
-const model = defineModel({ type: [Boolean, String, Array] as PropType<boolean | undefined | string | string[]> });
+const model = defineModel({
+  type: [Boolean, String, Array] as PropType<
+    boolean | undefined | string | string[]
+  >,
+});
 </script>
 
 <style lang="scss" scoped>
-@import './ThcInputRadio.scss';
+@use "./ThcInputRadio.scss" as *;
 </style>
