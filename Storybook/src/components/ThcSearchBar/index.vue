@@ -23,7 +23,7 @@ const isDropdownVisible = ref(false);
 const showResults = ref(false);
 
 const searchFilterText = computed(() => {
-  if (selectedCategory.value.length) {
+  if (selectedCategory.value && selectedCategory.value.length) {
     if (selectedCategory.value === SearchBar.AllStore) {
       selectedCategory.value = "";
       return props.filterText;
@@ -137,7 +137,13 @@ watch(searchQuery, (newVal) => {
       "
     >
       <span>{{ searchFilterText }}</span>
-      <i class="fas fa-chevron-down"></i>
+      <i
+        :class="[
+          'fas',
+          { 'fa-chevron-down': !isDropdownVisible },
+          { 'fa-chevron-up': isDropdownVisible }
+        ]"
+      ></i>
     </div>
 
     <div
@@ -198,7 +204,7 @@ watch(searchQuery, (newVal) => {
           searchQuery
         }}</span
         >".
-        <span v-if="selectedCategory.length">
+        <span v-if="selectedCategory && selectedCategory.length">
           En <span class="no-results-message-text--highlight">{{ selectedCategory }}</span>
         </span>
       </p>
@@ -214,7 +220,7 @@ watch(searchQuery, (newVal) => {
         :text="SearchBar.AllStore"
         variant="outline"
         :active="SearchBar.AllStore === selectedCategory"
-        @click="selectOption({ 'product-name': SearchBar.AllStore })"
+        @click="selectOption({ 'category-name': SearchBar.AllStore })"
       />
       <ThcPill
         v-for="category in categories"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { SearchBar } from "../../utils/enums";
 
 const props = withDefaults(
@@ -20,9 +20,10 @@ const searchQuery = ref("");
 const selectedCategory = ref("");
 const isFocused = ref(false);
 const isDropdownVisible = ref(false);
+const showResults = ref(false);
 
 const searchFilterText = computed(() => {
-  if (selectedCategory.value.length) {
+  if (selectedCategory.value && selectedCategory.value.length) {
     if (selectedCategory.value === SearchBar.AllStore) {
       selectedCategory.value = "";
       return props.filterText;
@@ -32,7 +33,6 @@ const searchFilterText = computed(() => {
   return props.filterText;
 });
 
-// Filter products by category and name
 const filteredCategories = computed(() => {
   return props.categories
     .filter((category: { ["category-name"]: any }) => {
@@ -46,10 +46,9 @@ const filteredCategories = computed(() => {
         )
       };
     })
-    .filter((category: { products: any[] }) => category.products.length > 0); // Only include categories with products matching the search
+    .filter((category: { products: any[] }) => category.products.length > 0);
 });
 
-// Highlight matching text in the product names
 const highlightMatch = (text: string) => {
   if (!searchQuery.value) return text;
   const regex = new RegExp(`(${searchQuery.value})`, "gi");
@@ -57,7 +56,7 @@ const highlightMatch = (text: string) => {
 };
 
 const selectOption = (item: { [x: string]: string }) => {
-  selectedCategory.value = item["product-name"];
+  selectedCategory.value = item["category-name"];
   isDropdownVisible.value = false;
 };
 
@@ -68,31 +67,51 @@ const emit = defineEmits<{
 const clickOnOption = (item: any) => {
   emit("click", item);
   isFocused.value = false;
+  showResults.value = false;
 };
 
-const dropdown = ref(null);
-const tagDropdown = ref(null);
+const container = ref(null);
 
-const handleClickOutside = (event) => {
-  if (dropdown.value && !dropdown.value.contains(event.target)) {
-    isDropdownVisible.value = false;
+const closeAllDropdowns = () => {
+  isDropdownVisible.value = false;
+  isFocused.value = false;
+  showResults.value = false;
+};
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as Node;
+  if (container.value && !container.value.contains(target)) {
+    closeAllDropdowns();
   }
-  if (tagDropdown.value && !tagDropdown.value.contains(event.target)) {
-    isDropdownVisible.value = false;
+};
+
+const handleGlobalKeydown = (e: KeyboardEvent) => {
+  if (e.key === "Escape") {
+    closeAllDropdowns();
   }
 };
 
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
+  document.addEventListener("keydown", handleGlobalKeydown);
 });
 
 onBeforeUnmount(() => {
   document.removeEventListener("click", handleClickOutside);
+  document.removeEventListener("keydown", handleGlobalKeydown);
+});
+
+watch(searchQuery, (newVal) => {
+  showResults.value = !!newVal;
+  if (!newVal) {
+    isFocused.value = false;
+  }
 });
 </script>
 
 <template>
   <div
+    ref="container"
     :class="[
       'thc-searchbar',
       { 'thc-searchbar--loading': loading },
@@ -104,17 +123,29 @@ onBeforeUnmount(() => {
       width="100%"
       v-if="loading"
     />
+
     <div
       class="thc-search-select"
       v-if="searchByCategory && !loading"
       tabindex="0"
-      @click="isDropdownVisible = !isDropdownVisible"
+      @click="
+        () => {
+          isDropdownVisible = !isDropdownVisible;
+          isFocused = false;
+          showResults = false;
+        }
+      "
     >
       <span>{{ searchFilterText }}</span>
-      <i class="fas fa-chevron-down"></i>
+      <i
+        :class="[
+          'fas',
+          { 'fa-chevron-down': !isDropdownVisible },
+          { 'fa-chevron-up': isDropdownVisible }
+        ]"
+      ></i>
     </div>
 
-    <!-- Search Input -->
     <div
       class="thc-searchbar-nav"
       v-if="!loading"
@@ -122,44 +153,47 @@ onBeforeUnmount(() => {
       <input
         v-model="searchQuery"
         type="text"
-        @focus="((isFocused = true), (isDropdownVisible = false))"
-        @blur="isFocused = false"
         class="thc-searchbar-input"
+        @focus="
+          () => {
+            isFocused = true;
+            isDropdownVisible = false;
+            showResults = true;
+          }
+        "
+        @keydown.esc="closeAllDropdowns"
       />
       <i class="fas fa-search thc-searchbar-icon"></i>
     </div>
 
     <!-- Results Dropdown -->
     <div
-      v-if="searchQuery && filteredCategories.length"
+      v-if="showResults && searchQuery && filteredCategories.length"
       class="thc-searchbar-dropdown"
-      ref="dropdown"
     >
-      <div v-if="filteredCategories.length">
-        <div
-          v-for="category in filteredCategories"
-          :key="category"
-          class="thc-searchbar-category"
-        >
-          <div class="thc-searchbar-subtitle">{{ category["category-name"] }}</div>
-          <ul class="thc-searchbar-list">
-            <li
-              v-for="product in category.products"
-              :key="product['product-name']"
-              class="thc-searchbar-list-item"
-              @click="clickOnOption({ product: product, category: category.id })"
-            >
-              <span v-html="highlightMatch(product['product-name'])"></span>
-            </li>
-          </ul>
-        </div>
+      <div
+        v-for="category in filteredCategories"
+        :key="category"
+        class="thc-searchbar-category"
+      >
+        <div class="thc-searchbar-subtitle">{{ category["category-name"] }}</div>
+        <ul class="thc-searchbar-list">
+          <li
+            v-for="product in category.products"
+            :key="product['product-name']"
+            class="thc-searchbar-list-item"
+            @click="clickOnOption({ product: product, category: category.id })"
+          >
+            <span v-html="highlightMatch(product['product-name'])"></span>
+          </li>
+        </ul>
       </div>
     </div>
 
+    <!-- No Results Dropdown -->
     <div
-      v-if="searchQuery && !filteredCategories.length"
+      v-if="showResults && searchQuery && !filteredCategories.length"
       class="thc-searchbar-dropdown no-results"
-      ref="emptyResults"
     >
       <figure class="no-results-message">
         <i class="no-results-message-icon fam-joint-smoke"></i>
@@ -170,23 +204,23 @@ onBeforeUnmount(() => {
           searchQuery
         }}</span
         >".
-        <span v-if="selectedCategory.length"
-          >En <span class="no-results-message-text--highlight">{{ selectedCategory }}</span></span
-        >
+        <span v-if="selectedCategory && selectedCategory.length">
+          En <span class="no-results-message-text--highlight">{{ selectedCategory }}</span>
+        </span>
       </p>
     </div>
 
+    <!-- Tag Dropdown -->
     <div
-      class="thc-searchbar-dropdown thc-searchbar-dropdown-category"
       v-if="isDropdownVisible && !searchQuery.length"
-      ref="tagDropdown"
+      class="thc-searchbar-dropdown thc-searchbar-dropdown-category"
     >
       <ThcPill
         v-if="selectedCategory.length"
         :text="SearchBar.AllStore"
         variant="outline"
         :active="SearchBar.AllStore === selectedCategory"
-        @click="selectOption({ name: SearchBar.AllStore })"
+        @click="selectOption({ 'category-name': SearchBar.AllStore })"
       />
       <ThcPill
         v-for="category in categories"
@@ -201,5 +235,5 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-@use "./SearchBar.scss" as *;
+@import "./SearchBar.scss";
 </style>
