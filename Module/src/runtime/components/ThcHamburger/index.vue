@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const props = defineProps<{
   loading?: boolean;
-  open: boolean;
+  open?: boolean;
 }>();
 
 const emit = defineEmits(["click"]);

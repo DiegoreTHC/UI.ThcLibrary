@@ -15,17 +15,12 @@ defineEmits<{
 }>();
 
 const isMobile = ref(props.mobile);
-
-const onResize = ({ isMobileSize }: any) => {
-  isMobile.value = isMobileSize;
-};
 </script>
 
 <template>
   <h1
     :class="['thc-logo', `thc-logo--${variant}`, `thc-logo--${loading}`, `thc-logo--${mode}`]"
     @click="$emit('click')"
-    v-on-resize="onResize"
   >
     <figure class="thc-logo-container">
       <ThcSkeleton

@@ -1,26 +1,3 @@
-<template>
-  <component
-    :is="isLink ? 'a' : 'button'"
-    :href="isLink ? href : undefined"
-    :class="buttonClass"
-    :type="isLink ? '' : type"
-    :disabled="disabled"
-    @click="onClick"
-  >
-    <i
-      :class="['thc-button-icon', icon]"
-      v-if="variant === 'icon' || variant === 'icon-transparent' || ('outline' && prependIcon)"
-    />
-    <span
-      class="thc-button-text"
-      v-if="!iconButton && !isLink"
-    >
-      {{ text }}
-    </span>
-    <template v-if="isLink">{{ text }}</template>
-  </component>
-</template>
-
 <script lang="ts" setup>
 import { computed } from "vue";
 
@@ -79,6 +56,29 @@ const buttonClass = computed(() => {
   return classes.join(" ");
 });
 </script>
+
+<template>
+  <component
+    :is="isLink ? 'a' : 'button'"
+    :href="isLink ? href : undefined"
+    :class="buttonClass"
+    :type="isLink ? '' : type"
+    :disabled="disabled"
+    @click="onClick"
+  >
+    <i
+      :class="['thc-button-icon', icon]"
+      v-if="variant === 'icon' || variant === 'icon-transparent' || ('outline' && prependIcon)"
+    />
+    <span
+      class="thc-button-text"
+      v-if="!iconButton && !isLink"
+    >
+      {{ text }}
+    </span>
+    <template v-if="isLink">{{ text }}</template>
+  </component>
+</template>
 
 <style lang="scss" scoped>
 @use "./ThcButton.scss" as *;
