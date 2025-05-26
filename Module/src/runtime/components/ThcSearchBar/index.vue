@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { SearchBar } from "../../utils/enums";
 
 const props = withDefaults(
@@ -69,6 +69,26 @@ const clickOnOption = (item: any) => {
   emit("click", item);
   isFocused.value = false;
 };
+
+const dropdown = ref(null);
+const tagDropdown = ref(null);
+
+const handleClickOutside = (event) => {
+  if (dropdown.value && !dropdown.value.contains(event.target)) {
+    isDropdownVisible.value = false;
+  }
+  if (tagDropdown.value && !tagDropdown.value.contains(event.target)) {
+    isDropdownVisible.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <template>
@@ -113,6 +133,7 @@ const clickOnOption = (item: any) => {
     <div
       v-if="searchQuery && filteredCategories.length"
       class="thc-searchbar-dropdown"
+      ref="dropdown"
     >
       <div v-if="filteredCategories.length">
         <div
@@ -138,6 +159,7 @@ const clickOnOption = (item: any) => {
     <div
       v-if="searchQuery && !filteredCategories.length"
       class="thc-searchbar-dropdown no-results"
+      ref="emptyResults"
     >
       <figure class="no-results-message">
         <i class="no-results-message-icon fam-joint-smoke"></i>
@@ -157,6 +179,7 @@ const clickOnOption = (item: any) => {
     <div
       class="thc-searchbar-dropdown thc-searchbar-dropdown-category"
       v-if="isDropdownVisible && !searchQuery.length"
+      ref="tagDropdown"
     >
       <ThcPill
         v-if="selectedCategory.length"
