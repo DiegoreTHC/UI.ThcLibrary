@@ -1,4 +1,4 @@
-@forward "./globals/index";
+@use "./globals/index" as *;
 
 html {
   font-size: var(--font-size-base);

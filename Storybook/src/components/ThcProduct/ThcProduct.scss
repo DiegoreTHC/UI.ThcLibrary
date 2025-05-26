@@ -82,7 +82,7 @@
           height: 6.05em;
           position: relative;
           overflow: hidden;
-          border-radius: var(--radius-large);
+          border-radius: 1em;
           width: 100%;
 
           @include respondTo("tablet-landscape") {

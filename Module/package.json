@@ -1,7 +1,7 @@
 {
   "name": "@thcode-society/ui-thc-library",
   "private": false,
-  "version": "1.0.21",
+  "version": "1.0.23",
   "description": "THC Code Component Library, Nuxt 3, SCSS, SCSS Variables, Typescript",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@thcode-society/style-utils": "^1.1.0",
-    "@thcode-society/icons": "^1.0.2",
+    "@davestewart/nuxt-scrollbar": "^1.0.0",
     "sass": "^1.89.0",
     "@nuxt/devtools": "^2.4.1",
     "@nuxt/eslint-config": "^1.4.0",

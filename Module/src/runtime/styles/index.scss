@@ -2,7 +2,6 @@
 @use "./globals/index" as *;
 @use "./utils/reset" as *;
 @use "./utils/fonticons" as *;
-@use "./utils/icons" as *;
 
 html {
   font-size: var(--font-size-base);

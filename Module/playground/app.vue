@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div style="color: red">
     Nuxt module playground!
 
-    <ThcButton
-      variant="icon"
-      types=""
-      icon="fam-weed-full"
+    <ThcLogo
+      :mobile="true"
+      mode="full"
     />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ThcLogo } from "#components";
+</script>

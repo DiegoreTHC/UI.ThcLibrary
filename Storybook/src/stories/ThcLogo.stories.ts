@@ -22,6 +22,9 @@ const meta = {
     mode: {
       control: { type: "radio" },
       options: ["full", "inline", "responsive"]
+    },
+    mobile: {
+      control: { type: "boolean" }
     }
   },
   args: {
@@ -54,7 +57,8 @@ export const Responsive = {
     loading: false,
     variant: "primary",
     mode: "responsive",
-    responsive: true
+    responsive: true,
+    mobile: true
   }
 };
 
