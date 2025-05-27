@@ -1,12 +1,19 @@
+@use "../../styles/utils/media" as *;
+
 .thc {
   &-footer {
-    background-color: var(--color-gray-700);
+    background-color: var(--color-dark-300);
     border-top: 1px solid var(--color-gray-100);
     display: flex;
     color: var(--color-gray-300);
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 0.5em;
+
+    @include respondTo("desktop") {
+      gap: 1em;
+    }
 
     &-logo {
       margin: 1em auto;
@@ -18,12 +25,13 @@
 
     &-wrapper {
       @include respondTo("tablet") {
+        align-items: flex-end;
         justify-content: space-between;
         display: flex;
         padding: 0.3em 1.4em;
         width: 100%;
       }
-      @include respondTo("tablet-landscape") {
+      @include respondTo("desktop") {
         align-items: flex-end;
         max-width: 80em;
         padding: 0.2em 1em 0 1em;
@@ -34,6 +42,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      gap: 0.5em;
 
       &-list {
         max-width: 6em;
@@ -42,6 +51,8 @@
 
         @include respondTo("tablet") {
           margin: 0;
+          max-width: inherit;
+          width: inherit;
         }
       }
     }
@@ -74,31 +85,17 @@
 
   &-disclaimer {
     font-size: 0.75em;
-    margin-top: 1em;
 
-    @include respondTo("tablet") {
-      font-size: 0.76em;
-      margin-top: 0.2em;
-    }
-
-    @include respondTo("tablet-landscape") {
+    @include respondTo("desktop") {
       font-size: 1em;
-      margin-top: 0.2em;
     }
   }
   &-legals {
     font-size: 0.74em;
-    margin: 0.4em 0 1em;
+    margin: 0 1em;
 
-    @include respondTo("tablet") {
-      font-size: 0.624em;
-      margin-top: 0.7em;
-    }
-
-    @include respondTo("tablet-landscape") {
-      font-size: 0.88em;
-      margin-top: 0;
-      padding: 2em 0 0.9em;
+    @include respondTo("desktop") {
+      font-size: 1em;
     }
 
     &--loading {
