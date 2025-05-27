@@ -26,7 +26,7 @@
           v-for="link in categories"
           :key="link"
           variant="outline"
-          :text="link?.name"
+          :text="formatName(link['category-name'])"
         />
       </div>
     </nav>
@@ -87,6 +87,12 @@ const props = withDefaults(
 );
 
 const navigationLinks = computed(() => props.navigation.slice(-3));
+function formatName(name: string): string {
+  return name
+    .split(/[\s-_]+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // capitalize first letter
+    .join(" ");
+}
 </script>
 
 <style lang="scss" scoped>

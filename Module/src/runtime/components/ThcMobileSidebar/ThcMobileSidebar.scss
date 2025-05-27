@@ -26,9 +26,9 @@
 
       &-categories {
         display: flex;
-        padding: 0.6em 0;
-        gap: 0.5em;
         flex-wrap: wrap;
+        gap: var(--spacing-8-px) 1em;
+        padding: 0.6em 0;
       }
 
       &-brands {

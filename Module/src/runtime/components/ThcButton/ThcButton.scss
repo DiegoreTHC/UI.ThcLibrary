@@ -15,8 +15,9 @@
     border: 1.5px solid var(--color-primary);
 
     .thc-button-text {
-      color: var(--color-clear-100);
-      padding: 0.5em 0.6em;
+      color: var(--font-color-light);
+      font-size: var(--font-size-xs);
+      padding: var(--spacing-6-px) var(--spacing-8-px);
     }
   }
 

@@ -1,4 +1,5 @@
 @use "./globals/index" as *;
+@use "./utils/fonts" as *;
 
 html {
   font-size: var(--font-size-base);
