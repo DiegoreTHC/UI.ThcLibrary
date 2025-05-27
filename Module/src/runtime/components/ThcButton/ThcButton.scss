@@ -11,6 +11,15 @@
     padding: 0.6em 1.6em;
   }
 
+  &--outline {
+    border: 1.5px solid var(--color-primary);
+
+    .thc-button-text {
+      color: var(--color-clear-100);
+      padding: 0.5em 0.6em;
+    }
+  }
+
   &--link {
     background-color: transparent;
     display: inline-block;
