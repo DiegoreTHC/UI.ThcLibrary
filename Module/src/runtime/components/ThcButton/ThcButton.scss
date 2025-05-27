@@ -13,6 +13,7 @@
 
   &--outline {
     border: 1px solid var(--color-primary);
+    background-color: transparent;
 
     .thc-button-text {
       color: var(--font-color-light);
