@@ -55,7 +55,7 @@
         </NuxtLink>
       </div>
     </nav>
-    <nav class="thc-mobile-nav">
+    <nav class="thc-mobile-nav thc-mobile-nav--links">
       <div class="thc-mobile-links">
         <ThcNavLink
           v-for="item in navigationLinks"

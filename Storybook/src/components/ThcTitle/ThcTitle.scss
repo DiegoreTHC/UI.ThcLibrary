@@ -8,15 +8,11 @@
       color: var(--color-clear-100);
       letter-spacing: -0.01em;
 
-      @include respondTo("tablet") {
-        letter-spacing: 0;
-      }
-
       span {
         display: block;
 
         @include respondTo("tablet-landscape") {
-          line-height: 1em;
+          line-height: 1.2em;
         }
       }
 
