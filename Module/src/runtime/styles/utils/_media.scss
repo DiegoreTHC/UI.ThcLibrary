@@ -1,17 +1,18 @@
+@use "sass:map";
+
 $breakpoints: (
   "mobile": "screen and (min-width: 375px)",
   "mobile-large": "screen and (min-width: 414px)",
   "tablet": "screen and (min-width: 768px)",
-  "tablet-landscape":
-    "screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape)",
-  "desktop": "screen and (min-width: 1025px)",
+  "tablet-landscape": "screen and (min-width: 1022px)",
+  "desktop": "screen and (min-width: 1022px)",
   "large-screens-13": "screen and (min-width: 1280px)",
   "large-screens-15": "screen and (min-width: 1440px)",
   "large-screens-16": "screen and (min-width: 1790px)"
 );
 
 @mixin respondTo($breakpoint) {
-  $query: map-get($breakpoints, $breakpoint);
+  $query: map.get($breakpoints, $breakpoint);
   @if $query {
     @media #{$query} {
       @content;

@@ -27,6 +27,7 @@
           :key="link"
           variant="outline"
           :text="formatName(link['category-name'])"
+          @click="goToCategory(link)"
         />
       </div>
     </nav>
@@ -43,7 +44,7 @@
         <NuxtLink
           v-for="brand in navigation[1]?.subLinks"
           class="thc-brands-link"
-          :to="brand?.link"
+          :to="`brands/${brand?.slug}`"
           target="_blank"
           :key="brand.name"
         >
@@ -86,13 +87,19 @@ const props = withDefaults(
   }
 );
 
+const emit = defineEmits(["categoryClick"]);
 const navigationLinks = computed(() => props.navigation.slice(-3));
+
 function formatName(name: string): string {
   return name
     .split(/[\s-_]+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // capitalize first letter
     .join(" ");
 }
+
+const goToCategory = (link: any) => {
+  emit("categoryClick", link);
+};
 </script>
 
 <style lang="scss" scoped>
