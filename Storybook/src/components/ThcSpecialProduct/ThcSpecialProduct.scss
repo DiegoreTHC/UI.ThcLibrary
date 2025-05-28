@@ -1,0 +1,160 @@
+.thc {
+  &-banner {
+    background-color: rgba(var(--color-primary), 0.1);
+    position: relative;
+    display: flex;
+    max-width: 22em;
+    margin: 2em auto;
+    width: 100%;
+
+    &--rtl {
+      flex-direction: row;
+    }
+
+    &--ltr {
+      flex-direction: row-reverse;
+
+      .thc-banner {
+        &-card {
+          display: flex;
+          flex-direction: row-reverse;
+
+          &:before {
+            left: inherit;
+            right: -7.5em;
+            height: 15em;
+            width: 22em;
+            transform: rotate(70deg);
+          }
+        }
+        &-image {
+          right: inherit;
+          left: -4.8em;
+        }
+      }
+    }
+
+    @include respondTo("tablet") {
+      max-width: 42em;
+    }
+
+    @include respondTo("tablet-landscape") {
+      max-width: 44.8em;
+      margin: inherit;
+    }
+
+    &-card {
+      background-size: 3.5em auto;
+      border-radius: 1em;
+      display: block;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+
+      &-half {
+        position: absolute;
+        height: 18em;
+        width: 18em;
+        transform: rotate(-70deg);
+        left: 50%;
+        top: 50%;
+        margin: -10em 0 0 -19.5em;
+
+        @include respondTo("tablet") {
+          height: 40em;
+          width: 26em;
+          transform: rotate(-73.5deg);
+          margin: -21em 0 0 -28em;
+        }
+      }
+    }
+
+    &-data {
+      padding: 1.8em 1.3em;
+      position: relative;
+      height: 11em;
+      width: 60%;
+
+      @include respondTo("tablet") {
+        padding: 2em 0.8em;
+        height: 14em;
+        width: 66%;
+      }
+
+      @include respondTo("tablet-landscape") {
+        padding: 1.5em 1.3em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .title {
+        line-height: 1.9em;
+        margin-bottom: 1.8em;
+
+        @include respondTo("tablet") {
+          font-size: 1.5em;
+          margin-bottom: 0.7em;
+        }
+
+        @include respondTo("tablet-landscape") {
+          margin-bottom: 0.5em;
+        }
+      }
+
+      .thc-button {
+        min-width: 8.8em;
+
+        @include respondTo("tablet-landscape") {
+          min-width: 9em;
+          margin-top: auto;
+        }
+      }
+    }
+
+    &-copy {
+      display: none;
+
+      @include respondTo("tablet") {
+        display: block;
+        margin-bottom: 1.2em;
+      }
+
+      @include respondTo("tablet-landscape") {
+        display: none;
+        margin: 0;
+      }
+
+      @include respondTo("large-screens-13") {
+        display: block;
+      }
+    }
+
+    &-image {
+      position: absolute;
+      width: 12.8em;
+      height: 15em;
+      right: -0.8em;
+      top: -2.8em;
+      z-index: 1;
+
+      @include respondTo("tablet") {
+        width: 14em;
+        height: 17.8em;
+        right: 1.4em;
+        top: -2.1em;
+      }
+
+      @include respondTo("tablet-landscape") {
+        width: 14.6em;
+        right: 0.6em;
+        top: -2.3em;
+      }
+
+      img {
+        width: fit-content;
+      }
+    }
+  }
+}

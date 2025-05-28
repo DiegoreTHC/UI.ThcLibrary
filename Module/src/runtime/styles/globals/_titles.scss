@@ -1,0 +1,44 @@
+.thc {
+  // Title
+  &-title {
+    &-highlight {
+      &--dark {
+        color: var(--color-blue-100);
+      }
+      &--dual {
+        color: var(--color-grey-200);
+        display: block;
+        font-size: 0.7em;
+      }
+    }
+    &--half {
+      display: block;
+    }
+  }
+
+  &-highlight {
+    color: var(--color-green-100);
+  }
+
+  &-subtitle {
+    font-weight: var(--font-weight-regular);
+    font-size: 0.5em;
+
+    &-highlight {
+      color: var(--color-green-100);
+    }
+  }
+
+  &-mobile {
+    &-title {
+      &-half {
+        .thc-title-highlight--primary {
+          display: block;
+          font-weight: var(--font-weight-bold);
+          font-size: 1.32em;
+          line-height: 0.8em;
+        }
+      }
+    }
+  }
+}

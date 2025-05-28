@@ -1,0 +1,38 @@
+<script lang="ts" setup>
+import type { PropType } from "vue";
+
+const props = defineProps<{
+  id: string;
+  disabled?: boolean;
+  value?: string | boolean | undefined;
+  label?: string;
+}>();
+
+const model = defineModel({
+  type: [Boolean, String, Array] as PropType<boolean | undefined | string | string[]>
+});
+</script>
+
+<template>
+  <div class="thc-checkbox">
+    <div class="thc-checkbox-item">
+      <input
+        :class="['thc-checkbox-box', { 'thc-checkbox-box--disabled': disabled }]"
+        type="checkbox"
+        v-model="model"
+        :id="id"
+        :value="value"
+      />
+      <Thc-Label
+        :for="id"
+        class="thc-checkbox-label"
+        v-if="label"
+        :label="label"
+      />
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@use "./ThcInputCheckbox.scss" as *;
+</style>

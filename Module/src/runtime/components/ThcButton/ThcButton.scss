@@ -1,0 +1,36 @@
+.thc-button {
+  background-color: var(--color-primary);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  &-text {
+    color: var(--font-color-primary);
+    padding: 0.6em 1.6em;
+  }
+
+  &--outline {
+    border: 1px solid var(--color-primary);
+    background-color: transparent;
+
+    .thc-button-text {
+      color: var(--font-color-light);
+      font-size: var(--font-size-xxs);
+      padding: var(--spacing-8-px) var(--spacing-10-px);
+    }
+  }
+
+  &--link {
+    background-color: transparent;
+    display: inline-block;
+    color: var(--font-color-primary);
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

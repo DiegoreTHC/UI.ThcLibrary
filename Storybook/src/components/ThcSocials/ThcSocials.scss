@@ -1,0 +1,16 @@
+.thc-socials {
+  display: flex;
+  gap: 1em;
+
+  &-item {
+    font-size: 1rem;
+
+    &--loading {
+      font-size: 1.2rem;
+    }
+  }
+
+  &-link {
+    color: var(--color-gray-300);
+  }
+}

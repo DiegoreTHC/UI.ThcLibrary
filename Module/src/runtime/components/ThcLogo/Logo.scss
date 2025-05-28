@@ -1,0 +1,75 @@
+@use "../../styles/utils/media" as *;
+
+.thc {
+  &-logo {
+    position: relative;
+
+    &--primary {
+      fill: var(--color-primary);
+    }
+    &--negative {
+      fill: var(--color-gray-300);
+    }
+    &--dark {
+      fill: var(--color-gray-700);
+    }
+
+    // Modes
+    &--full {
+      width: 11.1em;
+      height: 5em;
+    }
+
+    &--inline {
+      width: 11.1em;
+      height: 2.4em;
+
+      @include respondTo("desktop") {
+        width: 19.2em;
+        height: 4.4em;
+      }
+    }
+
+    &--responsive {
+      width: 1.8em;
+
+      @include respondTo("desktop") {
+        width: 10em;
+      }
+      .sm-logo {
+        &-bong {
+          width: 1.8em;
+
+          @include respondTo("desktop") {
+            width: 10em;
+          }
+        }
+      }
+    }
+
+    .thc {
+      &-logo-skeleton {
+        position: absolute;
+      }
+    }
+
+    &--loading {
+      .sm-logo {
+        &-bong {
+          width: 1.8em;
+          height: 1em;
+        }
+      }
+    }
+
+    // Hidden title
+    &-title {
+      &.hidden {
+        opacity: 0;
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+}

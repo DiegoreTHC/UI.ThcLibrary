@@ -1,0 +1,75 @@
+{
+  "name": "@thcode-society/ui-thc-library",
+  "private": false,
+  "version": "1.0.25",
+  "description": "THC Code Component Library, Nuxt 3, SCSS, SCSS Variables, Typescript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoreTHC/UI.ThcLibrary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DiegoreTHC/UI.ThcLibrary.git/issues"
+  },
+  "homepage": "https://github.com/DiegoreTHC/UI.ThcLibrary.git#readme",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "runtime"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.17.4"
+  },
+  "peerDependencies": {
+    "vue-3-slider-component": "^1.0.1",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@thcode-society/style-utils": "^1.1.0",
+    "@davestewart/nuxt-scrollbar": "^1.0.0",
+    "sass": "^1.89.0",
+    "@nuxt/devtools": "^2.4.1",
+    "@nuxt/eslint-config": "^1.4.0",
+    "@nuxt/module-builder": "^1.0.1",
+    "@nuxt/schema": "^3.17.4",
+    "@nuxt/test-utils": "^3.19.0",
+    "@types/node": "latest",
+    "changelogen": "^0.6.1",
+    "prettier": "^3.5.3",
+    "eslint": "^9.27.0",
+    "nuxt": "^3.17.4",
+    "stylelint": "^16.18.0",
+    "stylelint-config-standard-scss": "^14.0.0",
+    "stylelint-scss": "^6.11.1",
+    "swiper": "^11.2.2",
+    "typescript": "~5.8.3",
+    "vitest": "^3.1.4",
+    "vue3-zoomer": "^1.0.5",
+    "vue-tsc": "^2.2.10"
+  }
+}

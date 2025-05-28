@@ -1,0 +1,87 @@
+.thc-navlink {
+  color: var(--color-clear-200);
+}
+
+.thc-link {
+  color: var(--color-clear-200);
+  text-decoration: none;
+
+  @include respondTo("tablet-landscape") {
+    position: relative;
+    &::after {
+      content: "";
+      background-color: var(--color-green-100);
+      border-radius: 2em;
+      position: absolute;
+      bottom: 0;
+      height: 0.15em;
+      left: 0;
+      width: 100%;
+      transition: 0.2s ease-in-out;
+      opacity: 0;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &-icon {
+    color: var(--color-gray-200);
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    display: block;
+    margin-right: 0.5em;
+
+    &::before {
+      font-size: 0.7em;
+    }
+  }
+
+  &--arrow {
+    display: flex;
+    padding: 0.6em 0;
+    align-items: center;
+
+    .thc-link-arrow {
+      width: 1em;
+      height: 1em;
+
+      &.fa-chevron {
+        &-down {
+          font-size: 0.5em;
+          margin-left: 1em;
+
+          &::before {
+            font-size: 6px;
+          }
+        }
+        &-right {
+          font-size: 0.5em;
+          margin-left: 1em;
+
+          &::before {
+            font-size: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  &--icon {
+    &.thc-link--arrow {
+      .thc-link-arrow {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &.active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

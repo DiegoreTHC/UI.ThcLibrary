@@ -1,5 +1,7 @@
 # Dependencies
 node_modules
+public
+ModuleC
 
 # Logs
 *.log*
@@ -54,3 +56,5 @@ coverage
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*storybook.log

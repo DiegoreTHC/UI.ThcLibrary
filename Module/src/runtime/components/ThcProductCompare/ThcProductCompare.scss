@@ -1,0 +1,136 @@
+@use "../../styles/utils/media" as *;
+
+.thc {
+  &-compare {
+    @include respondTo("tablet-landscape") {
+      padding-top: 4.9em;
+    }
+    &-data {
+      padding: 1em;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.75em;
+      justify-content: space-between;
+      overflow: visible;
+      border-radius: var(--radius-8);
+
+      @include respondTo("tablet-landscape") {
+        padding-top: 4.65em;
+      }
+      @include respondTo("tablet-landscape") {
+        max-width: 12.5em;
+        width: 100%;
+      }
+    }
+
+    &-image {
+      background-color: rgba(var(--color-dark-rgb), 0.3);
+      border-radius: 1em;
+      min-width: 7.25em;
+      width: 7.25em;
+      height: 8.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include respondTo("tablet-landscape") {
+        position: absolute;
+        top: -4.8em;
+        left: 50%;
+        margin-left: -3.7em;
+      }
+    }
+
+    &-info {
+      min-width: 10.175em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      width: calc(100% - 11em);
+
+      &-top {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+    }
+
+    &-title {
+      line-height: 1.25em;
+    }
+
+    &--titles {
+      display: flex;
+      gap: 0.25em;
+      flex-direction: row;
+      align-items: flex-end;
+    }
+
+    &-titles {
+      padding: 1em;
+      min-width: 9.75em;
+    }
+
+    &-mobile {
+      &-nav {
+        border-left: 1px solid var(--color-gray-200);
+        padding-left: 0.5em;
+
+        @include respondTo("tablet-landscape") {
+          display: none;
+        }
+      }
+      &-toggle {
+        overflow: hidden;
+        width: 100%;
+      }
+    }
+
+    &-actions {
+      cursor: pointer;
+      height: 1em;
+      width: 1em;
+    }
+    &-similarities {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.75em 0;
+        border-bottom: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
+
+        @include respondTo("tablet-landscape") {
+          justify-content: center;
+        }
+      }
+
+      &-titles {
+        .thc-compare-similarity {
+          display: block;
+          padding: 1em 0;
+          border-bottom: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
+        }
+      }
+    }
+    &-similarity {
+      font-size: 0.75em;
+
+      &-name {
+        font-weight: var(--font-weight-medium);
+        @include respondTo("tablet-landscape") {
+          display: none;
+        }
+      }
+    }
+  }
+  &-sku {
+    color: var(--color-gray-500);
+    font-size: 0.75em;
+  }
+}

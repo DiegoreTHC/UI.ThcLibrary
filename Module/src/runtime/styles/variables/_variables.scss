@@ -1,0 +1,97 @@
+$color-primary: #05fe88; /* vibrant green (main brand color) */
+$color-secondary: #12824d; /* darker green (support/CTA) */
+$color-accent: #00b961; /* bright green (hover, focus, highlight) */
+$color-accent-secondary: #d24dcc; /* magenta (tags, badges, identity touch) */
+
+$color-warning: #ffe100; /* yellow (alerts, attention) */
+$color-info: #9747ff; /* purple (info messages or visual accents) */
+$color-error: #e30613; /* red (errors, critical) */
+$color-success: #00bb62;
+$color-alert: #ff8e5f; /* orange (warnings or secondary alerts) */
+
+$font-color-primary: #11232f;
+$font-color-primary-light: #9aaab9;
+$font-color-light: #ffffff;
+$font-color-accent: #05fe88;
+
+$color-dark-100: #000000;
+$color-dark-200: #151515;
+$color-dark-300: #282c2e;
+$color-dark-400: #2f2f2f;
+$color-dark-500: #35393c;
+$color-green-100: #05fe88;
+$color-green-200: #00dd74;
+$color-green-300: #00bb62;
+$color-green-400: #00b961;
+$color-green-500: #56a07c;
+$color-green-600: #2f9a68;
+$color-green-700: #12824d;
+$color-green-800: #193d1b;
+$color-green-900: #112812;
+$color-green-1000: #081409;
+$color-clear-100: #ffffff;
+$color-clear-200: #f6f6f6;
+$color-clear-300: #d9d9d9;
+$color-clear-400: #d9d9d9;
+$color-blue-100: #11232f;
+$color-gray-100: #3b3939;
+$color-gray-200: #4f4f4f;
+$color-gray-300: #6f6d6d;
+$color-gray-400: #879194;
+$color-gray-500: #9aaab9;
+$color-yellow-100: #ffe100;
+$color-purple-100: #9747ff;
+$color-purple-200: #ab00ef;
+$color-magenta-100: #d24dcc;
+$color-red-100: #e30613;
+$color-orange-100: #ff8e5f;
+$color-orange-200: #f95e1e;
+
+$font-family: "Outfit", sans-serif;
+
+$font-size-xxs: 0.714rem;
+$font-size-xs: 0.857rem;
+$font-size-small: 0.929rem;
+$font-size-base: 1rem;
+$font-size-large: 1.214rem;
+$font-size-h6: 1.429rem;
+$font-size-h5: 1.714rem;
+$font-size-h4: 2.071rem;
+$font-size-h3: 2.5rem;
+$font-size-h2: 3rem;
+$font-size-h1: 3.571rem;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 600;
+$font-weight-bold: 800;
+$font-weight-black: 900;
+
+$sizes-xsmall: 0.25em;
+$sizes-small: 0.5em;
+$sizes-regular: 1em;
+$sizes-large: 1.5em;
+$sizes-xlarge: 2em;
+
+$radius: 5em;
+$radius-2: 0.125em;
+$radius-4: 0.25em;
+$radius-6: 0.375em;
+$radius-8: 0.5em;
+
+$spacing-2-px: 0.125em;
+$spacing-4-px: 0.25em;
+$spacing-6-px: 0.375em;
+$spacing-8-px: 0.5em;
+$spacing-10-px: 0.625em;
+$spacing-12-px: 0.75em;
+$spacing-14-px: 0.875em;
+
+$units-font-base: 14px;
+$units-base: 16px;
+
+$levels-z1: 1;
+$levels-z2: 2;
+$levels-z3: 3;
+$levels-z4: 4;
+$levels-z99: 99;
