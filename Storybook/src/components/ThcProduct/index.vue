@@ -18,8 +18,8 @@
         />
       </ThcCard>
       <div class="thc-product-data">
-        <p class="thc-product-name">{{ product.productName }}</p>
-        <p class="thc-product-category">{{ product.categoryName }}</p>
+        <p class="thc-product-name">{{ product["product-name"] }}</p>
+        <p class="thc-product-category">{{ product["category-name"] }}</p>
       </div>
       <ThcImage
         class="thc-image"
@@ -42,13 +42,13 @@
         />
       </div>
       <div class="thc-product-data">
-        <p class="thc-product-title">{{ product?.productName }}</p>
+        <p class="thc-product-title">{{ product["product-name"] }}</p>
         <div class="thc-product-data-flex">
           <ThcPrice
             :price="product?.price"
             variant="default"
           />
-          <p class="thc-product-category-name">{{ product?.categoryName }}</p>
+          <p class="thc-product-category-name">{{ product["category-name"] }}</p>
         </div>
       </div>
       <nav class="thc-product-action">
@@ -77,7 +77,7 @@
             <ThcTitle
               variant="dual"
               type="h5"
-              :title="product.categoryName"
+              :title="product['category-name']"
               :loading="loading"
               :highlight-words="2"
             />
@@ -100,8 +100,8 @@
         :variant="cardVariant"
       >
         <div class="thc-product-data">
-          <p class="thc-product-title">{{ product.productName }}</p>
-          <p class="thc-product-subtitle">{{ product.categoryName }}</p>
+          <p class="thc-product-title">{{ product["product-name"] }}</p>
+          <p class="thc-product-subtitle">{{ product["category-name"] }}</p>
 
           <div class="thc-product-actions">
             <ThcPrice
@@ -144,21 +144,7 @@ const props = withDefaults(
   }>(),
   {
     loading: false,
-    variant: "default",
-    product: {
-      id: "",
-      price: "",
-      productName: "",
-      categoryName: "",
-      media: {
-        sizes: {
-          medium: "",
-          small: ""
-        },
-        alt: ""
-      },
-      stock: ""
-    }
+    variant: "default"
   }
 );
 
