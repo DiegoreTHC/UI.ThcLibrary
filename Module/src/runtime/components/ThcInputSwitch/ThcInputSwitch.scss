@@ -43,6 +43,7 @@
     }
 
     &:checked {
+      background-color: var(--color-blue-100);
       background-color: var(--color-primary);
 
       &::before {
