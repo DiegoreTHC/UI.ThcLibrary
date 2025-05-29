@@ -5,11 +5,9 @@ import { ProductVariants } from "../../utils/enums";
 const props = withDefaults(
   defineProps<{
     variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
-    loading?: boolean;
     product?: any;
   }>(),
   {
-    loading: false,
     variant: "default"
   }
 );
@@ -99,15 +97,11 @@ defineEmits<{
       >
         <div class="thc-product">
           <div class="thc-product-data">
-            <ThcPill
-              :text="product.stock"
-              :loading="loading"
-            />
+            <ThcPill :text="product.stock" />
             <ThcTitle
               variant="dual"
               type="h5"
               :title="product.categoryName"
-              :loading="loading"
               :highlight-words="2"
             />
           </div>
