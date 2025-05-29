@@ -5,7 +5,16 @@ const meta = {
   title: "Smokers.mx/ThcSkeleton",
   component: ThcSkeleton,
   tags: ["autodocs"],
-  argTypes: {}
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["default", "title", "subtitle", "product", "product-clothes", "categories"]
+    },
+    type: {
+      control: { type: "select" },
+      options: ["default", "image", "button", "title", "text"]
+    }
+  }
 } satisfies Meta<typeof ThcSkeleton>;
 
 export default meta;
@@ -13,17 +22,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    width: "100px"
+    type: "default",
+    variant: "default",
+    show: true
   }
 };
 
 export const WidthHeight: Story = {
   args: {
+    type: "default",
+    variant: "default",
     width: "40px",
-    height: "18px"
+    height: "18px",
+    show: true
   }
 };
 
 export const Clean: Story = {
-  args: {}
+  args: {
+    show: true,
+    type: "default",
+    variant: "default"
+  }
 };
