@@ -13,7 +13,7 @@
         :variant="cardVariant"
       >
         <ThcPrice
-          :price="product.price"
+          :price="product?.price"
           variant="light"
         />
       </ThcCard>
@@ -23,8 +23,8 @@
       </div>
       <ThcImage
         class="thc-image"
-        :img-src="product.media.sizes"
-        :alt="product.media.alt"
+        :img-src="product.media?.sizes"
+        :alt="product.media?.alt"
       />
     </div>
     <div
@@ -33,8 +33,8 @@
     >
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :img-src="product.media?.sizes"
+          :alt="product.media?.alt"
         />
         <ThcCard
           class="thc-product-card"
@@ -86,8 +86,8 @@
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :img-src="product.media?.sizes"
+          :alt="product.media?.alt"
         />
       </div>
     </div>
@@ -118,8 +118,8 @@
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :img-src="product.media?.sizes"
+          :alt="product.media?.alt"
         />
       </div>
     </div>
@@ -133,6 +133,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import { ProductVariants } from "~/src/utils/enums";
 
 const props = withDefaults(
@@ -143,7 +144,21 @@ const props = withDefaults(
   }>(),
   {
     loading: false,
-    variant: "default"
+    variant: "default",
+    product: {
+      id: "",
+      price: "",
+      productName: "",
+      categoryName: "",
+      media: {
+        sizes: {
+          medium: "",
+          small: ""
+        },
+        alt: ""
+      },
+      stock: ""
+    }
   }
 );
 
@@ -161,5 +176,5 @@ defineEmits<{
 </script>
 
 <style lang="scss" scoped>
-@import "./ThcProduct.scss";
+@use "./ThcProduct.scss" as *;
 </style>
