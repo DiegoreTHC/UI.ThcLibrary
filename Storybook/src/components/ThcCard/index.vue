@@ -1,13 +1,6 @@
-<template>
-  <div
-    :class="['thc-card', `thc-card--${props.variant}`]"
-    ref="cardRef"
-  >
-    <slot />
-  </div>
-</template>
-
 <script lang="ts" setup>
+import { defineProps, onBeforeUnmount, onMounted, ref } from "vue";
+
 const props = defineProps<{
   variant?: "primary" | "gradient" | "dark" | "transparent"; // Only affect colors,
 }>();
@@ -33,6 +26,15 @@ onBeforeUnmount(() => {
   document.removeEventListener("click", handleClickOutside);
 });
 </script>
+
+<template>
+  <div
+    :class="['thc-card', `thc-card--${props.variant}`]"
+    ref="cardRef"
+  >
+    <slot />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 @use "./ThcCard.scss" as *;

@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+defineProps<{
+  socials: any[];
+  loading?: boolean;
+}>();
+</script>
+
 <template>
   <ul class="thc-socials">
     <li
@@ -15,13 +22,6 @@
     </li>
   </ul>
 </template>
-
-<script lang="ts" setup>
-defineProps<{
-  socials: any[];
-  loading?: boolean;
-}>();
-</script>
 
 <style lang="scss" scoped>
 @use "./ThcSocials.scss" as *;

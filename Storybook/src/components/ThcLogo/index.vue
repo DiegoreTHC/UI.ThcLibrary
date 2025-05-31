@@ -1,8 +1,26 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+const props = defineProps<{
+  name?: string;
+  responsive?: boolean;
+  variant?: "primary" | "negative" | "dark"; // Only affect colors;
+  mode?: "full" | "inline" | "responsive";
+  loading?: boolean;
+  isMobile?: boolean;
+}>();
+
+defineEmits<{
+  (event: "click"): void;
+}>();
+
+const mobile = ref(props.isMobile);
+</script>
+
 <template>
   <h1
     :class="['thc-logo', `thc-logo--${variant}`, `thc-logo--${loading}`, `thc-logo--${mode}`]"
     @click="$emit('click')"
-    v-on-resize="onResize"
   >
     <figure class="thc-logo-container">
       <ThcSkeleton
@@ -12,7 +30,7 @@
         v-if="loading"
       />
       <svg
-        v-if="responsive && isMobile"
+        v-if="responsive && mobile"
         class="sm-logo sm-logo-bong"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 29 59"
@@ -25,7 +43,7 @@
         class="sm-logo"
         viewBox="0 0 178 78"
         xmlns="http://www.w3.org/2000/svg"
-        v-if="mode === 'full' || (mode === 'responsive' && !isMobile)"
+        v-if="mode === 'full' || (mode === 'responsive' && !mobile)"
       >
         <path
           d="M3.76302 47.1657C5.04051 48.049 6.18559 48.7002 7.19823 49.1177C8.20932 49.5353 9.14408 49.7456 10.0056 49.7456C10.6335 49.7456 11.1211 49.6303 11.4701 49.3966C11.819 49.1645 11.9935 48.8498 11.9935 48.4556C11.9935 47.7577 11.1102 47.2233 9.34349 46.8525C9.06462 46.8058 8.8138 46.7606 8.59413 46.7123C8.37291 46.6656 8.18128 46.6204 8.01926 46.5721C6.13573 46.1312 4.70712 45.3336 3.7303 44.1838C2.75349 43.0325 2.26586 41.5868 2.26586 39.8434C2.26586 37.17 3.2193 34.9967 5.12464 33.3235C7.02998 31.627 9.55225 30.7779 12.6915 30.7779C15.5503 30.7779 18.3514 31.5335 21.0949 33.0447L18.3748 39.5646C17.5148 38.9367 16.6486 38.4553 15.7777 38.1173C14.9053 37.7807 14.0624 37.6109 13.2492 37.6109C11.9468 37.6109 11.2971 38.0066 11.2971 38.7965C11.2971 39.4945 12.5403 40.1098 15.0283 40.6442C15.4007 40.7377 15.7029 40.8062 15.9351 40.853C17.6784 41.2487 19.0384 42.0385 20.0153 43.2241C20.9921 44.4097 21.4797 45.8508 21.4797 47.5474C21.4797 50.3142 20.4795 52.5685 18.4807 54.3119C16.4819 56.0552 13.8895 56.9276 10.7051 56.9276C7.42725 56.9276 4.16185 55.9991 0.907349 54.1389L3.76302 47.1657Z"
@@ -144,29 +162,6 @@
     <span class="thc-logo-title hidden">{{ name }}</span>
   </h1>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-
-const props = defineProps<{
-  name?: string;
-  responsive?: boolean;
-  variant?: "primary" | "negative" | "dark"; // Only affect colors
-  mode?: "full" | "inline" | "responsive";
-  loading?: boolean;
-  mobile: boolean;
-}>();
-
-defineEmits<{
-  (event: "click"): void;
-}>();
-
-const isMobile = ref(props.mobile);
-
-const onResize = ({ isMobileSize }: any) => {
-  isMobile.value = isMobileSize;
-};
-</script>
 
 <style lang="scss" scoped>
 @use "./Logo.scss" as *;

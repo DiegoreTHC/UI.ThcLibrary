@@ -235,5 +235,5 @@ watch(searchQuery, (newVal) => {
 </template>
 
 <style lang="scss" scoped>
-@import "./SearchBar.scss";
+@use "./SearchBar.scss" as *;
 </style>

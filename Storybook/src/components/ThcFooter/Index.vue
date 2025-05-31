@@ -41,7 +41,8 @@ const props = withDefaults(
           class="thc-disclaimer"
           v-else
         >
-          Smokers.mx | Todos los derechos reservados {{ new Date().getFullYear() }}
+          Smokers.mx | Todos los derechos reservados
+          {{ new Date().getFullYear() }}
         </p>
       </nav>
     </div>
@@ -68,5 +69,5 @@ const props = withDefaults(
 </template>
 
 <style lang="scss" scoped>
-@import "./Footer.scss";
+@use "./ThcFooter.scss" as *;
 </style>

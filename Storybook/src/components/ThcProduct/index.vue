@@ -1,3 +1,30 @@
+<script lang="ts" setup>
+import { computed } from "vue";
+import { ProductVariants } from "../../utils/enums";
+
+const props = withDefaults(
+  defineProps<{
+    variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
+    product?: any;
+  }>(),
+  {
+    variant: "default"
+  }
+);
+
+const cardVariant = computed(() => {
+  if (props.variant === ProductVariants.Outline) {
+    return "gradient";
+  }
+  return "primary";
+});
+
+defineEmits<{
+  (event: "click"): void;
+  (event: "clickBtn"): void;
+}>();
+</script>
+
 <template>
   <div
     :class="['thc-product', `thc-product--${props.variant}`]"
@@ -13,18 +40,18 @@
         :variant="cardVariant"
       >
         <ThcPrice
-          :price="product?.price"
+          :price="product.price"
           variant="light"
         />
       </ThcCard>
       <div class="thc-product-data">
         <p class="thc-product-name">{{ product["product-name"] }}</p>
-        <p class="thc-product-category">{{ product["category-name"] }}</p>
+        <p class="thc-product-category">{{ product["category-slug"] }}</p>
       </div>
       <ThcImage
         class="thc-image"
-        :img-src="product.media?.sizes"
-        :alt="product.media?.alt"
+        :img-src="product.media.sizes"
+        :alt="product.media.alt"
       />
     </div>
     <div
@@ -33,8 +60,8 @@
     >
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media?.sizes"
-          :alt="product.media?.alt"
+          :img-src="product.media.sizes"
+          :alt="product.media.alt"
         />
         <ThcCard
           class="thc-product-card"
@@ -48,7 +75,7 @@
             :price="product?.price"
             variant="default"
           />
-          <p class="thc-product-category-name">{{ product["category-name"] }}</p>
+          <p class="thc-product-category-name">{{ product["category-slug"] }}</p>
         </div>
       </div>
       <nav class="thc-product-action">
@@ -70,15 +97,11 @@
       >
         <div class="thc-product">
           <div class="thc-product-data">
-            <ThcPill
-              :text="product.stock"
-              :loading="loading"
-            />
+            <ThcPill :text="product.stock" />
             <ThcTitle
               variant="dual"
               type="h5"
               :title="product['category-name']"
-              :loading="loading"
               :highlight-words="2"
             />
           </div>
@@ -86,8 +109,8 @@
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media?.sizes"
-          :alt="product.media?.alt"
+          :img-src="product.media.sizes"
+          :alt="product.media.alt"
         />
       </div>
     </div>
@@ -101,7 +124,7 @@
       >
         <div class="thc-product-data">
           <p class="thc-product-title">{{ product["product-name"] }}</p>
-          <p class="thc-product-subtitle">{{ product["category-name"] }}</p>
+          <p class="thc-product-subtitle">{{ product["category-slug"] }}</p>
 
           <div class="thc-product-actions">
             <ThcPrice
@@ -118,8 +141,8 @@
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media?.sizes"
-          :alt="product.media?.alt"
+          :img-src="product.media.sizes"
+          :alt="product.media.alt"
         />
       </div>
     </div>
@@ -131,35 +154,6 @@
     />
   </div>
 </template>
-
-<script lang="ts" setup>
-import { computed } from "vue";
-import { ProductVariants } from "~/src/utils/enums";
-
-const props = withDefaults(
-  defineProps<{
-    variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
-    loading?: boolean;
-    product?: any;
-  }>(),
-  {
-    loading: false,
-    variant: "default"
-  }
-);
-
-const cardVariant = computed(() => {
-  if (props.variant === ProductVariants.Outline) {
-    return "gradient";
-  }
-  return "primary";
-});
-
-defineEmits<{
-  (event: "click"): void;
-  (event: "clickBtn"): void;
-}>();
-</script>
 
 <style lang="scss" scoped>
 @use "./ThcProduct.scss" as *;

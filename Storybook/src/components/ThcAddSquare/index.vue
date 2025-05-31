@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+const emit = defineEmits(["click"]);
+</script>
+
 <template>
   <div
     class="thc-add thc-add-square"
@@ -7,10 +11,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const emit = defineEmits(["click"]);
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcAddSquare.scss";
+@use "./ThcAddSquare.scss" as *;
 </style>

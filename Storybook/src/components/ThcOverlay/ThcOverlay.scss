@@ -1,5 +1,5 @@
 .thc-overlay {
-  // background-color: rgba($color: $color-brand-blue-100, $alpha: .3);
+  background-color: rgba(var(--color-blue-100-rgb, 0.3));
   position: fixed;
   top: 0;
   left: 0;

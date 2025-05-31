@@ -1,11 +1,18 @@
+<script lang="ts" setup>
+defineProps<{
+  loading: boolean;
+}>();
+</script>
+
 <template>
   <header class="thc-header">
-    <ThcLogo
-      variant="primary"
-      mode="full"
-    />
-    <nav class="thc-header-nav">
-      <slot />
-    </nav>
+    <div class="thc-wrapper">
+      <div class="thc-header-logo">
+        <slot name="logo" />
+      </div>
+      <nav class="thc-header-nav">
+        <slot />
+      </nav>
+    </div>
   </header>
 </template>

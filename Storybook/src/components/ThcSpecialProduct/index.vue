@@ -1,3 +1,27 @@
+<script lang="ts" setup>
+import { computed } from "vue";
+import { Campaign } from "../../utils/models";
+
+const props = withDefaults(
+  defineProps<{
+    loading?: boolean;
+    campaign?: Campaign;
+  }>(),
+  {
+    loading: true
+  }
+);
+
+const customClass = computed(() => {
+  const classes = ["thc-banner"];
+
+  if (props.campaign?.direction) {
+    classes.push(`thc-banner--${props.campaign?.direction}`);
+  }
+  return classes.join(" ");
+});
+</script>
+
 <template>
   <div :class="customClass">
     <div
@@ -49,29 +73,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import type { Campaign } from "~/src/utils/models";
-
-const props = withDefaults(
-  defineProps<{
-    loading?: boolean;
-    campaign?: Campaign;
-  }>(),
-  {
-    loading: true
-  }
-);
-
-const customClass = computed(() => {
-  const classes = ["thc-banner"];
-
-  if (props.campaign?.direction) {
-    classes.push(`thc-banner--${props.campaign?.direction}`);
-  }
-  return classes.join(" ");
-});
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcSpecialProduct.scss";
+@use "./ThcSpecialProduct.scss" as *;
 </style>

@@ -1,3 +1,33 @@
+<script lang="ts" setup>
+import { computed } from "vue";
+
+const props = withDefaults(
+  defineProps<{
+    open: boolean;
+    navigation: any;
+    categories: any;
+    socialMedia: any;
+  }>(),
+  {
+    open: false
+  }
+);
+
+const emit = defineEmits(["categoryClick"]);
+const navigationLinks = computed(() => props.navigation.slice(-3));
+
+function formatName(name: string): string {
+  return name
+    .split(/[\s-_]+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
+const goToCategory = (link: any) => {
+  emit("categoryClick", link);
+};
+</script>
+
 <template>
   <aside
     class="thc-sidebar"
@@ -46,7 +76,7 @@
           class="thc-brands-link"
           :to="`brands/${brand?.slug}`"
           target="_blank"
-          :key="brand.name"
+          :key="brand.slug"
         >
           <ThcImage
             class="thc-brands-image"
@@ -72,36 +102,6 @@
   </aside>
 </template>
 
-<script lang="ts" setup>
-import { computed } from "vue";
-
-const props = withDefaults(
-  defineProps<{
-    open: boolean;
-    navigation: any;
-    categories: any;
-    socialMedia: any;
-  }>(),
-  {
-    open: false
-  }
-);
-
-const emit = defineEmits(["categoryClick"]);
-const navigationLinks = computed(() => props.navigation.slice(-3));
-
-function formatName(name: string): string {
-  return name
-    .split(/[\s-_]+/)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // capitalize first letter
-    .join(" ");
-}
-
-const goToCategory = (link: any) => {
-  emit("categoryClick", link);
-};
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcMobileSidebar.scss";
+@use "./ThcMobileSidebar.scss" as *;
 </style>

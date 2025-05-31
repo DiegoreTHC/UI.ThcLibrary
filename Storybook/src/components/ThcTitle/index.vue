@@ -1,26 +1,6 @@
-<template>
-  <div :class="componentClass">
-    <ThcSkeleton
-      v-if="loading"
-      class="thc-title-loader"
-      width="200px"
-    />
-    <component
-      v-else
-      :is="type"
-      :class="titleClass"
-    >
-      <span v-html="splittedTitle" />
-      <span
-        class="thc-subtitle"
-        v-html="splittedSubTitle"
-        v-if="subtitle?.length"
-      ></span>
-    </component>
-  </div>
-</template>
-
 <script setup lang="ts">
+import { computed } from "vue";
+
 const props = withDefaults(
   defineProps<{
     variant?: "primary" | "dual" | "dark" | "quote";
@@ -135,6 +115,28 @@ const titleClass = computed(() => {
 });
 </script>
 
+<template>
+  <div :class="componentClass">
+    <ThcSkeleton
+      v-if="loading"
+      class="thc-title-loader"
+      width="200px"
+    />
+    <component
+      v-else
+      :is="type"
+      :class="titleClass"
+    >
+      <span v-html="splittedTitle" />
+      <span
+        class="thc-subtitle"
+        v-html="splittedSubTitle"
+        v-if="subtitle?.length"
+      />
+    </component>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-@import "./ThcTitle.scss";
+@use "./ThcTitle.scss" as *;
 </style>

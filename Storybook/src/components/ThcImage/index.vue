@@ -1,32 +1,5 @@
-<template>
-  <div :class="imgClass">
-    <img
-      class="thc-image-tag"
-      :srcset="`${imgSrc.medium} 480w, ${imgSrc.large} 1280w`"
-      :src="imgSrc.small"
-      :alt="alt"
-      @load="imgLoaded"
-      @error="imgLoaded"
-      v-show="isImgLoaded && !isImgError"
-    />
-    <div
-      class="thc-image-error"
-      v-if="isImgError"
-    >
-      <i class="fas fa-image"></i>
-      <ThcSkeleton
-        width="40px"
-        height="16px"
-      />
-      <ThcSkeleton
-        width="20px"
-        height="12px"
-      />
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
+import { computed, ref } from "vue";
 const props = withDefaults(
   defineProps<{
     imgSrc?: {
@@ -59,6 +32,34 @@ const imgClass = computed(() => {
 });
 </script>
 
+<template>
+  <div :class="imgClass">
+    <img
+      class="thc-image-tag"
+      :srcset="`${imgSrc.medium} 480w, ${imgSrc.large} 1280w`"
+      :src="imgSrc.small"
+      :alt="alt"
+      @load="imgLoaded"
+      @error="imgLoaded"
+      v-show="isImgLoaded && !isImgError"
+    />
+    <div
+      class="thc-image-error"
+      v-if="isImgError"
+    >
+      <i class="fas fa-image"></i>
+      <ThcSkeleton
+        width="40px"
+        height="16px"
+      />
+      <ThcSkeleton
+        width="20px"
+        height="12px"
+      />
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-@use "./ThcImage.scss";
+@use "./ThcImage.scss" as *;
 </style>
