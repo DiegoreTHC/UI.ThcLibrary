@@ -7,7 +7,7 @@ const props = withDefaults(
     to: string;
     icon?: string;
     arrow?: boolean;
-    arrowDirection?: "right" | "down" | "up";
+    arrowDirection?: "right" | "down" | "up" | "left";
     disabled?: boolean;
   }>(),
   {

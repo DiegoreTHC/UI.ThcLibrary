@@ -51,10 +51,14 @@ const imgClass = computed(() => {
       <ThcSkeleton
         width="40px"
         height="16px"
+        variant="default"
+        show
       />
       <ThcSkeleton
         width="20px"
         height="12px"
+        variant="default"
+        show
       />
     </div>
   </div>
