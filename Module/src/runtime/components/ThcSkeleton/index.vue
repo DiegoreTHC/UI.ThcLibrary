@@ -52,6 +52,7 @@ const localStyles = computed(() => {
     >
       <div class="thc-skeleton thc-skeleton-subtitle"></div>
       <div class="thc-skeleton thc-skeleton-text"></div>
+      <div class="thc-skeleton thc-skeleton-text"></div>
     </div>
     <div
       class="thc-skeletons"
