@@ -128,7 +128,7 @@
         margin: 0;
       }
 
-      @include respondTo("large-screens-13") {
+      @include respondTo("desktop") {
         display: block;
       }
     }

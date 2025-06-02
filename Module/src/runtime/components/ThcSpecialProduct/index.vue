@@ -1,6 +1,37 @@
 <script lang="ts" setup>
 import { computed } from "vue";
-import { Campaign } from "../../utils/models";
+
+interface Appearance {
+  bgColor: string;
+  bgHalfColor: string;
+  buttonColor: string;
+  buttonBgColor: string;
+  buttonBorderColor: string;
+  bgImgProduct: string;
+}
+
+interface Media {
+  alt: string;
+  sizes: {
+    small: string;
+    medium: string;
+    large: string;
+  };
+}
+
+interface Campaign {
+  id?: string;
+  slug?: string;
+  direction?: "rtl" | "ltr";
+  title?: string;
+  subtitle?: string;
+  copy?: string;
+  disclaimer?: string;
+  btnText?: string;
+  link?: string;
+  media?: Media;
+  appearance?: Appearance;
+}
 
 const props = withDefaults(
   defineProps<{

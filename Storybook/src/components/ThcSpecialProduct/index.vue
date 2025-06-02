@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from "vue";
-import { Campaign } from "../../utils/models";
+import type { Campaign } from "~/src/utils/models";
 
 const props = withDefaults(
   defineProps<{
@@ -45,7 +45,7 @@ const customClass = computed(() => {
         />
         <p
           class="thc-banner-copy"
-          v-if="campaign?.copy?.length"
+          v-if="campaign?.copy"
         >
           {{ campaign?.copy }}
         </p>

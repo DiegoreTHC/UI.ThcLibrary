@@ -147,9 +147,9 @@ defineEmits<{
       </div>
     </div>
     <ThcPill
-      v-if="product?.promotion && product?.promotion.active"
-      :text="product?.promotion?.text"
-      :variant="product?.promotion?.variant"
+      v-if="product?.label && product?.label.text.length"
+      :text="product?.label?.text"
+      :variant="product?.label?.variant"
       class="thc-product-pill"
     />
   </div>
