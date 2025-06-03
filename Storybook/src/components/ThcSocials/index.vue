@@ -12,7 +12,16 @@ defineProps<{
       v-for="social in socials"
       :key="social"
     >
+      <ThcSkeleton
+        class="thc-socials-item--loading"
+        type="default"
+        variant="default"
+        width="1.5em"
+        height="1.5em"
+        :show="loading"
+      />
       <NuxtLink
+        v-if="!loading"
         :to="social?.link"
         class="thc-socials-link"
         target="_blank"

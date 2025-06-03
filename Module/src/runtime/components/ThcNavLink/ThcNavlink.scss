@@ -8,7 +8,7 @@
   color: var(--color-clear-200);
   text-decoration: none;
 
-  @include respondTo("tablet-landscape") {
+  @include respondTo("desktop") {
     position: relative;
     &::after {
       content: "";

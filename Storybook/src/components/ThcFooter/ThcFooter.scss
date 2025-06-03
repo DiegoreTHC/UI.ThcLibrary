@@ -45,8 +45,8 @@
       gap: 0.5em;
 
       &-list {
-        max-width: 6em;
-        margin: 0 auto;
+        // max-width: 6em;
+        // margin: 0 auto;
         width: 100%;
 
         @include respondTo("tablet") {
@@ -79,6 +79,8 @@
 
       &--loading {
         margin: 0 auto;
+        display: flex;
+        justify-content: center;
       }
     }
   }
@@ -99,7 +101,7 @@
     }
 
     &--loading {
-      margin: 1.5em 0;
+      margin: 0;
     }
   }
 }

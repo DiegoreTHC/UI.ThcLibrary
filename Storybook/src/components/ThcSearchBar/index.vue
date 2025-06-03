@@ -121,7 +121,9 @@ watch(searchQuery, (newVal) => {
   >
     <ThcSkeleton
       width="100%"
-      v-if="loading"
+      type="text"
+      variant="default"
+      :show="loading"
     />
 
     <div
