@@ -32,6 +32,7 @@
 
     &--responsive {
       width: 1.8em;
+      overflow: hidden;
 
       @include respondTo("desktop") {
         width: 10em;

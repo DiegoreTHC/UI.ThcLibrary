@@ -64,8 +64,8 @@ const props = withDefaults(
     <div class="thc-footer-brand">
       <ThcSkeleton
         type="text"
-        width="100%"
-        height="1em"
+        width="20%"
+        height=".6em"
         :show="loading"
         variant="default"
         class="thc-footer-brand--loading"

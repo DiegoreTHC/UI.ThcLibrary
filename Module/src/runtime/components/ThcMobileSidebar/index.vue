@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -13,7 +13,7 @@ const props = withDefaults(
   }
 );
 
-const emit = defineEmits(["categoryClick"]);
+const emit = defineEmits(["categoryClick", "closeOutside"]);
 const navigationLinks = computed(() => props.navigation.slice(-3));
 
 function formatName(name: string): string {
@@ -26,12 +26,29 @@ function formatName(name: string): string {
 const goToCategory = (link: any) => {
   emit("categoryClick", link);
 };
+
+const sidebar = ref(null);
+
+const handleClickOutside = (event) => {
+  if (sidebar.value && !sidebar.value.contains(event.target)) {
+    emit("closeOutside");
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <template>
   <aside
     class="thc-sidebar"
     v-if="open"
+    ref="sidebar"
   >
     <nav class="thc-mobile-nav">
       <ThcTitle
@@ -75,8 +92,8 @@ const goToCategory = (link: any) => {
           v-for="brand in navigation[1]?.subLinks"
           class="thc-brands-link"
           :to="`brands/${brand?.slug}`"
-          target="_blank"
           :key="brand.slug"
+          @click="emit('closeOutside')"
         >
           <ThcImage
             class="thc-brands-image"
