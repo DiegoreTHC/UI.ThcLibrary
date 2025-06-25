@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -13,7 +13,8 @@ const props = withDefaults(
   }
 );
 
-const emit = defineEmits(["categoryClick", "closeOutside"]);
+const emit = defineEmits(["categoryClick", "close"]);
+
 const navigationLinks = computed(() => props.navigation.slice(-3));
 
 function formatName(name: string): string {
@@ -27,28 +28,28 @@ const goToCategory = (link: any) => {
   emit("categoryClick", link);
 };
 
-const sidebar = ref(null);
+const sidebarRef = ref<HTMLElement | null>(null);
 
-const handleClickOutside = (event) => {
-  if (sidebar.value && !sidebar.value.contains(event.target)) {
-    emit("closeOutside");
+const handleClickOutside = (event: MouseEvent) => {
+  if (sidebarRef.value && !sidebarRef.value.contains(event.target as Node)) {
+    emit("close");
   }
 };
 
 onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
+  document.addEventListener("mousedown", handleClickOutside);
 });
 
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
+onUnmounted(() => {
+  document.removeEventListener("mousedown", handleClickOutside);
 });
 </script>
 
 <template>
   <aside
     class="thc-sidebar"
+    ref="sidebarRef"
     v-if="open"
-    ref="sidebar"
   >
     <nav class="thc-mobile-nav">
       <ThcTitle
@@ -74,7 +75,12 @@ onBeforeUnmount(() => {
           :key="link"
           variant="outline"
           :text="formatName(link['category-name'])"
-          @click="goToCategory(link)"
+          @click="
+            () => {
+              goToCategory(link);
+              emit('close');
+            }
+          "
         />
       </div>
     </nav>
@@ -91,9 +97,10 @@ onBeforeUnmount(() => {
         <NuxtLink
           v-for="brand in navigation[1]?.subLinks"
           class="thc-brands-link"
-          :to="`brands/${brand?.slug}`"
+          :to="`/brands/${brand?.slug}`"
+          target="_blank"
           :key="brand.slug"
-          @click="emit('closeOutside')"
+          @click.native="emit('close')"
         >
           <ThcImage
             class="thc-brands-image"
@@ -113,6 +120,7 @@ onBeforeUnmount(() => {
           :to="item?.to"
           :icon="item.icon"
           arrow
+          @click="emit('close')"
         />
       </div>
     </nav>

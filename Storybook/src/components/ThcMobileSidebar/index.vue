@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -13,7 +13,8 @@ const props = withDefaults(
   }
 );
 
-const emit = defineEmits(["categoryClick"]);
+const emit = defineEmits(["categoryClick", "close"]);
+
 const navigationLinks = computed(() => props.navigation.slice(-3));
 
 function formatName(name: string): string {
@@ -26,11 +27,28 @@ function formatName(name: string): string {
 const goToCategory = (link: any) => {
   emit("categoryClick", link);
 };
+
+const sidebarRef = ref<HTMLElement | null>(null);
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (sidebarRef.value && !sidebarRef.value.contains(event.target as Node)) {
+    emit("close");
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("mousedown", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("mousedown", handleClickOutside);
+});
 </script>
 
 <template>
   <aside
     class="thc-sidebar"
+    ref="sidebarRef"
     v-if="open"
   >
     <nav class="thc-mobile-nav">
@@ -57,7 +75,12 @@ const goToCategory = (link: any) => {
           :key="link"
           variant="outline"
           :text="formatName(link['category-name'])"
-          @click="goToCategory(link)"
+          @click="
+            () => {
+              goToCategory(link);
+              emit('close');
+            }
+          "
         />
       </div>
     </nav>
@@ -74,9 +97,10 @@ const goToCategory = (link: any) => {
         <NuxtLink
           v-for="brand in navigation[1]?.subLinks"
           class="thc-brands-link"
-          :to="`brands/${brand?.slug}`"
+          :to="`/brands/${brand?.slug}`"
           target="_blank"
           :key="brand.slug"
+          @click.native="emit('close')"
         >
           <ThcImage
             class="thc-brands-image"
@@ -96,6 +120,7 @@ const goToCategory = (link: any) => {
           :to="item?.to"
           :icon="item.icon"
           arrow
+          @click="emit('close')"
         />
       </div>
     </nav>
