@@ -45,13 +45,13 @@ defineEmits<{
         />
       </ThcCard>
       <div class="thc-product-data">
-        <p class="thc-product-name">{{ product["product-name"] }}</p>
-        <p class="thc-product-category">{{ product["category-slug"] }}</p>
+        <p class="thc-product-name">{{ product.name }}</p>
+        <p class="thc-product-category">{{ product["category-name"] }}</p>
       </div>
       <ThcImage
         class="thc-image"
-        :img-src="product.media.sizes"
-        :alt="product.media.alt"
+        :img-src="product?.media?.sizes"
+        :alt="product?.media?.alt"
       />
     </div>
     <div
@@ -60,8 +60,8 @@ defineEmits<{
     >
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :img-src="product?.media?.sizes"
+          :alt="product?.media?.alt"
         />
         <ThcCard
           class="thc-product-card"
@@ -69,13 +69,13 @@ defineEmits<{
         />
       </div>
       <div class="thc-product-data">
-        <p class="thc-product-title">{{ product["product-name"] }}</p>
+        <p class="thc-product-title">{{ product.name }}</p>
         <div class="thc-product-data-flex">
           <ThcPrice
             :price="product?.price"
             variant="default"
           />
-          <p class="thc-product-category-name">{{ product["category-slug"] }}</p>
+          <p class="thc-product-category-name">{{ product["category-name"] }}</p>
         </div>
       </div>
       <nav class="thc-product-action">
@@ -109,8 +109,8 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :img-src="product?.media?.sizes"
+          :alt="product?.media?.alt"
         />
       </div>
     </div>
@@ -123,8 +123,8 @@ defineEmits<{
         :variant="cardVariant"
       >
         <div class="thc-product-data">
-          <p class="thc-product-title">{{ product["product-name"] }}</p>
-          <p class="thc-product-subtitle">{{ product["category-slug"] }}</p>
+          <p class="thc-product-title">{{ product.name }}</p>
+          <p class="thc-product-subtitle">{{ product["category-name"] }}</p>
 
           <div class="thc-product-actions">
             <ThcPrice
@@ -141,8 +141,8 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :img-src="product?.media?.sizes"
+          :alt="product?.media?.alt"
         />
       </div>
     </div>

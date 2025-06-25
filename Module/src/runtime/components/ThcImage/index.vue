@@ -8,7 +8,7 @@ const props = withDefaults(
       large: string;
     };
     alt?: string;
-    loading: boolean;
+    loading?: boolean;
   }>(),
   {
     alt: "Thc Image",
