@@ -10,7 +10,8 @@ const props = withDefaults(
     height?: string;
   }>(),
   {
-    type: "default"
+    type: "default",
+    variant: "default"
   }
 );
 
@@ -97,6 +98,10 @@ const localStyles = computed(() => {
         </div>
       </div>
     </div>
+    <div
+      class="thc-skeletons thc-skeleton"
+      v-if="variant === 'button'"
+    ></div>
   </div>
 </template>
 

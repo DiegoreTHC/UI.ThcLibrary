@@ -21,6 +21,18 @@
     }
   }
 
+  &--loading {
+    height: 100%;
+    .thc-image-loader {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
   img {
     width: 100%;
   }

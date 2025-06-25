@@ -118,12 +118,12 @@ const titleClass = computed(() => {
 <template>
   <div :class="componentClass">
     <ThcSkeleton
-      v-if="loading"
-      class="thc-title-loader"
+      :show="loading"
+      variant="title"
       width="200px"
     />
     <component
-      v-else
+      v-if="!loading"
       :is="type"
       :class="titleClass"
     >

@@ -1,37 +1,6 @@
 <script lang="ts" setup>
 import { computed } from "vue";
-
-interface Appearance {
-  bgColor: string;
-  bgHalfColor: string;
-  buttonColor: string;
-  buttonBgColor: string;
-  buttonBorderColor: string;
-  bgImgProduct: string;
-}
-
-interface Media {
-  alt: string;
-  sizes: {
-    small: string;
-    medium: string;
-    large: string;
-  };
-}
-
-interface Campaign {
-  id?: string;
-  slug?: string;
-  direction?: "rtl" | "ltr";
-  title?: string;
-  subtitle?: string;
-  copy?: string;
-  disclaimer?: string;
-  btnText?: string;
-  link?: string;
-  media?: Media;
-  appearance?: Appearance;
-}
+import type { Campaign } from "~/src/utils/models";
 
 const props = withDefaults(
   defineProps<{
@@ -45,6 +14,10 @@ const props = withDefaults(
 
 const customClass = computed(() => {
   const classes = ["thc-banner"];
+
+  if (props.loading) {
+    classes.push(`thc-banner--loading`);
+  }
 
   if (props.campaign?.direction) {
     classes.push(`thc-banner--${props.campaign?.direction}`);
@@ -68,6 +41,7 @@ const customClass = computed(() => {
       />
       <div class="thc-banner-data">
         <ThcTitle
+          :loading="props.loading"
           :title="campaign?.title"
           variant="dark"
           :highlightWords="1"
@@ -76,29 +50,46 @@ const customClass = computed(() => {
         />
         <p
           class="thc-banner-copy"
-          v-if="campaign?.copy?.length"
+          v-if="campaign?.copy"
         >
           {{ campaign?.copy }}
         </p>
+        <ThcSkeleton
+          type="default"
+          variant="default"
+          :show="props.loading"
+        />
+        <ThcSkeleton
+          type="default"
+          variant="default"
+          width="18em"
+          :show="props.loading"
+        />
+        <ThcSkeleton
+          type="default"
+          variant="button"
+          :show="props.loading"
+        />
         <ThcButton
+          v-if="!props.loading"
           :style="{
             backgroundColor: campaign?.appearance?.buttonBgColor,
             border: `1px solid ${campaign?.appearance?.buttonBorderColor}`,
             color: campaign?.appearance?.buttonColor
           }"
+          l
           icon="fas fa-cart-shopping"
           :text="campaign?.btnText"
           @click="$emit('clickBtn')"
         />
       </div>
     </div>
-    <figure
-      class="thc-banner-image"
-      v-if="campaign?.media"
-    >
+
+    <figure class="thc-banner-image">
       <ThcImage
-        :imgSrc="campaign?.media.sizes"
-        :alt="campaign?.media.alt"
+        :imgSrc="campaign?.media?.sizes"
+        :alt="campaign?.media?.alt"
+        :loading="props.loading"
       />
     </figure>
   </div>

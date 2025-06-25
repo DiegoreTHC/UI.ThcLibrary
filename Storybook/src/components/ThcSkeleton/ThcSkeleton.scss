@@ -176,6 +176,14 @@
       }
     }
   }
+
+  &--button {
+    .thc-skeletons {
+      width: 10em;
+      height: 2.4em;
+      border-radius: 10em;
+    }
+  }
 }
 
 @keyframes skeleton-loading {
