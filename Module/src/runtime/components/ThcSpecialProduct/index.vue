@@ -50,7 +50,7 @@ const customClass = computed(() => {
         />
         <p
           class="thc-banner-copy"
-          v-if="campaign?.copy"
+          v-if="campaign?.copy && !props.loading"
         >
           {{ campaign?.copy }}
         </p>

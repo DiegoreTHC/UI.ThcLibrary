@@ -184,7 +184,7 @@ watch(searchQuery, (newVal) => {
             v-for="product in category.products"
             :key="product['product-name']"
             class="thc-searchbar-list-item"
-            @click="clickOnOption({ product: product, category: category.id })"
+            @click="clickOnOption({ product: product, category: category['category-name'] })"
           >
             <span v-html="highlightMatch(product['product-name'])"></span>
           </li>
