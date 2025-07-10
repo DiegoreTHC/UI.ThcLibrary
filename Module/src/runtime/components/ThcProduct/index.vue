@@ -141,6 +141,7 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
+          class="thc-image"
           :img-src="product?.media?.sizes"
           :alt="product?.media?.alt"
         />
