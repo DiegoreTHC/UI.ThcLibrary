@@ -98,7 +98,7 @@ onUnmounted(() => {
           <NuxtLink
             v-for="brand in navigation[1]?.subLinks"
             class="thc-brands-link"
-            :to="`/brands/${brand?.slug}`"
+            :to="brand?.slug ? `/brands/${brand?.slug}` : '/'"
             target="_blank"
             :key="brand.slug"
             @click.native="emit('close')"
@@ -119,7 +119,7 @@ onUnmounted(() => {
             class="thc-mobile-link"
             :key="item"
             :text="item?.link"
-            :to="item?.to"
+            :to="item?.to ? item?.to : '/'"
             :icon="item.icon"
             arrow
             :loading="false"

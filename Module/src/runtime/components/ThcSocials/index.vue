@@ -21,8 +21,8 @@ defineProps<{
         :show="loading"
       />
       <NuxtLink
-        v-if="!loading"
-        :to="social?.link"
+        v-if="!loading && social?.link"
+        :to="social?.link ? social?.link : '/'"
         class="thc-socials-link"
         target="_blank"
       >
