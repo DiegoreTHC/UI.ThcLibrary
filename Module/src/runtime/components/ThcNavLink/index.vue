@@ -52,7 +52,7 @@ const linkClass = computed(() => {
     </span>
     <NuxtLink
       :class="linkClass"
-      :to="to"
+      :to="to ? to : '/'"
       v-if="!loading && to !== 'parent'"
     >
       <i
