@@ -19,12 +19,6 @@ const breadcrumbs = computed(() => {
 </script>
 
 <template>
-  <!-- <div class="">
-    breadcrumb:
-    use definePageMeta({breadcrumb: "Products"});
-    for the first name use the definePageMeta({breadcrumb: "Products / ${params.category}"} for the
-    second use the definePageMeta({breadcrumb: "Products / ${params.category} / ${product.name}"}
-  </div> -->
   <nav
     aria-label="Breadcrumb"
     class="l-breadcrumb"
@@ -51,9 +45,3 @@ const breadcrumbs = computed(() => {
     </ol>
   </nav>
 </template>
-
-<style lang="scss" scoped>
-.l-breadcrumb {
-  background-color: red;
-}
-</style>

@@ -1,13 +1,53 @@
 <script lang="ts" setup>
-import { computed, ref } from "vue";
-import { Product } from "../../utils/models";
+import { computed, ref, watch } from "vue";
+
+export interface Price {
+  fullQuantity: number;
+  quantity: number;
+  cents: number;
+}
+
+export interface Media {
+  alt: string;
+  sizes: {
+    small: string;
+    medium: string;
+    large: string;
+  };
+}
+
+export interface Product {
+  id: string;
+  "product-name"?: string;
+  name?: string;
+  slug?: string;
+  "category-name"?: string;
+  "category-slug": string;
+  subtitle?: string;
+  colors?: string[];
+  label?: {
+    variant: string;
+    text: string;
+  };
+  brand?: string;
+  price?: Price;
+  stock?: number;
+  sku?: string;
+  rating?: number;
+  totalRatings?: number;
+  media?: Media;
+  slideshow?: string[];
+  descriptions?: any;
+  similarities?: any[];
+}
 
 const props = withDefaults(
   defineProps<{
     loading?: boolean;
     product?: Product;
-    mobile?: boolean;
+    mobile?: boolean | null;
     showDetails?: boolean;
+    showToggle?: boolean;
   }>(),
   {
     loading: false,
@@ -15,8 +55,7 @@ const props = withDefaults(
   }
 );
 
-const toggleDetails = ref<boolean>(false);
-const isMobile = ref<boolean>(props.mobile);
+const toggleDetails = ref(props.showToggle);
 
 const updateToggleDetails = () => {
   toggleDetails.value = !toggleDetails.value;
@@ -32,6 +71,13 @@ const actionsClass = computed(() => {
 
   return classes.join(" ");
 });
+
+watch(
+  () => props.showToggle,
+  (newVal) => {
+    toggleDetails.value = newVal;
+  }
+);
 
 const onBeforeEnter = (el: Element) => {
   el.style.height = "0";
@@ -129,18 +175,21 @@ defineEmits<{
         @before-leave="onBeforeLeave"
         @leave="onLeave"
         @after-leave="onAfterLeave"
+        v-if="mobile"
       >
         <div
-          v-if="isMobile"
           v-show="toggleDetails"
-          class="thc-compare-mobile-toggle thc-compare-similarities"
+          :class="[
+            'thc-compare-mobile-toggle thc-compare-similarities',
+            { 'thc-compare-similarities--open': toggleDetails }
+          ]"
         >
           <div
             class="thc-compare-similarities-list"
-            v-for="(item, index) in product?.amenities.values"
+            v-for="(item, index) in product?.amenities?.values"
             :key="item"
           >
-            <p class="thc-compare-similarity">{{ product?.amenities.list[index] }}</p>
+            <p class="thc-compare-similarity">{{ product?.amenities?.list[index] }}</p>
             <i
               v-if="typeof item === `boolean`"
               :class="['fas', { 'fa-clipboard-check': item }, { 'fa-clipboard': !item }]"
@@ -156,11 +205,11 @@ defineEmits<{
       </transition>
       <div
         class="thc-compare-similarities"
-        v-if="!isMobile"
+        v-if="!mobile"
       >
         <div
           class="thc-compare-similarities-list"
-          v-for="item in product?.amenities.values"
+          v-for="item in product?.amenities?.values"
           :key="item.similarity"
         >
           <i

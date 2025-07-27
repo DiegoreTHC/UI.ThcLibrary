@@ -146,6 +146,10 @@
           }
         }
       }
+
+      &--open {
+        display: block;
+      }
     }
     &-similarity {
       font-size: 0.75em;

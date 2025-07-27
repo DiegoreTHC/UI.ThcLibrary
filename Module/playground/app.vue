@@ -50,12 +50,6 @@ const nepe = ref([
       variant: "available",
       text: "Nuevo"
     },
-    amenities: {
-      title: "Captive smokes",
-      icon: "fas fa-chevron-left",
-      list: ["Temperatura ajustable", "Garantia", "Peso", "Bateria", "Accesorios"],
-      values: [true, "10 anos", "50 g", "Ion Litio", "Incluidos"]
-    },
     media: [
       {
         alt: "Pink Blazy 2",
@@ -78,12 +72,6 @@ const nepe = ref([
     sku: "SMKMX-SKU-025986-N"
   },
   {
-    amenities: {
-      title: "Captive smokes",
-      icon: "fas fa-chevron-left",
-      list: ["Temperatura ajustable", "Garantia", "Peso", "Bateria", "Accesorios"],
-      values: [false, "10 anos", "50 g", "Ion Litio", "Incluidos"]
-    },
     id: "SMKMX-025985-P-PRDCT",
     name: "Pink Blazy 3",
     "category-slug": "accesorios",
@@ -114,12 +102,6 @@ const nepe = ref([
   },
 
   {
-    amenities: {
-      title: "Captive smokes",
-      icon: "fas fa-chevron-left",
-      list: ["Temperatura ajustable", "Garantia", "Peso", "Bateria", "Accesorios"],
-      values: [false, "10 anos", "50 g", "Ion Litio", "Incluidos"]
-    },
     id: "SMKMX-025982-P-PRDCT",
     name: "Pink Blazy 6",
     "category-slug": "accesorios",
@@ -161,8 +143,9 @@ const nepe = ref([
       :key="nep"
     >
       <ThcProductCompare
-        :product="nep"
+        :product="nep ?? {}"
         showDetails
+        showToggle
         v-if="index === 0"
       />
       <ThcProductCompare
