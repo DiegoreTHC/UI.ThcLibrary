@@ -12,7 +12,7 @@ const breadcrumbs = computed(() => {
 
       return {
         label,
-        to: r.path === "/" ? "/" : { path: r.path, params: route.params }
+        to: r.path === "/" ? "/" : { path: r.path.toLowerCase(), params: route.params }
       };
     });
 });
