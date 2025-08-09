@@ -3,14 +3,19 @@
 @use "./utils/reset" as *;
 @use "./utils/fonticons" as *;
 @use "./utils/fonts" as *;
+@use "./utils/media" as *;
 
 html {
   font-size: var(--font-size-base);
 }
 
 body {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-small);
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
   color: var(--font-color-light);
+
+  @include respondTo("412px") {
+    font-size: var(--font-size-base);
+  }
 }

@@ -5,11 +5,12 @@
   border-radius: 1em;
   display: flex;
   justify-content: center;
+  padding: 0.6em 1em;
+  letter-spacing: -0.025em;
 
   .thc-button-text {
     color: $color-blue-100;
     font-size: 0.8em;
-    padding: 0.6em 1.6em;
   }
 
   &--primary {
@@ -19,6 +20,17 @@
     .thc-button-text {
       border-radius: 1em;
     }
+
+    &.thc-button {
+      &--large {
+        border-radius: 3em;
+        padding: 0.75em 1.85em;
+
+        .thc-button-text {
+          font-size: 1em;
+        }
+      }
+    }
   }
 
   &--outline {
@@ -27,7 +39,43 @@
 
     .thc-button-text {
       color: $color-clear-100;
-      padding: 0.52em 0.6em;
+      padding: 0;
+    }
+
+    &-icon {
+      background-color: transparent;
+      border: 1.5px solid $color-green-100;
+      align-items: center;
+      padding: 0 0.5em 0 0;
+
+      .thc-button {
+        &-text {
+          color: $color-clear-100;
+          padding: 0.52em 0.6em;
+        }
+
+        &-icon {
+          font-size: 0.75em;
+        }
+      }
+
+      &.thc-button {
+        &--prepend {
+          flex-direction: row-reverse;
+        }
+
+        &--large {
+          border-radius: 3em;
+          padding: 0.14em 0.34em 0.14em 0.14em;
+          gap: 0.15em;
+
+          .thc-button-text {
+            font-size: 1em;
+            padding: 0.52em 0.3em;
+            letter-spacing: 0em;
+          }
+        }
+      }
     }
   }
 
@@ -41,7 +89,6 @@
       .thc-button {
         &-icon {
           font-size: 0.85em;
-          margin: 0 0.15em;
 
           &.fa-cart-shopping {
             font-size: 1em;
@@ -56,6 +103,18 @@
 
       &--prepend {
         flex-direction: row;
+      }
+
+      &--large {
+        border-radius: 3em;
+        padding: 0 0.5em 0 0;
+        gap: 0.35em;
+
+        .thc-button-text {
+          border-radius: 3em;
+          padding: 0.75em 1.85em;
+          font-size: 1em;
+        }
       }
     }
 
