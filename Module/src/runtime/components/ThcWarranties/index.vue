@@ -11,7 +11,7 @@ withDefaults(
 </script>
 
 <template>
-  <div :class="['thc-warranties']">
+  <div class="thc-warranties">
     <div
       class="thc-warranty"
       v-for="item in warranties"
@@ -19,10 +19,10 @@ withDefaults(
     >
       <ThcImage
         class="thc-warranty-media"
-        :imgSrc="item.media.sizes"
-        :alt="item.media.alt"
+        :imgSrc="item?.media?.sizes"
+        :alt="item?.media?.alt"
       />
-      <p class="thc-warranty-text">{{ item.title }}</p>
+      <p class="thc-warranty-text">{{ item?.title }}</p>
     </div>
   </div>
 </template>

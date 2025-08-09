@@ -139,7 +139,7 @@ defineEmits<{
     >
       <ThcImage
         class="thc-compare-image"
-        :img-src="product?.media?.sizes"
+        :imgSrc="product?.media?.sizes"
         :alt="product?.media?.alt"
       />
       <div class="thc-compare-info">

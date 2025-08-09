@@ -50,7 +50,7 @@ defineEmits<{
       </div>
       <ThcImage
         class="thc-image"
-        :img-src="product?.media?.sizes"
+        :imgSrc="product?.media?.sizes"
         :alt="product?.media?.alt"
       />
     </div>
@@ -60,7 +60,7 @@ defineEmits<{
     >
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product?.media?.sizes"
+          :imgSrc="product?.media?.sizes"
           :alt="product?.media?.alt"
         />
         <ThcCard
@@ -109,7 +109,7 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product?.media?.sizes"
+          :imgSrc="product?.media?.sizes"
           :alt="product?.media?.alt"
         />
       </div>
@@ -142,7 +142,7 @@ defineEmits<{
       <div class="thc-product-media">
         <ThcImage
           class="thc-image"
-          :img-src="product?.media?.sizes"
+          :imgSrc="product?.media?.sizes"
           :alt="product?.media?.alt"
         />
       </div>
