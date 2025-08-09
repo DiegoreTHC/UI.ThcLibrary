@@ -2,7 +2,7 @@
 import { ZoomImg } from "vue3-zoomer";
 
 defineProps<{
-  "zoom-type": string;
+  zoom: string;
   trigger: string;
   src: string;
   scale: number;
@@ -13,7 +13,7 @@ defineProps<{
   <div class="thc-zoomer">
     <ZoomImg
       class="thc-zoomer-img"
-      :zoom-type="[['zoom-type']]"
+      :zoom-type="[['zoom']]"
       :trigger="trigger"
       :src="src"
       :zoom-scale="scale"
