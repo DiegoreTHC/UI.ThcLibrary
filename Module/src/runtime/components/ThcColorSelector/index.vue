@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ref } from "vue";
+
 const props = withDefaults(
   defineProps<{
     colors: string[];
@@ -7,8 +9,11 @@ const props = withDefaults(
 );
 const emit = defineEmits(["clickOnColor"]);
 
-const clickOnColor = (color: string, index: number) => {
-  emit("clickOnColor", color);
+const selectedIndex = ref<number | null>(0);
+
+const clickOnColor = (index: number) => {
+  selectedIndex.value = index;
+  emit("clickOnColor", index);
 };
 </script>
 
@@ -19,10 +24,10 @@ const clickOnColor = (color: string, index: number) => {
     </p>
     <ul class="thc-cSwitch-list">
       <li
-        class="thc-cSwitch-item"
         :key="`color-${color}`"
         v-for="(color, index) in colors"
-        @click="clickOnColor(color, index)"
+        :class="['thc-cSwitch-item', { 'thc-cSwitch-item--active': selectedIndex === index }]"
+        @click="clickOnColor(index)"
         :style="{
           color: color
         }"
