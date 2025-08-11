@@ -51,7 +51,8 @@ const product = ref({
       padding: `2em 1em`
     }"
   >
-    Nuxt module playground!
+    <h1 style="font-size: 2em">Single ones</h1>
+    <!-- Nuxt module playground!
 
     <i class="fas fa-chevron-right"></i>
 
@@ -77,7 +78,7 @@ const product = ref({
       text="Especificaciones"
       prependIcon
       size="large"
-    />
+    /> -->
 
     <!-- <ThcColorSelector :colors="['#F00', '#FFF']" /> 
 
@@ -95,6 +96,89 @@ const product = ref({
       :alt="product?.media?.alt"
     />-->
 
-    <ThcAddSquare :add="add" />
+    <!-- <ThcAddSquare :add="add" /> -->
+    <p>Regular</p>
+    <ThcSkeleton show />
+    <br />
+    <p>Button</p>
+    <ThcSkeleton
+      show
+      type="button"
+    />
+    <br />
+    <p>image</p>
+    <ThcSkeleton
+      show
+      type="image"
+    />
+    <br />
+    <p>Text</p>
+    <ThcSkeleton
+      show
+      type="text"
+    />
+    <br />
+    <p>Title</p>
+    <ThcSkeleton
+      show
+      type="title"
+    />
+    <br />
+    <br />
+    <p>subtitle</p>
+    <ThcSkeleton
+      show
+      type="subtitle"
+    />
+    <br />
+    <br />
+    <h1 style="font-size: 2em">Variants (structures)</h1>
+    <p>Categories</p>
+    <ThcSkeleton
+      show
+      variant="categories"
+    />
+    <br />
+    <br />
+    <p>Product</p>
+    <ThcSkeleton
+      show
+      variant="product"
+    />
+    <br />
+    <br />
+    <p>Clothes</p>
+    <ThcSkeleton
+      show
+      variant="product-clothes"
+    />
+    <br />
+    <br />
+    <p>Subtitle</p>
+    <ThcSkeleton
+      show
+      variant="subtitle"
+    />
+    <br />
+    <br />
+    <p>Title</p>
+    <ThcSkeleton
+      show
+      variant="title"
+    />
+    <br />
+    <br />
+    <p>PRoduct Selection</p>
+    <ThcSkeleton
+      show
+      variant="product-selection"
+    />
+    <br />
+    <br />
+    <p>Product Compare</p>
+    <ThcSkeleton
+      show
+      variant="product-compare"
+    />
   </div>
 </template>
