@@ -2,6 +2,14 @@
 import "@thcode-society/icons/dist/thc-icons.css";
 import { ref } from "vue";
 
+const add = ref({
+  id: "SMKMX-750594-J",
+  title: "Join tha Club!",
+  campaign: "CRM",
+  subtitle: "Y Obtén un 10% off en tu siguiente compra.",
+  media: "/images/smokers-club-campaing.jpg"
+});
+
 const product = ref({
   id: 231336,
   name: "Canalas Raw",
@@ -45,7 +53,7 @@ const product = ref({
   >
     Nuxt module playground!
 
-    <!-- <i class="fas fa-chevron-right"></i>
+    <i class="fas fa-chevron-right"></i>
 
     <ThcButton
       icon="fas fa-sliders"
@@ -71,7 +79,7 @@ const product = ref({
       size="large"
     />
 
-    <ThcColorSelector :colors="['#F00', '#FFF']" /> -->
+    <!-- <ThcColorSelector :colors="['#F00', '#FFF']" /> 
 
     <ThcProduct :product="product" />
 
@@ -85,6 +93,8 @@ const product = ref({
     <ThcImage
       :imgSrc="product?.media?.sizes"
       :alt="product?.media?.alt"
-    />
+    />-->
+
+    <ThcAddSquare :add="add" />
   </div>
 </template>
