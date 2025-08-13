@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import type { Campaign } from "~/src/utils/models";
+import ThcSkeleton from "../ThcSkeleton/index.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -30,14 +31,18 @@ const customClass = computed(() => {
   <div :class="customClass">
     <div
       class="thc-banner-card"
-      :style="{
-        backgroundColor: campaign?.appearance?.bgColor,
-        backgroundImage: `url(${campaign?.appearance?.bgImgProduct})`
-      }"
+      :style="
+        loading
+          ? {}
+          : {
+              backgroundColor: campaign?.appearance?.bgColor,
+              backgroundImage: `url(${campaign?.appearance?.bgImgProduct})`
+            }
+      "
     >
       <div
         class="thc-banner-card-half"
-        :style="{ backgroundColor: campaign?.appearance?.bgHalfColor }"
+        :style="loading ? {} : { backgroundColor: campaign?.appearance?.bgHalfColor }"
       />
       <div class="thc-banner-data">
         <ThcTitle
@@ -85,11 +90,13 @@ const customClass = computed(() => {
       </div>
     </div>
 
-    <figure class="thc-banner-image">
+    <figure
+      class="thc-banner-image"
+      v-if="!loading"
+    >
       <ThcImage
         :imgSrc="campaign?.media?.sizes"
         :alt="campaign?.media?.alt"
-        :loading="props.loading"
       />
     </figure>
   </div>

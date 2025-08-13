@@ -15,11 +15,11 @@ const emit = defineEmits(["click"]);
   <div
     class="thc-add thc-add-square"
     :style="{
-      backgroundImage: `url('${add.media}')`
+      backgroundImage: `url('${add?.media}')`
     }"
-    :id="add.id"
-    :data-name="add.title"
-    @click="emit('click', add.campaign)"
+    :id="add?.id"
+    :data-name="add?.title"
+    @click="emit('click', add?.campaign)"
   />
 </template>
 

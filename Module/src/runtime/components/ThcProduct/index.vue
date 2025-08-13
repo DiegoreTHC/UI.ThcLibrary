@@ -6,9 +6,11 @@ const props = withDefaults(
   defineProps<{
     variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
     product?: any;
+    isCurrent?: boolean;
   }>(),
   {
-    variant: "default"
+    variant: "default",
+    isCurrent: false
   }
 );
 
@@ -46,7 +48,19 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-data">
         <p class="thc-product-name">{{ product.name }}</p>
-        <p class="thc-product-category">{{ product["category-name"] }}</p>
+        <p
+          v-if="!isCurrent"
+          class="thc-product-category"
+        >
+          {{ product["category-name"] }}
+        </p>
+
+        <p
+          class="thc-product-category"
+          v-else
+        >
+          {{ product?.brand }}
+        </p>
       </div>
       <ThcImage
         class="thc-image"
@@ -75,7 +89,18 @@ defineEmits<{
             :price="product?.price"
             variant="default"
           />
-          <p class="thc-product-category-name">{{ product["category-name"] }}</p>
+          <p
+            class="thc-product-category-name"
+            v-if="!isCurrent"
+          >
+            {{ product["category-name"] }}
+          </p>
+          <p
+            class="thc-product-category-name"
+            v-else
+          >
+            {{ product?.brand }}
+          </p>
         </div>
       </div>
       <nav class="thc-product-action">
