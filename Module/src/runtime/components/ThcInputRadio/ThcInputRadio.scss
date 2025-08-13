@@ -60,6 +60,7 @@
       }
 
       &:before {
+        background-color: var(--color-blue-100);
         opacity: 1;
         width: 0.75em;
         height: 0.75em;
@@ -67,6 +68,7 @@
 
       &:checked {
         background-color: var(--color-primary);
+
         &::before {
           right: 0.0625em;
         }

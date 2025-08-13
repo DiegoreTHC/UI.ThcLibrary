@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+const props = defineProps<{
+  loading?: boolean;
+  open?: boolean;
+}>();
+
+const emit = defineEmits(["click"]);
+</script>
+
 <template>
   <div
     :class="['thc-hamburger', { 'thc-hamburger--close': open }]"
@@ -7,24 +16,15 @@
       <span
         class="fas fa-xmark"
         v-if="open"
-      ></span>
+      />
       <span
         class="thc-hamburger-lines"
         v-else
-      ></span>
+      />
     </span>
   </div>
 </template>
 
-<script lang="ts" setup>
-const props = defineProps<{
-  loading?: boolean;
-  open: boolean;
-}>();
-
-const emit = defineEmits(["click"]);
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcHamburger.scss";
+@use "./ThcHamburger.scss" as *;
 </style>

@@ -8,14 +8,14 @@
   color: var(--color-clear-200);
   text-decoration: none;
 
-  @include respondTo("tablet-landscape") {
+  @include respondTo("desktop") {
     position: relative;
     &::after {
       content: "";
       background-color: var(--color-green-100);
       border-radius: 2em;
       position: absolute;
-      bottom: 0;
+      bottom: -0.5em;
       height: 0.15em;
       left: 0;
       width: 100%;

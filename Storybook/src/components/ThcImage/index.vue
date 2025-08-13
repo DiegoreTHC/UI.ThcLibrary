@@ -1,32 +1,5 @@
-<template>
-  <div :class="imgClass">
-    <img
-      class="thc-image-tag"
-      :srcset="`${imgSrc.medium} 480w, ${imgSrc.large} 1280w`"
-      :src="imgSrc.small"
-      :alt="alt"
-      @load="imgLoaded"
-      @error="imgLoaded"
-      v-show="isImgLoaded && !isImgError"
-    />
-    <div
-      class="thc-image-error"
-      v-if="isImgError"
-    >
-      <i class="fas fa-image"></i>
-      <ThcSkeleton
-        width="40px"
-        height="16px"
-      />
-      <ThcSkeleton
-        width="20px"
-        height="12px"
-      />
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
+import { computed, ref } from "vue";
 const props = withDefaults(
   defineProps<{
     imgSrc?: {
@@ -35,9 +8,11 @@ const props = withDefaults(
       large: string;
     };
     alt?: string;
+    loading: boolean;
   }>(),
   {
-    alt: "Thc Image"
+    alt: "Thc Image",
+    loading: true
   }
 );
 
@@ -54,11 +29,58 @@ const imgLoaded = (event: Event) => {
 
 const imgClass = computed(() => {
   const classes = ["thc-image"];
-  if (isImgError.value) classes.push("thc-image--error");
+  if (isImgError.value && !props.loading) classes.push("thc-image--error");
+  if (props.loading) classes.push("thc-image--loading");
   return classes.join(" ");
 });
 </script>
 
+<template>
+  <div :class="imgClass">
+    <img
+      class="thc-image-tag"
+      :srcset="`${imgSrc?.medium} 480w, ${imgSrc?.large} 1280w`"
+      :src="imgSrc?.small"
+      :alt="alt"
+      @load="imgLoaded"
+      @error="imgLoaded"
+      v-show="isImgLoaded && !isImgError && !loading"
+    />
+    <div
+      class="thc-image-error"
+      v-if="isImgError && !loading"
+    >
+      <i class="fas fa-image"></i>
+      <ThcSkeleton
+        width="40px"
+        height="16px"
+        show
+      />
+      <ThcSkeleton
+        width="20px"
+        height="12px"
+        show
+      />
+    </div>
+    <div
+      class="thc-image-loader"
+      v-if="loading"
+    >
+      <i class="fas fa-image"></i>
+      <ThcSkeleton
+        width="40px"
+        height="16px"
+        show
+      />
+      <ThcSkeleton
+        width="20px"
+        height="12px"
+        show
+      />
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-@use "./ThcImage.scss";
+@use "./ThcImage.scss" as *;
 </style>

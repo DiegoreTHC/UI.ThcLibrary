@@ -1,8 +1,8 @@
 export interface Media {
-  alt: string,
+  alt: string;
   sizes: {
-    small: string,
-    medium: string,
-    large: string
-  }
+    small: string;
+    medium: string;
+    large: string;
+  };
 }

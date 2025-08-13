@@ -22,7 +22,6 @@ const props = withDefaults(
         class="thc-footer-logo"
         variant="negative"
         :mode="mobile ? 'full' : 'inline'"
-        :loading="loading"
       />
       <nav class="thc-footer-socials">
         <ThcSocials
@@ -32,9 +31,11 @@ const props = withDefaults(
         />
         <ThcSkeleton
           type="text"
+          variant="default"
           width="22em"
           height="14px"
           class="thc-disclaimer"
+          show
           v-if="loading"
         />
         <p
@@ -48,18 +49,27 @@ const props = withDefaults(
     </div>
     <ThcSkeleton
       type="text"
-      width="60em"
-      height="16px"
-      v-if="loading"
+      width="20em"
+      height="1em"
+      :show="loading"
+      variant="default"
       class="thc-legals--loading"
     />
     <p
       class="thc-legals"
-      v-else
+      v-if="!loading"
     >
       {{ disclaimer }}
     </p>
     <div class="thc-footer-brand">
+      <ThcSkeleton
+        type="text"
+        width="20%"
+        height=".6em"
+        :show="loading"
+        variant="default"
+        class="thc-footer-brand--loading"
+      />
       <span v-if="!loading">
         Made it High <span class="fas fa-cannabis" /> by <strong>THC Code</strong> | A Frontend
         society

@@ -8,7 +8,7 @@
 
     &-tag {
       color: var(--color-clear-100);
-      letter-spacing: -0.01em;
+      letter-spacing: -0.01875em;
 
       span {
         display: block;
@@ -61,21 +61,25 @@
 h1.thc-title-tag {
   font-size: 3em;
   font-weight: var(--font-weight-medium);
+  line-height: 1em;
 }
 
 h2.thc-title-tag {
   font-size: 2.5em;
   font-weight: var(--font-weight-medium);
+  line-height: 1em;
 }
 
 h3.thc-title-tag {
   font-size: 2em;
   font-weight: var(--font-weight-medium);
+  line-height: 1em;
 }
 
 h4.thc-title-tag {
   font-size: 1.55em;
   font-weight: var(--font-weight-medium);
+  line-height: 1em;
   padding-bottom: 0.3em;
   position: relative;
 
@@ -93,14 +97,17 @@ h4.thc-title-tag {
 
 h5.thc-title-tag {
   font-size: 1.25em;
+  line-height: 1em;
 }
 
 h6.thc-title-tag {
   font-size: 1.125em;
+  line-height: 1em;
 }
 
 p.thc-title-tag {
   font-size: 0.8em;
+  line-height: 1em;
 }
 
 :deep(.thc-title-highlight--primary) {

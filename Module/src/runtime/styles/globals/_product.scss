@@ -1,0 +1,29 @@
+.thc-product {
+  &--outline {
+    .thc {
+      &-image {
+        &--loading {
+          &.thc-image {
+            .thc-image-loader {
+              height: 6.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--vertical {
+    .thc {
+      &-image {
+        &--loading {
+          &.thc-image {
+            .thc-image-loader {
+              height: 12em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

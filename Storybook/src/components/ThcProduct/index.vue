@@ -1,3 +1,30 @@
+<script lang="ts" setup>
+import { computed } from "vue";
+import { ProductVariants } from "../../utils/enums";
+
+const props = withDefaults(
+  defineProps<{
+    variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
+    product?: any;
+  }>(),
+  {
+    variant: "default"
+  }
+);
+
+const cardVariant = computed(() => {
+  if (props.variant === ProductVariants.Outline) {
+    return "gradient";
+  }
+  return "primary";
+});
+
+defineEmits<{
+  (event: "click"): void;
+  (event: "clickBtn"): void;
+}>();
+</script>
+
 <template>
   <div
     :class="['thc-product', `thc-product--${props.variant}`]"
@@ -18,8 +45,8 @@
         />
       </ThcCard>
       <div class="thc-product-data">
-        <p class="thc-product-name">{{ product.productName }}</p>
-        <p class="thc-product-category">{{ product.categoryName }}</p>
+        <p class="thc-product-name">{{ product["product-name"] }}</p>
+        <p class="thc-product-category">{{ product["category-slug"] }}</p>
       </div>
       <ThcImage
         class="thc-image"
@@ -42,13 +69,13 @@
         />
       </div>
       <div class="thc-product-data">
-        <p class="thc-product-title">{{ product?.productName }}</p>
+        <p class="thc-product-title">{{ product["product-name"] }}</p>
         <div class="thc-product-data-flex">
           <ThcPrice
             :price="product?.price"
             variant="default"
           />
-          <p class="thc-product-category-name">{{ product?.categoryName }}</p>
+          <p class="thc-product-category-name">{{ product["category-slug"] }}</p>
         </div>
       </div>
       <nav class="thc-product-action">
@@ -70,15 +97,11 @@
       >
         <div class="thc-product">
           <div class="thc-product-data">
-            <ThcPill
-              :text="product.stock"
-              :loading="loading"
-            />
+            <ThcPill :text="product.stock" />
             <ThcTitle
               variant="dual"
               type="h5"
-              :title="product.categoryName"
-              :loading="loading"
+              :title="product['category-name']"
               :highlight-words="2"
             />
           </div>
@@ -100,8 +123,8 @@
         :variant="cardVariant"
       >
         <div class="thc-product-data">
-          <p class="thc-product-title">{{ product.productName }}</p>
-          <p class="thc-product-subtitle">{{ product.categoryName }}</p>
+          <p class="thc-product-title">{{ product["product-name"] }}</p>
+          <p class="thc-product-subtitle">{{ product["category-slug"] }}</p>
 
           <div class="thc-product-actions">
             <ThcPrice
@@ -124,42 +147,14 @@
       </div>
     </div>
     <ThcPill
-      v-if="product?.promotion && product?.promotion.active"
-      :text="product?.promotion?.text"
-      :variant="product?.promotion?.variant"
+      v-if="product?.label && product?.label.text.length"
+      :text="product?.label?.text"
+      :variant="product?.label?.variant"
       class="thc-product-pill"
     />
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ProductVariants } from "~/src/utils/enums";
-
-const props = withDefaults(
-  defineProps<{
-    variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
-    loading?: boolean;
-    product?: any;
-  }>(),
-  {
-    loading: false,
-    variant: "default"
-  }
-);
-
-const cardVariant = computed(() => {
-  if (props.variant === ProductVariants.Outline) {
-    return "gradient";
-  }
-  return "primary";
-});
-
-defineEmits<{
-  (event: "click"): void;
-  (event: "clickBtn"): void;
-}>();
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcProduct.scss";
+@use "./ThcProduct.scss" as *;
 </style>

@@ -4,9 +4,9 @@ import { computed } from "vue";
 export type ButtonVariantsTypes =
   | "primary"
   | "outline"
+  | "outline-icon"
   | "icon"
-  | "icon-transparent"
-  | "outline-icon";
+  | "icon-transparent";
 
 export type ButtonTypes = "button" | "submit" | "reset";
 
@@ -46,8 +46,13 @@ const onClick = (event: Event) => {
 const buttonClass = computed(() => {
   const classes = ["thc-button", `thc-button--${props.variant}`];
   if (props.disabled) classes.push("thc-button--disabled");
+  if (props.size) classes.push(`thc-button--${props.size}`);
   if (isLink.value) classes.push("thc-button--link");
-  if (props.variant === "icon" || props.variant === "icon-transparent") {
+  if (
+    props.variant === "icon" ||
+    props.variant === "icon-transparent" ||
+    props.variant === "outline-icon"
+  ) {
     if (props.variant === "icon-transparent") classes.push("thc-button--icon");
     if (props.iconButton) classes.push("thc-button--icon-only");
     if (props.prependIcon) classes.push("thc-button--prepend");
@@ -68,7 +73,12 @@ const buttonClass = computed(() => {
   >
     <i
       :class="['thc-button-icon', icon]"
-      v-if="variant === 'icon' || variant === 'icon-transparent' || ('outline' && prependIcon)"
+      v-if="
+        variant === 'icon' ||
+        variant === 'icon-transparent' ||
+        ('outline' && prependIcon) ||
+        variant === 'outline-icon'
+      "
     />
     <span
       class="thc-button-text"

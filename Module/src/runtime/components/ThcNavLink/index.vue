@@ -7,8 +7,9 @@ const props = withDefaults(
     to: string;
     icon?: string;
     arrow?: boolean;
-    arrowDirection?: "right" | "down" | "up";
+    arrowDirection?: "right" | "down" | "up" | "left";
     disabled?: boolean;
+    loading: boolean;
   }>(),
   {
     icon: "",
@@ -29,35 +30,42 @@ const linkClass = computed(() => {
 </script>
 
 <template>
-  <span
-    :class="linkClass"
-    v-if="to && to === 'parent'"
-  >
-    <i
-      :class="[icon, 'thc-link-icon']"
-      v-if="icon"
-    ></i>
-    {{ text }}
-    <i
-      :class="['fas thc-link-arrow', `fa-chevron-${arrowDirection}`]"
-      v-if="arrow"
-    ></i>
-  </span>
-  <NuxtLink
-    :class="linkClass"
-    :to="to"
-    v-else
-  >
-    <i
-      :class="[icon, 'thc-link-icon']"
-      v-if="icon"
-    ></i>
-    {{ text }}
-    <i
-      :class="['fas thc-link-arrow', `fa-chevron-${arrowDirection}`]"
-      v-if="arrow"
-    ></i>
-  </NuxtLink>
+  <div>
+    <ThcSkeleton
+      :show="loading"
+      type="text"
+      variant="default"
+    />
+    <span
+      :class="linkClass"
+      v-if="to && to === 'parent' && !loading"
+    >
+      <i
+        :class="[icon, 'thc-link-icon']"
+        v-if="icon"
+      ></i>
+      {{ text }}
+      <i
+        :class="['fas thc-link-arrow', `fa-chevron-${arrowDirection}`]"
+        v-if="arrow"
+      ></i>
+    </span>
+    <NuxtLink
+      :class="linkClass"
+      :to="to ? to : '/'"
+      v-if="!loading && to !== 'parent'"
+    >
+      <i
+        :class="[icon, 'thc-link-icon']"
+        v-if="icon"
+      ></i>
+      {{ text }}
+      <i
+        :class="['fas thc-link-arrow', `fa-chevron-${arrowDirection}`]"
+        v-if="arrow"
+      ></i>
+    </NuxtLink>
+  </div>
 </template>
 
 <style lang="scss" scoped>

@@ -1,6 +1,54 @@
+<script lang="ts" setup>
+import { computed, onMounted, onUnmounted, ref } from "vue";
+
+const props = withDefaults(
+  defineProps<{
+    open: boolean;
+    navigation: any;
+    categories: any;
+    socialMedia: any;
+  }>(),
+  {
+    open: false
+  }
+);
+
+const emit = defineEmits(["categoryClick", "close"]);
+
+const navigationLinks = computed(() => props.navigation.slice(-3));
+
+function formatName(name: string): string {
+  return name
+    .split(/[\s-_]+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
+const goToCategory = (link: any) => {
+  emit("categoryClick", link);
+};
+
+const sidebarRef = ref<HTMLElement | null>(null);
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (sidebarRef.value && !sidebarRef.value.contains(event.target as Node)) {
+    emit("close");
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("mousedown", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("mousedown", handleClickOutside);
+});
+</script>
+
 <template>
   <aside
     class="thc-sidebar"
+    ref="sidebarRef"
     v-if="open"
   >
     <nav class="thc-mobile-nav">
@@ -27,7 +75,12 @@
           :key="link"
           variant="outline"
           :text="formatName(link['category-name'])"
-          @click="goToCategory(link)"
+          @click="
+            () => {
+              goToCategory(link);
+              emit('close');
+            }
+          "
         />
       </div>
     </nav>
@@ -44,9 +97,10 @@
         <NuxtLink
           v-for="brand in navigation[1]?.subLinks"
           class="thc-brands-link"
-          :to="`brands/${brand?.slug}`"
+          :to="`/brands/${brand?.slug}`"
           target="_blank"
-          :key="brand.name"
+          :key="brand.slug"
+          @click.native="emit('close')"
         >
           <ThcImage
             class="thc-brands-image"
@@ -66,42 +120,13 @@
           :to="item?.to"
           :icon="item.icon"
           arrow
+          @click="emit('close')"
         />
       </div>
     </nav>
   </aside>
 </template>
 
-<script lang="ts" setup>
-import { computed } from "vue";
-
-const props = withDefaults(
-  defineProps<{
-    open: boolean;
-    navigation: any;
-    categories: any;
-    socialMedia: any;
-  }>(),
-  {
-    open: false
-  }
-);
-
-const emit = defineEmits(["categoryClick"]);
-const navigationLinks = computed(() => props.navigation.slice(-3));
-
-function formatName(name: string): string {
-  return name
-    .split(/[\s-_]+/)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // capitalize first letter
-    .join(" ");
-}
-
-const goToCategory = (link: any) => {
-  emit("categoryClick", link);
-};
-</script>
-
 <style lang="scss" scoped>
-@import "./ThcMobileSidebar.scss";
+@use "./ThcMobileSidebar.scss" as *;
 </style>

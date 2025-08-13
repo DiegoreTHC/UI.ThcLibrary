@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
-import { Campaign } from "../../utils/models";
+import type { Campaign } from "~/src/utils/models";
+import ThcSkeleton from "../ThcSkeleton/index.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -15,6 +16,10 @@ const props = withDefaults(
 const customClass = computed(() => {
   const classes = ["thc-banner"];
 
+  if (props.loading) {
+    classes.push(`thc-banner--loading`);
+  }
+
   if (props.campaign?.direction) {
     classes.push(`thc-banner--${props.campaign?.direction}`);
   }
@@ -26,17 +31,22 @@ const customClass = computed(() => {
   <div :class="customClass">
     <div
       class="thc-banner-card"
-      :style="{
-        backgroundColor: campaign?.appearance?.bgColor,
-        backgroundImage: `url(${campaign?.appearance?.bgImgProduct})`
-      }"
+      :style="
+        loading
+          ? {}
+          : {
+              backgroundColor: campaign?.appearance?.bgColor,
+              backgroundImage: `url(${campaign?.appearance?.bgImgProduct})`
+            }
+      "
     >
       <div
         class="thc-banner-card-half"
-        :style="{ backgroundColor: campaign?.appearance?.bgHalfColor }"
+        :style="loading ? {} : { backgroundColor: campaign?.appearance?.bgHalfColor }"
       />
       <div class="thc-banner-data">
         <ThcTitle
+          :loading="props.loading"
           :title="campaign?.title"
           variant="dark"
           :highlightWords="1"
@@ -45,29 +55,48 @@ const customClass = computed(() => {
         />
         <p
           class="thc-banner-copy"
-          v-if="campaign?.copy?.length"
+          v-if="campaign?.copy && !props.loading"
         >
           {{ campaign?.copy }}
         </p>
+        <ThcSkeleton
+          type="default"
+          variant="default"
+          :show="props.loading"
+        />
+        <ThcSkeleton
+          type="default"
+          variant="default"
+          width="18em"
+          :show="props.loading"
+        />
+        <ThcSkeleton
+          type="default"
+          variant="button"
+          :show="props.loading"
+        />
         <ThcButton
+          v-if="!props.loading"
           :style="{
             backgroundColor: campaign?.appearance?.buttonBgColor,
             border: `1px solid ${campaign?.appearance?.buttonBorderColor}`,
             color: campaign?.appearance?.buttonColor
           }"
+          l
           icon="fas fa-cart-shopping"
           :text="campaign?.btnText"
           @click="$emit('clickBtn')"
         />
       </div>
     </div>
+
     <figure
       class="thc-banner-image"
-      v-if="campaign?.media"
+      v-if="!loading"
     >
       <ThcImage
-        :imgSrc="campaign?.media.sizes"
-        :alt="campaign?.media.alt"
+        :imgSrc="campaign?.media?.sizes"
+        :alt="campaign?.media?.alt"
       />
     </figure>
   </div>

@@ -20,7 +20,11 @@ $border: 1px;
         z-index: -1;
         margin: -$border;
         border-radius: inherit;
-        background: linear-gradient(to right, var(--color-magenta-100), var(--color-purple-200));
+        background: linear-gradient(
+          to right,
+          var(--color-magenta-100),
+          var(--color-purple-200)
+        );
       }
     }
 

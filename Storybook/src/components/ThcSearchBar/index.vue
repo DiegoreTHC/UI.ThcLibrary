@@ -121,7 +121,9 @@ watch(searchQuery, (newVal) => {
   >
     <ThcSkeleton
       width="100%"
-      v-if="loading"
+      type="text"
+      variant="default"
+      :show="loading"
     />
 
     <div
@@ -235,5 +237,5 @@ watch(searchQuery, (newVal) => {
 </template>
 
 <style lang="scss" scoped>
-@import "./SearchBar.scss";
+@use "./SearchBar.scss" as *;
 </style>

@@ -2,14 +2,14 @@
   &-button {
     &-next,
     &-prev {
-      // background-color: $color-brand-green-100;
+      background-color: var(--color-primary);
       border-radius: 10em;
       margin-top: -0.9em;
       width: 2em;
       height: 2em;
 
       .fas {
-        // color: $color-brand-blue-100
+        color: var(--color-blue-100);
       }
 
       &.swiper-button-disabled {

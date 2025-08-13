@@ -22,7 +22,6 @@ const props = withDefaults(
         class="thc-footer-logo"
         variant="negative"
         :mode="mobile ? 'full' : 'inline'"
-        :loading="loading"
       />
       <nav class="thc-footer-socials">
         <ThcSocials
@@ -32,33 +31,45 @@ const props = withDefaults(
         />
         <ThcSkeleton
           type="text"
+          variant="default"
           width="22em"
           height="14px"
           class="thc-disclaimer"
+          show
           v-if="loading"
         />
         <p
           class="thc-disclaimer"
           v-else
         >
-          Smokers.mx | Todos los derechos reservados {{ new Date().getFullYear() }}
+          Smokers.mx | Todos los derechos reservados
+          {{ new Date().getFullYear() }}
         </p>
       </nav>
     </div>
     <ThcSkeleton
       type="text"
-      width="60em"
-      height="16px"
-      v-if="loading"
+      width="20em"
+      height="1em"
+      :show="loading"
+      variant="default"
       class="thc-legals--loading"
     />
     <p
       class="thc-legals"
-      v-else
+      v-if="!loading"
     >
       {{ disclaimer }}
     </p>
     <div class="thc-footer-brand">
+      <ThcSkeleton
+        type="text"
+        width="100%"
+        height="1em"
+        :show="loading"
+        variant="default"
+        class="thc-footer-brand--loading"
+      />
       <span v-if="!loading">
         Made it High <span class="fas fa-cannabis" /> by <strong>THC Code</strong> | A Frontend
         society
@@ -68,5 +79,5 @@ const props = withDefaults(
 </template>
 
 <style lang="scss" scoped>
-@import "./Footer.scss";
+@use "./ThcFooter.scss" as *;
 </style>

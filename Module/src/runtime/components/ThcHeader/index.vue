@@ -6,11 +6,13 @@ defineProps<{
 
 <template>
   <header class="thc-header">
-    <div class="thc-header-logo">
-      <slot name="logo" />
+    <div class="thc-wrapper">
+      <div class="thc-header-logo">
+        <slot name="logo" />
+      </div>
+      <nav class="thc-header-nav">
+        <slot />
+      </nav>
     </div>
-    <nav class="thc-header-nav">
-      <slot />
-    </nav>
   </header>
 </template>

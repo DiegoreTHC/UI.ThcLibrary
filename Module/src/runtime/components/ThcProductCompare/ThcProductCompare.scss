@@ -25,7 +25,7 @@
     }
 
     &-image {
-      background-color: rgba(var(--color-dark-rgb), 0.3);
+      background-color: rgba(var(--color-dark-100-rgb), 0.3);
       border-radius: 1em;
       min-width: 7.25em;
       width: 7.25em;
@@ -33,6 +33,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0.8em;
 
       @include respondTo("tablet-landscape") {
         position: absolute;
@@ -61,15 +62,23 @@
     }
 
     &--titles {
-      display: flex;
-      gap: 0.25em;
-      flex-direction: row;
-      align-items: flex-end;
+      @include respondTo("tablet-landscape") {
+        display: flex;
+        gap: 0.25em;
+        flex-direction: row;
+        align-items: flex-end;
+      }
     }
 
     &-titles {
       padding: 1em;
       min-width: 9.75em;
+      display: none;
+
+      @include respondTo("tablet-landscape") {
+        display: block;
+        border-radius: var(--radius-8);
+      }
     }
 
     &-mobile {
@@ -84,6 +93,8 @@
       &-toggle {
         overflow: hidden;
         width: 100%;
+        border-top: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
+        padding: 0 1em;
       }
     }
 
@@ -93,20 +104,33 @@
       width: 1em;
     }
     &-similarities {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: none;
+
+      @include respondTo("tablet-landscape") {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
 
       &-list {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        padding: 0.75em 0;
+        padding: 0.75em;
         border-bottom: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
 
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: inherit;
+        }
         @include respondTo("tablet-landscape") {
           justify-content: center;
+        }
+
+        .fa-clipboard {
+          font-weight: 400;
         }
       }
 
@@ -115,22 +139,37 @@
           display: block;
           padding: 1em 0;
           border-bottom: 0.5px solid rgba(var(--color-gray-200-rgb), 0.3);
+          font-weight: 600;
+
+          &:last-child {
+            padding-bottom: 0;
+            border: none;
+          }
         }
+      }
+
+      &--open {
+        display: block;
       }
     }
     &-similarity {
       font-size: 0.75em;
-
-      &-name {
-        font-weight: var(--font-weight-medium);
-        @include respondTo("tablet-landscape") {
-          display: none;
-        }
-      }
     }
   }
   &-sku {
     color: var(--color-gray-500);
     font-size: 0.75em;
   }
+}
+
+.accordion-enter-active,
+.accordion-leave-active {
+  transition: height 0.3s ease-out;
+  will-change: height;
+}
+
+.accordion-enter,
+.accordion-leave-to {
+  height: 0 !important;
+  opacity: 0;
 }

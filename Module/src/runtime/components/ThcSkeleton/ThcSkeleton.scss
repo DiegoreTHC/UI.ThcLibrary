@@ -1,17 +1,320 @@
+@use "../../styles/variables/variables" as *;
+@use "../../styles/utils/media" as *;
+
 .thc-skeleton {
   animation: skeleton-loading 0.5s linear infinite alternate;
   height: 1.5em;
   border-radius: 0.2em;
   width: 100%;
 
+  &-title {
+    height: 1.8em;
+  }
+
+  &-subtitle {
+    background-color: $color-gray-100;
+    height: 0.6em;
+  }
+
+  &-text {
+    height: 0.4em;
+  }
+
+  &-shape {
+    width: 100%;
+  }
+
+  &--button {
+    width: 8em;
+    height: 2.4em;
+    border-radius: 10em;
+  }
+
   &--text {
     height: 1em;
   }
 
-  &--image {
-    width: 1em;
-    height: 1em;
-    border-radius: 10em;
+  &--title {
+    height: 1.8em;
+  }
+
+  &--subtitle {
+    height: 0.6em;
+  }
+
+  &--product {
+    padding-top: 2em;
+    width: 10.625em;
+
+    .thc {
+      &-skeletons {
+        max-width: 10.625em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        &-card {
+          background-color: $color-dark-300;
+          border-radius: 1em;
+          height: 7.7em;
+          display: flex;
+          justify-content: flex-end;
+          flex-direction: column;
+          align-items: center;
+          padding: 0.7em;
+        }
+        &-image {
+          top: -2.5em;
+          height: 7em;
+        }
+
+        .thc-skeleton {
+          &-subtitle {
+            width: 40%;
+          }
+
+          &-text {
+            width: 35%;
+            &:nth-child(odd) {
+              width: 70%;
+            }
+          }
+        }
+      }
+    }
+
+    &-clothes {
+      background-color: $color-dark-300;
+      width: 10.625em;
+      padding-top: 2em;
+      padding: 1em;
+
+      .thc {
+        &-skeletons {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5em;
+
+          &-card {
+            border-radius: 1em;
+            height: 7.7em;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.7em;
+          }
+          &-image {
+            top: -2.5em;
+            height: 7em;
+          }
+
+          .thc-skeleton {
+            &-subtitle {
+              width: 40%;
+            }
+
+            &-text {
+              width: 35%;
+              &:nth-child(odd) {
+                width: 70%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-selection {
+      border: 1px solid $color-gray-100;
+      padding: 0.5em;
+
+      .thc {
+        &-skeletons {
+          &-card {
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+            align-items: center;
+          }
+
+          &-left {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            border-left: 1px solid $color-dark-500;
+            padding: 0.75em 0 0.75em 1em;
+          }
+
+          &-img {
+            padding: 0.5em;
+            width: 6em;
+            height: 3.5em;
+            color: $color-gray-400;
+            background-color: $color-dark-500;
+            border-radius: 0.6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        &-skeleton {
+          &-subtitle {
+            width: 80%;
+          }
+          &-text {
+            width: 40%;
+          }
+        }
+      }
+    }
+
+    &-compare {
+      border: 1px solid $color-gray-100;
+      padding: 1em;
+      height: 10.4375em;
+
+      @include respondTo("desktop") {
+        height: inherit;
+        width: 12.5em;
+      }
+
+      .thc {
+        &-skeletons {
+          &-card {
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+            align-items: center;
+
+            @include respondTo("desktop") {
+              flex-direction: column;
+            }
+          }
+
+          &-left {
+            width: 100%;
+            height: 8.4375em;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            border-left: 1px solid $color-dark-500;
+            padding: 0.75em 0 0.75em 1em;
+
+            @include respondTo("desktop") {
+              border-top: 1px solid $color-dark-500;
+              border-left: none;
+              padding: 1em;
+            }
+          }
+
+          &-img {
+            padding: 0.5em;
+            width: 6em;
+            height: 8.4375em;
+            color: $color-gray-400;
+            background-color: $color-dark-500;
+            border-radius: 0.6em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        &-skeleton {
+          &-subtitle {
+            width: 80%;
+          }
+          &-text {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+
+  &--product &--categories {
+    border: 1px solid $color-dark-300;
+    border-radius: 1em;
+    width: 10.75em;
+
+    .thc {
+      &-skeletons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        &-card {
+          border-radius: 1em;
+          height: 6.125em;
+          display: flex;
+          justify-content: flex-end;
+          flex-direction: column;
+          align-items: center;
+          padding: 0.7em;
+        }
+
+        &-left {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          flex-direction: column;
+          gap: 0.5em;
+        }
+        &-image {
+          height: 4.3em;
+          top: -0.3em;
+        }
+
+        .thc-skeleton {
+          &-subtitle {
+            width: 50%;
+          }
+
+          &-text {
+            width: 35%;
+            &:nth-child(odd) {
+              width: 70%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--subtitle {
+    .thc {
+      &-skeletons {
+        gap: 0.5em;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-skeleton {
+        &-subtitle {
+          width: 40%;
+        }
+
+        &-text {
+          width: 80%;
+
+          &:last-child {
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+
+  &--button {
+    .thc-skeletons {
+      width: 10em;
+      height: 2.4em;
+      border-radius: 10em;
+    }
   }
 }
 

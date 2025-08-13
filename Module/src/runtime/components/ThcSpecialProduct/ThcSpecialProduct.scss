@@ -1,4 +1,5 @@
 @use "../../styles/utils/media" as *;
+@use "../../styles/variables/variables" as *;
 
 .thc {
   &-banner {
@@ -128,7 +129,7 @@
         margin: 0;
       }
 
-      @include respondTo("large-screens-13") {
+      @include respondTo("desktop") {
         display: block;
       }
     }
@@ -156,6 +157,23 @@
 
       img {
         width: fit-content;
+      }
+    }
+    &--loading {
+      .thc-banner {
+        &-card {
+          border: 1px solid $color-gray-100;
+        }
+
+        &-data {
+          gap: 0.5em;
+          display: flex;
+          flex-direction: column;
+
+          .title {
+            margin: 0;
+          }
+        }
       }
     }
   }

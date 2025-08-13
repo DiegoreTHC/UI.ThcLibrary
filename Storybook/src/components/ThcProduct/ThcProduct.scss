@@ -1,3 +1,5 @@
+@use "../../styles/utils/media" as *;
+
 .thc {
   &-image {
     position: absolute;
@@ -298,6 +300,7 @@
     &-category {
       color: var(--color-gray-300);
       font-size: 0.72em;
+      text-transform: capitalize;
 
       &-name {
         color: var(--color-gray-200);

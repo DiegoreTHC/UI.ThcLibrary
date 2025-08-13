@@ -5,12 +5,12 @@ import { ProductVariants } from "../../utils/enums";
 const props = withDefaults(
   defineProps<{
     variant?: "default" | "outline" | "category" | "inline" | "vertical" | string;
-    loading?: boolean;
     product?: any;
+    isCurrent?: boolean;
   }>(),
   {
-    loading: false,
-    variant: "default"
+    variant: "default",
+    isCurrent: false
   }
 );
 
@@ -47,13 +47,25 @@ defineEmits<{
         />
       </ThcCard>
       <div class="thc-product-data">
-        <p class="thc-product-name">{{ product.productName }}</p>
-        <p class="thc-product-category">{{ product.categoryName }}</p>
+        <p class="thc-product-name">{{ product.name }}</p>
+        <p
+          v-if="!isCurrent"
+          class="thc-product-category"
+        >
+          {{ product["category-name"] }}
+        </p>
+
+        <p
+          class="thc-product-category"
+          v-else
+        >
+          {{ product?.brand }}
+        </p>
       </div>
       <ThcImage
         class="thc-image"
-        :img-src="product.media.sizes"
-        :alt="product.media.alt"
+        :imgSrc="product?.media?.sizes"
+        :alt="product?.media?.alt"
       />
     </div>
     <div
@@ -62,8 +74,8 @@ defineEmits<{
     >
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :imgSrc="product?.media?.sizes"
+          :alt="product?.media?.alt"
         />
         <ThcCard
           class="thc-product-card"
@@ -71,13 +83,24 @@ defineEmits<{
         />
       </div>
       <div class="thc-product-data">
-        <p class="thc-product-title">{{ product?.productName }}</p>
+        <p class="thc-product-title">{{ product.name }}</p>
         <div class="thc-product-data-flex">
           <ThcPrice
             :price="product?.price"
             variant="default"
           />
-          <p class="thc-product-category-name">{{ product?.categoryName }}</p>
+          <p
+            class="thc-product-category-name"
+            v-if="!isCurrent"
+          >
+            {{ product["category-name"] }}
+          </p>
+          <p
+            class="thc-product-category-name"
+            v-else
+          >
+            {{ product?.brand }}
+          </p>
         </div>
       </div>
       <nav class="thc-product-action">
@@ -99,15 +122,11 @@ defineEmits<{
       >
         <div class="thc-product">
           <div class="thc-product-data">
-            <ThcPill
-              :text="product.stock"
-              :loading="loading"
-            />
+            <ThcPill :text="product.stock" />
             <ThcTitle
               variant="dual"
               type="h5"
-              :title="product.categoryName"
-              :loading="loading"
+              :title="product['category-name']"
               :highlight-words="2"
             />
           </div>
@@ -115,8 +134,8 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          :imgSrc="product?.media?.sizes"
+          :alt="product?.media?.alt"
         />
       </div>
     </div>
@@ -129,8 +148,8 @@ defineEmits<{
         :variant="cardVariant"
       >
         <div class="thc-product-data">
-          <p class="thc-product-title">{{ product.productName }}</p>
-          <p class="thc-product-subtitle">{{ product.categoryName }}</p>
+          <p class="thc-product-title">{{ product.name }}</p>
+          <p class="thc-product-subtitle">{{ product["category-name"] }}</p>
 
           <div class="thc-product-actions">
             <ThcPrice
@@ -147,15 +166,16 @@ defineEmits<{
       </ThcCard>
       <div class="thc-product-media">
         <ThcImage
-          :img-src="product.media.sizes"
-          :alt="product.media.alt"
+          class="thc-image"
+          :imgSrc="product?.media?.sizes"
+          :alt="product?.media?.alt"
         />
       </div>
     </div>
     <ThcPill
-      v-if="product?.promotion && product?.promotion.active"
-      :text="product?.promotion?.text"
-      :variant="product?.promotion?.variant"
+      v-if="product?.label && product?.label.text.length"
+      :text="product?.label?.text"
+      :variant="product?.label?.variant"
       class="thc-product-pill"
     />
   </div>

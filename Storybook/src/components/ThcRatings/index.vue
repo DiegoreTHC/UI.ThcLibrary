@@ -1,3 +1,41 @@
+<script lang="ts" setup>
+import { computed } from "vue";
+
+const props = withDefaults(
+  defineProps<{
+    rating?: number;
+    maxStars?: number;
+    showData?: boolean;
+    totalRatings?: number;
+  }>(),
+  {
+    rating: 3,
+    maxStars: 5,
+    showData: false,
+    totalRatings: 0
+  }
+);
+
+const fullStars = computed(() => Math.floor(props.rating));
+const hasPartialStar = computed(() => props.rating % 1 !== 0);
+const emptyStars = computed(() => props.maxStars - Math.ceil(props.rating));
+
+const totalRanksCount = computed(() => {
+  if (props.totalRatings === 0) {
+    return "(No Ratings)";
+  }
+
+  return `(${props.totalRatings})`;
+});
+
+const ratingsClass = computed(() => {
+  const classes = ["thc-ratings"];
+  if (props.showData) classes.push("thc-ratings--with-data");
+
+  return classes.join(" ");
+});
+</script>
+
 <template>
   <div :class="ratingsClass">
     <span
@@ -36,42 +74,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const props = withDefaults(
-  defineProps<{
-    rating?: number;
-    maxStars?: number;
-    showData?: boolean;
-    totalRatings?: number;
-  }>(),
-  {
-    rating: 3,
-    maxStars: 5,
-    showData: false,
-    totalRatings: 0
-  }
-);
-
-const fullStars = computed(() => Math.floor(props.rating));
-const hasPartialStar = computed(() => props.rating % 1 !== 0);
-const emptyStars = computed(() => props.maxStars - Math.ceil(props.rating));
-
-const totalRanksCount = computed(() => {
-  if (props.totalRatings === 0) {
-    return "(No Ratings)";
-  }
-
-  return `(${props.totalRatings})`;
-});
-
-const ratingsClass = computed(() => {
-  const classes = ["thc-ratings"];
-  if (props.showData) classes.push("thc-ratings--with-data");
-
-  return classes.join(" ");
-});
-</script>
-
 <style lang="scss" scoped>
-@use "./ThcRatings.scss";
+@use "./ThcRatings.scss" as *;
 </style>

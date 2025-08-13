@@ -6,6 +6,16 @@ const meta = {
   component: ThcMobileSidebar,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ["autodocs"],
+  render: (args: object) => ({
+    components: { ThcMobileSidebar },
+    setup() {
+      const isSidebarOpen = ref(true);
+      return { args, isSidebarOpen };
+    },
+    template: `<ThcMobileSidebar :open="isSidebarOpen" v-bind='args' 
+    @close="isSidebarOpen = false"
+    />`
+  }),
   argTypes: {
     loading: {
       control: { type: "boolean" }
@@ -18,7 +28,6 @@ export default meta;
 export const Default = {
   args: {
     loading: false,
-    open: true,
     socialMedia: [
       {
         id: "SMKMX-774310-F",

@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+defineProps<{
+  socials: any[];
+  loading?: boolean;
+}>();
+</script>
+
 <template>
   <ul class="thc-socials">
     <li
@@ -5,7 +12,16 @@
       v-for="social in socials"
       :key="social"
     >
+      <ThcSkeleton
+        class="thc-socials-item--loading"
+        type="default"
+        variant="default"
+        width="1.5em"
+        height="1.5em"
+        :show="loading"
+      />
       <NuxtLink
+        v-if="!loading"
         :to="social?.link"
         class="thc-socials-link"
         target="_blank"
@@ -15,13 +31,6 @@
     </li>
   </ul>
 </template>
-
-<script lang="ts" setup>
-defineProps<{
-  socials: any[];
-  loading?: boolean;
-}>();
-</script>
 
 <style lang="scss" scoped>
 @use "./ThcSocials.scss" as *;

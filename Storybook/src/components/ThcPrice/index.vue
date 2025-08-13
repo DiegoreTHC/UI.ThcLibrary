@@ -1,14 +1,3 @@
-<template>
-  <span
-    :class="['thc-price', `thc-price--${props.size}`, `thc-price--${props.variant}`]"
-    :data-price="props.price?.fullQuantity"
-  >
-    <span class="thc-price-currency">$</span>
-    <span class="thc-price-integer">{{ props.price?.quantity }}</span>
-    <span class="thc-price-cents">.{{ props.price?.cents }}</span>
-  </span>
-</template>
-
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
@@ -32,6 +21,17 @@ defineEmits<{
   (event: "click"): void;
 }>();
 </script>
+
+<template>
+  <span
+    :class="['thc-price', `thc-price--${props.size}`, `thc-price--${props.variant}`]"
+    :data-price="props.price?.fullQuantity"
+  >
+    <span class="thc-price-currency">$</span>
+    <span class="thc-price-integer">{{ props.price?.quantity }}</span>
+    <span class="thc-price-cents">.{{ props.price?.cents }}</span>
+  </span>
+</template>
 
 <style lang="scss" scoped>
 @use "./ThcPrice.scss" as *;

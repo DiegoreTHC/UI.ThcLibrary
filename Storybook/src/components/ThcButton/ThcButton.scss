@@ -1,49 +1,45 @@
+@use "../../styles/variables/variables" as *;
+
 .thc-button {
-  background-color: var(--color-primary);
-  border-radius: var(--radius);
-  font-size: 1rem;
-  cursor: pointer;
+  color: $color-clear-100;
+  border-radius: 1em;
   display: flex;
   justify-content: center;
 
-  &-text {
-    color: var(--font-color-primary);
+  .thc-button-text {
+    color: $color-blue-100;
+    font-size: 0.8em;
     padding: 0.6em 1.6em;
   }
 
-  &--link {
-    background-color: transparent;
-    display: inline-block;
-    color: var(--font-color-accent);
-    text-decoration: none;
-    cursor: pointer;
+  &--primary {
+    background-color: $color-green-100;
+    align-items: center;
 
-    &:hover {
-      text-decoration: underline;
+    .thc-button-text {
+      border-radius: 1em;
     }
   }
 
   &--outline {
     background-color: transparent;
-    border: 1px solid var(--color-primary);
+    border: 1.5px solid $color-green-100;
 
     .thc-button-text {
-      color: var(--font-color-light);
-      font-size: var(--font-size-xxs);
-      padding: var(--spacing-8-px) var(--spacing-10-px);
+      color: $color-clear-100;
+      padding: 0.52em 0.6em;
     }
   }
 
   &--icon {
     flex-direction: row-reverse;
-    background-color: var(--color-secondary);
+    background-color: $color-green-200;
     align-items: center;
     justify-content: flex-end;
 
     &.thc-button {
       .thc-button {
         &-icon {
-          color: var(--font-color-light);
           font-size: 0.85em;
           margin: 0 0.15em;
 
@@ -53,8 +49,8 @@
           }
         }
         &-text {
-          border-radius: var(--radius);
-          background-color: var(--color-primary);
+          border-radius: 1em;
+          background-color: $color-green-100;
         }
       }
 
@@ -64,6 +60,7 @@
     }
 
     &-only {
+      color: $color-blue-100;
       padding: 0.4em;
       font-size: 0.85em;
 
@@ -98,7 +95,28 @@
     }
 
     &.fa-cart-shopping {
-      font-weight: var(--font-weight-light);
+      font-weight: $font-weight-light;
+    }
+  }
+
+  &--link {
+    background-color: transparent;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+
+    .thc-button-text {
+      color: $color-clear-100;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      .thc-button-text {
+        text-decoration: underline;
+      }
     }
   }
 }

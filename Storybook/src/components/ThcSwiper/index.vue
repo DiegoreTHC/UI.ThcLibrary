@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { SliderDirections } from "~/src/utils/enums";
+import { SliderDirections } from "../../utils/enums";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { ref, watch } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -151,5 +152,5 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import "./ThcSwiper.scss";
+@use "./ThcSwiper.scss" as *;
 </style>

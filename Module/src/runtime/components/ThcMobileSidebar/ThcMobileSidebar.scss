@@ -5,11 +5,11 @@
   right: 0;
   top: 5.8em;
   height: calc(100% - 5.2em);
-  display: flex;
   flex-direction: column;
   min-width: 21.2em;
   max-width: 21.2em;
   gap: 1em;
+  display: flex;
   z-index: var(--levels-z99);
 
   .thc {
@@ -35,6 +35,7 @@
 
       &-brands {
         display: flex;
+        flex-wrap: wrap;
         margin-top: 1.2em;
       }
 
@@ -68,5 +69,31 @@
         width: 100%;
       }
     }
+
+    &-sidebar {
+    }
   }
+
+  &--open {
+    display: flex;
+  }
+}
+
+$transition-time: 0.2s;
+$sidebar-width: 21.2em;
+
+.thc-slide-enter-active,
+.thc-slide-leave-active {
+  transition: transform $transition-time ease;
+}
+
+.thc-slide-enter-from,
+.thc-slide-leave-to {
+  transform: translateX($sidebar-width);
+}
+
+.thc-slide-enter,
+.thc-slide-leave-to {
+  transform: translateX(100%);
+  transition: all $transition-time ease-in-out 0.2s;
 }
